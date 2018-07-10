@@ -1,0 +1,29 @@
+{
+  "name": "vandyhacksnotifications",
+  "version": "1.0.0",
+  "description": "SMS Notifications",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-zhai/VandyHacksNotifications.git"
+  },
+  "keywords": [
+    "VandyHacks",
+    "notifications"
+  ],
+  "author": "k-zhai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-zhai/VandyHacksNotifications/issues"
+  },
+  "homepage": "https://github.com/k-zhai/VandyHacksNotifications#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "helmet": "^3.12.1",
+    "mongoose": "^5.2.2"
+  }
+}
