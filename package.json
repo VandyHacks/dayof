@@ -24,6 +24,7 @@
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
     "helmet": "^3.12.1",
-    "mongoose": "^5.2.2"
+    "mongoose": "^5.2.2",
+    "twilio": "^3.17.5"
   }
 }
