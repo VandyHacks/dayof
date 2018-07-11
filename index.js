@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 
 app.post('/message', (req, res) => {
   res.send(phoneArr);
-  var message = req.body;
+  var message = req.query.text;
   res.send(message);
 })
 
