@@ -29,16 +29,20 @@ var hackerSchema = new mongoose.Schema({
 })
 var Hacker = db.model("Hacker", hackerSchema);
 
+Hacker.find({}, (err, data) => {
+  if (err) throw err;
+  for (let i=0; i<data.length; i++) {
+    phoneArr.push(data[i].phone);
+  }
+})
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/form.html");
   console.log("Page loaded");
 })
 
 app.post('/message', (req, res) => {
-  Hacker.find({}, (err, phoneArr) => {
-    if (err) throw err;
-    res.send(phoneArr);
-  })
+  res.send(phoneArr);
 })
 
 app.listen(PORT, () => {
