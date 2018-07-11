@@ -42,8 +42,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  var message = document.getElementById("text").value;
-  res.send(message);
+  res.send(phoneArr);
 })
 
 app.listen(PORT, () => {
