@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.post('/message', (req, res) => {
   Hacker.find({}, (err, data) => {
     if (err) throw err;
-    res.send(data.phone);
+    res.send(data);
   })
 })
 
