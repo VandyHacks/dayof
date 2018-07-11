@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
   console.log("Page loaded");
 })
 
-app.post('/', (req, res) => {
-  Hacker.find({'phone': any}, (err, data) => {
+app.post('/message', (req, res) => {
+  Hacker.findOne({}, 'phone', (err, data) => {
     if (err) throw err;
     res.send(data);
   })
