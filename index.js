@@ -42,7 +42,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  res.send(phoneArr);
   res.send(req.body);
 })
 
