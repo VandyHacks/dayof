@@ -1,7 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const twilio = require('twilio');
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -19,15 +18,25 @@ db.once('open', function callback() {
   console.log("Database open");
 })
 
+var hackerSchema = new mongoose.Schema({
+  firstName: {type: String, max: 20},
+  lastName: {type: String, max: 20},
+  school: {type: String, max: 20},
+  email: {type: String, max: 100},
+  phone: {type: String, max: 15}
+})
+var Hacker = db.model("Hacker", hackerSchema);
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/form.html");
   console.log("Page loaded");
 })
 
-var client = new twilio(process.env.TWILIO_TEST_SID, process.env.TWILIO_TEST_AUTH);
-
 app.post('/', (req, res) => {
-  var text = req.body;
+  Hacker.find({'phone': any}, (err, data) => {
+    if (err) throw err;
+    res.send(data);
+  })
 })
 
 app.listen(PORT, () => {
