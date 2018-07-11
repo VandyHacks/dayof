@@ -42,7 +42,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  res.send(req.body);
+  res.send(phoneArr);
+  var message = req.body;
+  res.send(message);
 })
 
 app.listen(PORT, () => {
