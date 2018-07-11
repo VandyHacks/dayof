@@ -18,6 +18,8 @@ db.once('open', function callback() {
   console.log("Database open");
 })
 
+var phoneArr = [];
+
 var hackerSchema = new mongoose.Schema({
   firstName: {type: String, max: 20},
   lastName: {type: String, max: 20},
@@ -33,9 +35,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  Hacker.find({}, (err, data) => {
+  Hacker.find({}, (err, phoneArr) => {
     if (err) throw err;
-    res.send(data);
+    res.send(phoneArr);
   })
 })
 
