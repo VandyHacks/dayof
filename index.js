@@ -42,8 +42,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  res.send(phoneArr);
-  var message = document.getElementById("text").nodeValue;
+  var message = document.getElementById("text").value;
   res.send(message);
 })
 
