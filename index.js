@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
+const txtbelt = require('textbelt');
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -36,7 +37,7 @@ var Hacker = db.model("Hacker", hackerSchema);
 Hacker.find({}, (err, data) => {
   if (err) throw err;
   for (let i=0; i<data.length; i++) {
-    data[i].phone = data[i].phone.replace(/-/g,'');
+    //data[i].phone = data[i].phone.replace(/-/g,'');
     phoneArr.push(data[i].phone);
   }
 })
@@ -47,8 +48,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  //res.send(req.body.msg);
-  res.send(phoneArr);
+  for (let i=0; i<phoneArr.length; i++) {
+    txtbelt.sendText("4074809635", req.body);
+  }
 })
 
 app.listen(PORT, () => {
