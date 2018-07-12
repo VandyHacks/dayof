@@ -1,9 +1,13 @@
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
+const parser = require('body-parser');
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+app.use(parser.urlencoded({ extended: true }))
+app.use(parser.json())
 
 app.use(helmet());
 app.use(express.static('VandyHacksNotification'));
@@ -42,8 +46,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  //res.send('<p>' + req.body + '</p>');
-  res.send(phoneArr);
+  res.send(req.body);
 })
 
 app.listen(PORT, () => {
