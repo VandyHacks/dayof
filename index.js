@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  res.send(req.body);
+  res.send(req.body.msg);
 })
 
 app.listen(PORT, () => {
