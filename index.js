@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 
 app.post('/message', (req, res) => {
   for (let i=0; i<phoneArr.length; i++) {
-    txtbelt.sendText("4074809635", req.body);
+    txtbelt.sendText("407-480-9635", req.body);
   }
 })
 
