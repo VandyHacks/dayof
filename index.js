@@ -36,6 +36,7 @@ var Hacker = db.model("Hacker", hackerSchema);
 Hacker.find({}, (err, data) => {
   if (err) throw err;
   for (let i=0; i<data.length; i++) {
+    data[i].phone = data[i].phone.replace(/-/g,'');
     phoneArr.push(data[i].phone);
   }
 })
@@ -46,7 +47,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  res.send(req.body.msg);
+  //res.send(req.body.msg);
+  res.send(phoneArr);
 })
 
 app.listen(PORT, () => {
