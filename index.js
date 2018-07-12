@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  txtbelt.sendText("4074809635", req.body);
+  txtbelt.sendText("4074809635", req.body.msg);
   res.send("Message sent");
 })
 
