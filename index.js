@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
-const twilio = require('twilio')(process.env.TWILIO_TEST_SID, process.env.TWILIO_TEST_AUTH);
+const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -58,10 +58,12 @@ app.post('/message', (req, res) => {
     })
   )
   .then(messages => {
-    res.send("Messages sent!");
+    alert("Messages sent!");
+    res.sendFile(__dirname + "/form.html");
   })
   .catch(err => {
-    res.send("One or more numbers invalid");
+    alert("One or more numbers invalid");
+    res.sendFile(__dirname + "/form.html");
   })
 })
 
