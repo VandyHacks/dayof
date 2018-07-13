@@ -37,7 +37,7 @@ var Hacker = db.model("Hacker", hackerSchema);
 Hacker.find({}, (err, data) => {
   if (err) throw err;
   for (let i=0; i<data.length; i++) {
-    //data[i].phone = data[i].phone.replace(/-/g,'');
+    data[i].phone = data[i].phone.replace(/-/g,'');
     phoneArr.push(data[i].phone);
   }
 })
@@ -48,16 +48,21 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  twilio.messages
-    .create({
-      to: '4074809635',
-      from: '18134374230',
-      body: req.body.msg
+  Promise.all(
+    phoneArr.map(number => {
+      return twilio.messages.create({
+        to: number,
+        from: process.env.TWILIO_MASS_SMS_SID,
+        body: req.body.msg
+      })
     })
-    .then(res.send("Message sent"))
-    .catch(err => {
-      res.send("Error sending message");
-    })
+  )
+  .then(messages => {
+    res.send("Messages sent!");
+  })
+  .catch(err => {
+    res.send("One or more numbers invalid");
+  })
 })
 
 app.listen(PORT, () => {
