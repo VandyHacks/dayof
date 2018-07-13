@@ -55,6 +55,7 @@ app.post('/message', (req, res) => {
     from: '8134374230',
     body: 'Hello World'
   })
+  client.sendMessage();
   res.send("Message sent");
 })
 
