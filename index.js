@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
-const twilio = require('twilio');
+const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -12,8 +12,6 @@ app.use(parser.json())
 
 app.use(helmet());
 app.use(express.static('VandyHacksNotification'));
-
-var client = new twilio(process.env.TWILIO_TEST_SID, process.env.TWILIO_TEST_AUTH);
 
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
@@ -50,13 +48,16 @@ app.get('/', (req, res) => {
 })
 
 app.post('/message', (req, res) => {
-  client.messages.create({
-    to: '4074809635',
-    from: '18134374230',
-    body: 'Hello World'
-  })
-  client.sendMessage();
-  res.send("Message sent");
+  twilio.messages
+    .create({
+      to: '4074809635',
+      from: '18134374230',
+      body: req.body.msg
+    })
+    .then(res.send("Message sent"))
+    .catch(err => {
+      res.send("Error sending message");
+    })
 })
 
 app.listen(PORT, () => {
