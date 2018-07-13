@@ -58,11 +58,10 @@ app.post('/', (req, res) => {
     })
   )
   .then(messages => {
-    alert("Messages sent!");
     res.redirect('back');
   })
   .catch(err => {
-    alert("One or more numbers invalid");
+    console.log(err);
     res.redirect('back');
   })
 })
