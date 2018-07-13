@@ -26,7 +26,6 @@
     "express-validator": "^5.2.0",
     "helmet": "^3.12.1",
     "mongoose": "^5.2.2",
-    "textbelt": "0.0.4",
     "twilio": "^3.17.5"
   }
 }
