@@ -12,7 +12,7 @@
     <div class="container center-block" style="width: 50%;">
       <div class="row center-block">
         <div class="col">
-          <form action="/message" method="post" class="justify-content-center">
+          <form action="/" method="post" class="justify-content-center">
             <div class="form-group">
               <label for="msg">Enter message below:</label>
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
@@ -24,7 +24,9 @@
             <!--confirmation popup after checking if textarea is empty-->
             <script>
               function confirmation() {
-                confirm("Send message?");
+                if (document.getElementById("msg").value != "") {
+                  confirm("Send message?");
+                }
               }
             </script>
 

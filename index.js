@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
   console.log("Page loaded");
 })
 
-app.post('/message', (req, res) => {
+app.post('/', (req, res) => {
   Promise.all(
     phoneArr.map(number => {
       return twilio.messages.create({
@@ -59,11 +59,11 @@ app.post('/message', (req, res) => {
   )
   .then(messages => {
     alert("Messages sent!");
-    res.sendFile(__dirname + "/form.html");
+    res.redirect('back');
   })
   .catch(err => {
     alert("One or more numbers invalid");
-    res.sendFile(__dirname + "/form.html");
+    res.redirect('back');
   })
 })
 
