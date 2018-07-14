@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-const Hacker = require('mongoose').model('Hacker');
+const mongoose = require('mongoose');
 const parser = require('body-parser');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const uri = process.env.PROD_MONGODB;
@@ -24,6 +24,9 @@ db.once('open', function callback() {
 })
 
 var phoneArr = [];
+
+var hackerSchema = mongoose.model('Hacker').schema;
+var Hacker = db.model("Hacker", hackerSchema);
 
 Hacker.find({}, (err, data) => {
   if (err) throw err;
