@@ -25,7 +25,13 @@ db.once('open', function callback() {
 
 var phoneArr = [];
 
-var hackerSchema = mongoose.model('Hacker').schema;
+var hackerSchema = new mongoose.Schema({
+  firstName: {type: String, max: 20},
+  lastName: {type: String, max: 20},
+  school: {type: String, max: 20},
+  email: {type: String, max: 100},
+  phone: {type: String, max: 15}
+})
 var Hacker = db.model("Hacker", hackerSchema);
 
 Hacker.find({}, (err, data) => {
