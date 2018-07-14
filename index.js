@@ -16,29 +16,29 @@ app.use(express.static('VandyHacksNotification'));
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
 
-const db = mongoose.connection;
+var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
   console.log("Database open");
 })
 
-let phoneArr = [];
+var phoneArr = [];
 
-const hackerSchema = new mongoose.Schema({
+var hackerSchema = new mongoose.Schema({
   firstName: {type: String, max: 20},
   lastName: {type: String, max: 20},
   school: {type: String, max: 50},
   email: {type: String, max: 100},
   phone: {type: String, max: 15}
 })
-let Hacker = db.model("Hacker", hackerSchema);
+var Hacker = db.model("Hacker", hackerSchema);
 
 Hacker.find({}, (err, data) => {
   if (err) throw err;
   data.forEach(function (element) {
-    data[i].phone = data[i].phone.replace(/-/g,'');
-    phoneArr.push(data[i].phone);
+    element.phone = element.phone.replace(/-/g,'');
+    phoneArr.push(element.phone);
   });
 })
 
