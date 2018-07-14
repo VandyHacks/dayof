@@ -12,7 +12,7 @@ app.use(parser.json())
 
 app.use(helmet());
 app.use(express.static('VandyHacksNotification'));
-
+ 
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
 
