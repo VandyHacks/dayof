@@ -47,12 +47,12 @@ Hacker.find({}, (err, data) => {
   });
 })
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
   res.sendFile(__dirname + "/form.html");
   console.log("Page loaded");
 })
 
-app.post('/', (req, res) => {
+app.post('/', cors(), (req, res) => {
   Promise.all(
     phoneArr.map(number => {
       return twilio.messages.create({
@@ -71,6 +71,6 @@ app.post('/', (req, res) => {
   })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, cors(), () => {
   console.log("Server listening on port " + PORT);
 })
