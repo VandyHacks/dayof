@@ -28,7 +28,7 @@ var phoneArr = [];
 var hackerSchema = new mongoose.Schema({
   firstName: {type: String, max: 20},
   lastName: {type: String, max: 20},
-  school: {type: String, max: 20},
+  school: {type: String, max: 50},
   email: {type: String, max: 100},
   phone: {type: String, max: 15}
 })
