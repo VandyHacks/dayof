@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-const mongoose = require('mongoose');
+const Hacker = require('mongoose').model('Hacker');
 const parser = require('body-parser');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const uri = process.env.PROD_MONGODB;
@@ -25,15 +25,6 @@ db.once('open', function callback() {
 
 var phoneArr = [];
 
-var hackerSchema = new mongoose.Schema({
-  firstName: {type: String, max: 20},
-  lastName: {type: String, max: 20},
-  school: {type: String, max: 20},
-  email: {type: String, max: 100},
-  phone: {type: String, max: 15}
-})
-var Hacker = db.model("Hacker", hackerSchema);
-
 Hacker.find({}, (err, data) => {
   if (err) throw err;
   for (let i=0; i<data.length; i++) {
@@ -53,7 +44,7 @@ app.post('/', (req, res) => {
       return twilio.messages.create({
         to: number,
         from: process.env.TWILIO_MASS_SMS_SID,
-        body: req.body.msg
+        body: 'VandyHacks: ' + req.body.msg
       })
     })
   )
