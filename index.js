@@ -1,11 +1,11 @@
-'use strict';
- 
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
+const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
+
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -24,53 +24,52 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
-  console.log("Database open");
-})
+db.once('open', () => {
+  console.log('Database open');
+});
 
-let phoneArr = [];
+const phoneArr = [];
 
 const hackerSchema = new mongoose.Schema({
-  firstName: {type: String, max: 20},
-  lastName: {type: String, max: 20},
-  school: {type: String, max: 50},
-  email: {type: String, max: 100},
-  phone: {type: String, max: 15}
-})
-const Hacker = db.model("Hacker", hackerSchema);
+  firstName: { type: String, max: 20 },
+  lastName: { type: String, max: 20 },
+  school: { type: String, max: 50 },
+  email: { type: String, max: 100 },
+  phone: { type: String, max: 15 },
+});
+const Hacker = db.model('Hacker', hackerSchema);
 
 Hacker.find({}, (err, data) => {
   if (err) throw err;
-  data.forEach(function (element) {
-    element.phone = element.phone.replace(/-/g,'');
-    phoneArr.push(element.phone);
+  data.forEach((element) => {
+    let num = element.phone;
+    num = num.replace(/-/g, '');
+    phoneArr.push(num);
   });
-})
+});
 
 app.get('/', cors(), (req, res) => {
-  res.sendFile(__dirname + "/form.html");
-  console.log("Page loaded");
-})
+  res.sendFile(path.join(__dirname, '/form.html'));
+  console.log('Page loaded');
+});
 
-app.post('/', cors(), (req, res) => {
+app.post('/', (req, res) => {
   Promise.all(
-    phoneArr.map(number => {
-      return twilio.messages.create({
-        to: number,
-        from: process.env.TWILIO_MASS_SMS_SID,
-        body: 'VandyHacks: ' + req.body.msg
-      })
-    })
+    phoneArr.map(number => twilio.messages.create({
+      to: number,
+      from: process.env.TWILIO_MASS_SMS_SID,
+      body: path.join('VandyHacks: ', req.body.msg),
+    })),
   )
-  .then(messages => {
-    res.redirect('back');
-  })
-  .catch(err => {
-    console.log(err);
-    res.redirect('back');
-  })
-})
+    .then(
+      res.redirect('back'),
+    )
+    .catch((err) => {
+      console.log(err);
+      res.redirect('back');
+    });
+});
 
-app.listen(PORT, cors(), () => {
-  console.log("Server listening on port " + PORT);
-})
+app.listen(PORT, () => {
+  console.log(path.join('Server listening on port ', PORT));
+});

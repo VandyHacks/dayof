@@ -4,7 +4,8 @@
   "description": "SMS Notifications",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint index.js"
   },
   "repository": {
     "type": "git",
