@@ -14,7 +14,7 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
 app.use(helmet());
-app.use(express.static('VandyHacksNotification'));
+app.use(express.static(__dirname));
 
 app.use(cors());
 
