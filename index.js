@@ -41,8 +41,6 @@ db.once('open', () => {
 
 const phoneArr = [];
 
-// let message;
-
 const hackerSchema = new mongoose.Schema({
   firstName: { type: String, max: 20 },
   lastName: { type: String, max: 20 },
@@ -62,17 +60,16 @@ Hacker.find({}, (err, data) => {
 });
 
 app.get('/', cors(), (req, res) => {
-  res.sendFile(path.join(__dirname, '/form.html'));
+  res.sendFile(path.join(__dirname, 'form.html'));
   console.log('Page loaded');
 });
 
 app.post('/', (req, res) => {
-  // console.log(message);
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: path.join('VandyHacks: ', req.body.msg),
+      body: `VandyHacks: ${req.body.msg}`,
     })),
   )
     .then(
