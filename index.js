@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const app = express();
-const router = express.Router;
+// const router = express.Router;
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -84,7 +84,7 @@ app.post('/', (req, res) => {
     });
 });
 
-router.post('/dayof', (req, res) => {
+/* router.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
   res.sendStatus(201);
@@ -92,7 +92,7 @@ router.post('/dayof', (req, res) => {
     .catch((err) => {
       console.error(err.stack);
     });
-});
+}); */
 
 app.listen(PORT, () => {
   console.log(path.join('Server listening on port ', PORT));
