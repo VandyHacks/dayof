@@ -67,13 +67,12 @@ app.get('/', cors(), (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  message = req.body.msg;
   console.log(message);
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: path.join('VandyHacks: ', message),
+      body: path.join('VandyHacks: ', req.body.msg),
     })),
   )
     .then(
