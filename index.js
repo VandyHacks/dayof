@@ -5,10 +5,14 @@ const parser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
+const webpush = require('web-push');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
+const publicVapidKey = process.env.WEBPUSH_PUBLIC;
+const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const app = express();
+const router = express.Router;
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -17,6 +21,13 @@ app.use(helmet());
 app.use(express.static(__dirname));
 
 app.use(cors());
+
+webpush.setGCMAPIKey(process.env.GCM_KEY);
+webpush.setVapidDetails(
+  'mailto:kzhai190@gmail.com',
+  publicVapidKey,
+  privateVapidKey,
+);
 
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
@@ -29,6 +40,8 @@ db.once('open', () => {
 });
 
 const phoneArr = [];
+
+let message;
 
 const hackerSchema = new mongoose.Schema({
   firstName: { type: String, max: 20 },
@@ -54,11 +67,12 @@ app.get('/', cors(), (req, res) => {
 });
 
 app.post('/', (req, res) => {
+  message = req.body.msg;
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: path.join('VandyHacks: ', req.body.msg),
+      body: path.join('VandyHacks: ', message),
     })),
   )
     .then(
@@ -67,6 +81,16 @@ app.post('/', (req, res) => {
     .catch((err) => {
       console.log(err);
       res.redirect('back');
+    });
+});
+
+router.post('/dayof', (req, res) => {
+  const sub = req.body;
+  console.log(sub);
+  res.sendStatus(201);
+  webpush.sendNotification(sub, message)
+    .catch((err) => {
+      console.error(err.stack);
     });
 });
 
