@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const app = express();
-// const router = express.Router;
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -41,6 +40,8 @@ db.once('open', () => {
 
 const phoneArr = [];
 
+let message;
+
 const hackerSchema = new mongoose.Schema({
   firstName: { type: String, max: 20 },
   lastName: { type: String, max: 20 },
@@ -68,10 +69,11 @@ app.get('/', cors(), (req, res) => {
 
 app.post('/', (req, res) => {
   Promise.all(
+    message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${req.body.msg}`,
+      body: `VandyHacks: ${message}`,
     })),
   )
     .then(
@@ -83,7 +85,7 @@ app.post('/', (req, res) => {
     });
 });
 
-/* router.post('/dayof', (req, res) => {
+app.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
   res.sendStatus(201);
@@ -91,7 +93,7 @@ app.post('/', (req, res) => {
     .catch((err) => {
       console.error(err.stack);
     });
-}); */
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
