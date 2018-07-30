@@ -60,7 +60,7 @@ Hacker.find({}, (err, data) => {
     }
   });
 });
-
+console.log('Checkpoint');
 const changeStream = Hacker.watch();
 changeStream.on('change', () => {
   console.log('Database changed');
