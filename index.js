@@ -37,11 +37,6 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Database open');
-  const hackerCollection = db.collection('Hackers');
-  const changeStream = hackerCollection.watch();
-  changeStream.on('change', (change) => {
-    console.log(change);
-  });
 });
 
 const phoneArr = [];
