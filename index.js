@@ -77,6 +77,7 @@ app.post('/', (req, res) => {
       }
     });
   });
+  console.log(phoneArr);
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
