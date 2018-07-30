@@ -77,8 +77,8 @@ app.post('/', (req, res) => {
         phoneArr.push(num);
       }
     });
-  }); */
-  console.log('Checkpoint 2');
+  });
+  console.log('Checkpoint 2'); */
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
