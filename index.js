@@ -68,16 +68,6 @@ app.get('/', cors(), (req, res) => {
 
 app.post('/', (req, res) => {
   Promise.all(
-    Hacker.find({}, (err, data) => {
-      if (err) throw err;
-      data.forEach((element) => {
-        let num = element.phone;
-        num = num.replace(/-/g, '');
-        if (!phoneArr.includes(num)) {
-          phoneArr.push(num);
-        }
-      });
-    }),
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
