@@ -41,7 +41,7 @@ db.once('open', () => {
 
 const phoneArr = [];
 
-let message;
+// let message;
 
 const hackerSchema = new mongoose.Schema({
   firstName: { type: String, max: 20 },
@@ -67,7 +67,7 @@ app.get('/', cors(), (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(message);
+  // console.log(message);
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
