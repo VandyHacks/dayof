@@ -55,9 +55,9 @@ Hacker.find({}, (err, data) => {
   data.forEach((element) => {
     let num = element.phone;
     num = num.replace(/-/g, '');
-    // if (!phoneArr.includes(num)) {
-    phoneArr.push(num);
-    // }
+    if (!phoneArr.includes(num)) {
+      phoneArr.push(num);
+    }
   });
 });
 
