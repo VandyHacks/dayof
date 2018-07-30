@@ -37,6 +37,11 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Database open');
+  const hackerCollection = db.collection('Hackers');
+  const changeStream = hackerCollection.watch();
+  changeStream.on('change', (change) => {
+    console.log(change);
+  });
 });
 
 const phoneArr = [];
@@ -59,11 +64,6 @@ Hacker.find({}, (err, data) => {
       phoneArr.push(num);
     }
   });
-});
-
-const changeStream = Hacker.watch();
-changeStream.on('change', () => {
-  console.log('Database changed');
 });
 
 app.get('/', cors(), (req, res) => {
