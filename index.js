@@ -55,13 +55,13 @@ Hacker.find({}, (err, data) => {
   data.forEach((element) => {
     let num = element.phone;
     num = num.replace(/-/g, '');
-    if (!phoneArr.includes(num)) {
-      phoneArr.push(num);
-    }
+    // if (!phoneArr.includes(num)) {
+    phoneArr.push(num);
+    // }
   });
 });
-console.log('Checkpoint');
-const changeStream = Hacker.watch();
+
+/* const changeStream = Hacker.watch();
 changeStream.on('change', () => {
   console.log('Database changed');
   Hacker.find({}, (err, data) => {
@@ -74,7 +74,7 @@ changeStream.on('change', () => {
       }
     });
   });
-});
+}); */
 
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
