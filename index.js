@@ -53,6 +53,9 @@ const Hacker = db.model('Hacker', hackerSchema);
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
   console.log('Page loaded');
+});
+
+app.post('/', (req, res) => {
   Hacker.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
@@ -61,9 +64,6 @@ app.get('/', cors(), (req, res) => {
       phoneArr.push(num);
     });
   });
-});
-
-app.post('/', (req, res) => {
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
