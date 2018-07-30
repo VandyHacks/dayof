@@ -67,7 +67,7 @@ app.get('/', cors(), (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log('Checkpoint 1');
+  /* console.log('Checkpoint 1');
   Hacker.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
@@ -77,7 +77,7 @@ app.post('/', (req, res) => {
         phoneArr.push(num);
       }
     });
-  });
+  }); */
   console.log('Checkpoint 2');
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
