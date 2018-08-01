@@ -6,8 +6,7 @@ const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-// const mongooseObserver = require('mongoose-observer');
-const source = require('../VandyHacksForm/index');
+const mongooseObserver = require('mongoose-observer');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -20,7 +19,6 @@ app.use(parser.json());
 
 app.use(helmet());
 app.use(express.static(__dirname));
-app.use(express.static(`${__dirname}/../VandyHacksForm`));
 
 app.use(cors());
 
@@ -41,7 +39,37 @@ db.once('open', () => {
   console.log('Database open');
 });
 
+const phoneArr = [];
+
 let message;
+
+const hackerSchema = new mongoose.Schema({
+  firstName: { type: String, max: 20 },
+  lastName: { type: String, max: 20 },
+  school: { type: String, max: 50 },
+  email: { type: String, max: 100 },
+  phone: { type: String, max: 15 },
+});
+const Hacker = db.model('Hacker', hackerSchema);
+
+Hacker.find({}, (err, data) => {
+  if (err) throw err;
+  data.forEach((element) => {
+    let num = element.phone;
+    num = num.replace(/-/g, '');
+    if (!phoneArr.includes(num)) {
+      phoneArr.push(num);
+    }
+  });
+});
+
+mongooseObserver.register('Hacker', 'create', (newHacker) => {
+  let num = newHacker.phone;
+  num = num.replace(/-/g, '');
+  if (!phoneArr.includes(num)) {
+    phoneArr.push(num);
+  }
+});
 
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
@@ -51,14 +79,14 @@ app.get('/', cors(), (req, res) => {
 app.post('/', (req, res) => {
   Promise.all(
     message = req.body.msg,
-    source.phoneArr.map(number => twilio.messages.create({
+    phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${message}`,
     })),
   )
     .then(
-      console.log(source.phoneArr),
+      console.log(phoneArr);
       res.redirect('back'),
     )
     .catch((err) => {
