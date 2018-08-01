@@ -52,16 +52,27 @@ const hackerSchema = new mongoose.Schema({
 });
 const Hacker = db.model('Hacker', hackerSchema);
 
-setInterval(Hacker.find({}, (err, data) => {
-  if (err) throw err;
-  data.forEach((element) => {
-    let num = element.phone;
-    num = num.replace(/-/g, '');
-    if (!phoneArr.includes(num)) {
-      phoneArr.push(num);
-    }
+function dbquery(callback) {
+  Hacker.find({}, (err, data) => {
+    if (err) throw err;
+    data.forEach((element) => {
+      let num = element.phone;
+      num = num.replace(/-/g, '');
+      if (!phoneArr.includes(num)) {
+        phoneArr.push(num);
+      }
+    });
   });
-}), 2000);
+  callback();
+}
+
+function wait() {
+  setTimeout(() => {
+    dbquery(wait);
+  }, 2000);
+}
+
+dbquery(wait);
 
 /* mongooseObserver.register('Hacker', 'create', (newHacker) => {
   console.log('New addition to database');
