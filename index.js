@@ -6,6 +6,7 @@ const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
+const mongooseObserver = require('mongoose-observer');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -62,6 +63,14 @@ Hacker.find({}, (err, data) => {
   });
 });
 
+mongooseObserver.register('Hacker', 'create', (newHacker) => {
+  let num = newHacker.phone;
+  num = num.replace(/-/g, '');
+  if (!phoneArr.includes(num)) {
+    phoneArr.push(num);
+  }
+});
+
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
   console.log('Page loaded');
@@ -77,7 +86,6 @@ app.post('/', (req, res) => {
     })),
   )
     .then(
-      console.log(db.hackers.find().sort({ _id: 1 })),
       res.redirect('back'),
     )
     .catch((err) => {
