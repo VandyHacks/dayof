@@ -78,6 +78,7 @@ app.post('/', (req, res) => {
     })),
   )
     .then(
+      console.log(phoneArr),
       res.redirect('back'),
     )
     .catch((err) => {
