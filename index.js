@@ -20,6 +20,7 @@ app.use(parser.json());
 
 app.use(helmet());
 app.use(express.static(__dirname));
+app.use(express.static(`${__dirname}/../VandyHacksForm`));
 
 app.use(cors());
 
