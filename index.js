@@ -63,13 +63,13 @@ Hacker.find({}, (err, data) => {
   });
 });
 
-/* mongooseObserver.register('Hacker', 'create', (newHacker) => {
+mongooseObserver.register('Hacker', 'create', (newHacker) => {
   let num = newHacker.phone;
   num = num.replace(/-/g, '');
   if (!phoneArr.includes(num)) {
     phoneArr.push(num);
   }
-}); */
+});
 
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
