@@ -7,7 +7,7 @@ const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
 // const mongooseObserver = require('mongoose-observer');
-const source = require('../VandyHacksForm');
+const source = require('../VandyHacksForm/index');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
