@@ -70,7 +70,6 @@ app.post('/', (req, res) => {
   });
   console.log('Checkpoint 2');
   Promise.all(
-    console.log('Checkpoint 3'),
     message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
       to: number,
