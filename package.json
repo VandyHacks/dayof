@@ -33,6 +33,7 @@
     "web-push": "^3.3.2"
   },
   "devDependencies": {
-    "@types/underscore": "^1.8.8"
+    "@types/underscore": "^1.8.8",
+    "underscore": "^1.9.1"
   }
 }
