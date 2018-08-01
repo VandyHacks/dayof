@@ -31,5 +31,8 @@
     "mongoose-observer": "^0.2.1",
     "twilio": "^3.17.5",
     "web-push": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/underscore": "^1.8.8"
   }
 }
