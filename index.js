@@ -51,23 +51,22 @@ const hackerSchema = new mongoose.Schema({
 });
 const Hacker = db.model('Hacker', hackerSchema);
 
-Hacker.find({}, (err, data) => {
-  if (err) throw err;
-  data.forEach((element) => {
-    let num = element.phone;
-    num = num.replace(/-/g, '');
-    if (!phoneArr.includes(num)) {
-      phoneArr.push(num);
-    }
-  });
-});
-
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
   console.log('Page loaded');
 });
 
 app.post('/', (req, res) => {
+  Hacker.find({}, (err, data) => {
+    if (err) throw err;
+    data.forEach((element) => {
+      let num = element.phone;
+      num = num.replace(/-/g, '');
+      if (!phoneArr.includes(num)) {
+        phoneArr.push(num);
+      }
+    });
+  });
   Promise.all(
     message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
