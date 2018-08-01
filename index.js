@@ -6,7 +6,7 @@ const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-const mongooseObserver = require('mongoose-observer');
+// const mongooseObserver = require('mongoose-observer');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -52,7 +52,7 @@ const hackerSchema = new mongoose.Schema({
 });
 const Hacker = db.model('Hacker', hackerSchema);
 
-Hacker.find({}, (err, data) => {
+setInterval(Hacker.find({}, (err, data) => {
   if (err) throw err;
   data.forEach((element) => {
     let num = element.phone;
@@ -61,16 +61,16 @@ Hacker.find({}, (err, data) => {
       phoneArr.push(num);
     }
   });
-});
+}), 2000);
 
-mongooseObserver.register('Hacker', 'create', (newHacker) => {
+/* mongooseObserver.register('Hacker', 'create', (newHacker) => {
   console.log('New addition to database');
   let num = newHacker.phone;
   num = num.replace(/-/g, '');
   if (!phoneArr.includes(num)) {
     phoneArr.push(num);
   }
-});
+}); */
 
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
