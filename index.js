@@ -50,9 +50,9 @@ const hackerSchema = new mongoose.Schema({
   email: { type: String, max: 100 },
   phone: { type: String, max: 15 },
 });
-const Hackers = db.model('Hacker', hackerSchema);
+const Hacker = db.model('Hacker', hackerSchema);
 
-Hackers.find({}, (err, data) => {
+Hacker.find({}, (err, data) => {
   if (err) throw err;
   data.forEach((element) => {
     let num = element.phone;
@@ -63,7 +63,7 @@ Hackers.find({}, (err, data) => {
   });
 });
 
-mongooseObserver.register('Hackers', 'create', (newHacker) => {
+mongooseObserver.register('Hacker', 'create', (newHacker) => {
   console.log('New addition to database');
   let num = newHacker.phone;
   num = num.replace(/-/g, '');
