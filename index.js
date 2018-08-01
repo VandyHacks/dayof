@@ -64,6 +64,7 @@ Hacker.find({}, (err, data) => {
 });
 
 mongooseObserver.register('Hacker', 'create', (newHacker) => {
+  console.log('New addition to database');
   let num = newHacker.phone;
   num = num.replace(/-/g, '');
   if (!phoneArr.includes(num)) {
