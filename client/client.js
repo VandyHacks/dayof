@@ -1,5 +1,8 @@
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 
+const pushCheck = document.querySelector('.notifs');
+const submitBtn = document.querySelector('.btn');
+
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -20,7 +23,7 @@ async function run() {
   // Register Service Worker
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
-    .register('/worker.js', { scope: '/' });
+    .register('./worker.js', { scope: '/' });
   console.log('Registered service worker');
 
   // Register Push
@@ -45,9 +48,24 @@ async function run() {
 }
 
 // Check for service worker
-if ('serviceWorker' in navigator && 'PushManager' in window) {
-  console.log('Service Worker and Push are supported');
-  run().catch(error => console.error(error));
-} else {
-  console.warn('Push notifications not supported');
+function startPush() {
+  if ('serviceWorker' in navigator && 'PushManager' in window) {
+    console.log('Service Worker and Push are supported');
+    if (pushCheck.checked) {
+      run().catch(error => console.error(error));
+    }
+  } else {
+    console.warn('Push notifications not supported');
+  }
 }
+
+submitBtn.addEventListener('click', () => {
+  if (document.getElementById('msg').value !== '') {
+    if (window.confirm('Send message?')) {
+      alert('Messages sent!');
+      startPush();
+      return true;
+    }
+  }
+  return false;
+});
