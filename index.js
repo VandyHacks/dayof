@@ -2,7 +2,6 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
-const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
@@ -75,17 +74,17 @@ function wait() {
 dbquery(wait);
 
 app.get('/', cors(), (req, res) => {
-  res.sendFile(path.join(__dirname, 'form.html'));
+  res.sendFile(`${__dirname}/client/form.html`);
   console.log('Page loaded');
 });
 
 app.post('/', (req, res) => {
   Promise.all(
-    module.exports.message = req.body.msg,
+    message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${module.exports.message}`,
+      body: `VandyHacks: ${message}`,
     })),
   )
     .then(
@@ -96,6 +95,8 @@ app.post('/', (req, res) => {
       res.redirect('back');
     });
 });
+
+module.exports = message;
 
 // Dayof route
 app.post('/dayof', (req, res) => {
