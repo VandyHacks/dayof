@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${message}`,
+      body: `VandyHacks: ${module.exports.message}`,
     })),
   )
     .then(
