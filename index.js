@@ -6,7 +6,6 @@ const path = require('path');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-// const mongooseObserver = require('mongoose-observer');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -19,6 +18,7 @@ app.use(parser.json());
 
 app.use(helmet());
 app.use(express.static(__dirname));
+app.use(express.static(`${__dirname}/client`));
 
 app.use(cors());
 
@@ -74,15 +74,6 @@ function wait() {
 
 dbquery(wait);
 
-/* mongooseObserver.register('Hacker', 'create', (newHacker) => {
-  console.log('New addition to database');
-  let num = newHacker.phone;
-  num = num.replace(/-/g, '');
-  if (!phoneArr.includes(num)) {
-    phoneArr.push(num);
-  }
-}); */
-
 app.get('/', cors(), (req, res) => {
   res.sendFile(path.join(__dirname, 'form.html'));
   console.log('Page loaded');
@@ -107,10 +98,11 @@ app.post('/', (req, res) => {
     });
 });
 
+// Dayof route
 app.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
-  res.sendStatus(201);
+  res.sendStatus(201); // Resource created successfully
   webpush.sendNotification(sub, message)
     .catch((err) => {
       console.error(err.stack);
