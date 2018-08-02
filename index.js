@@ -12,6 +12,7 @@ const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const app = express();
 
+
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
@@ -102,6 +103,7 @@ module.exports = message;
 app.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
+  console.log('Checkpoint');
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks' });
   webpush.sendNotification(sub, payload)

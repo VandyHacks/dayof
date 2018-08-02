@@ -45,7 +45,9 @@ async function run() {
 }
 
 // Check for service worker
-if ('serviceWorker' in navigator) {
-  console.log('Registering service worker');
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push are supported');
   run().catch(error => console.error(error));
+} else {
+  console.warn('Push notifications not supported');
 }
