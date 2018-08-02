@@ -15,12 +15,15 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+// Register SW, Register Push, Send Push
 async function run() {
+  // Register Service Worker
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
     .register('/worker.js', { scope: '/' });
   console.log('Registered service worker');
 
+  // Register Push
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe({
@@ -29,6 +32,7 @@ async function run() {
     });
   console.log('Registered push');
 
+  // Send Push Notification
   console.log('Sending push');
   await fetch('/dayof', {
     method: 'POST',
@@ -40,8 +44,8 @@ async function run() {
   console.log('Sent push');
 }
 
+// Check for service worker
 if ('serviceWorker' in navigator) {
   console.log('Registering service worker');
-
   run().catch(error => console.error(error));
 }
