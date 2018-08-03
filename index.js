@@ -5,13 +5,14 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
+const Datastore = require('nedb');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
+const ds = new Datastore();
 const app = express();
-
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -99,17 +100,66 @@ app.post('/', (req, res) => {
 
 module.exports = message;
 
+function saveSubtoDB(sub) {
+  return new Promise((resolve, reject) => {
+    ds.insert(sub, (err, newDoc) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
+    });
+  });
+}
+
+function deleteSubFromDB(id) {
+  ds.remove({ _id: id }, {}, () => {});
+}
+
+function triggerPushMsg(subscribe, data) {
+  return webpush.sendNotification(subscribe, data)
+    .catch((err) => {
+      if (err.statusCode === 410) {
+        deleteSubFromDB(subscribe._id); // eslint-disable-line no-underscore-dangle
+      }
+      console.log('Subscription no longer valid: ', err);
+    });
+}
+
+// Savesub route
+app.post('/savesub', (req, res) => {
+  if (req.body && req.body.endpoint) {
+    return saveSubtoDB(req.body)
+      .then(() => {
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({ data: { success: true } }));
+      })
+      .catch(() => {
+        res.status(500);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({
+          error: {
+            id: 'unable-to-save-subscription',
+            message: 'The subscription was received but we were unable to save it to our database.',
+          },
+        }));
+      });
+  }
+  return false;
+});
+
 // Dayof route
 app.post('/dayof', (req, res) => {
-  const sub = req.body; // to know which computers to send push notification
-  console.log(sub);
-  // console.log('Checkpoint');
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks' });
-  webpush.sendNotification(sub, payload)
-    .catch((err) => {
-      console.error(err.stack);
+  let promiseChain = Promise.resolve();
+  ds.find({}, (err, data) => {
+    if (err) throw err;
+    data.forEach((element) => {
+      promiseChain = promiseChain.then(() => triggerPushMsg(element, payload));
     });
+  });
+  return promiseChain;
 });
 
 app.listen(PORT, () => {
