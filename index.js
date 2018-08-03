@@ -151,7 +151,7 @@ app.post('/savesub', (req, res) => {
 // Dayof route
 app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
-  const payload = JSON.stringify({ title: 'VandyHacks' });
+  const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   let promiseChain = Promise.resolve();
   ds.find({}, (err, data) => {
     if (err) throw err;
