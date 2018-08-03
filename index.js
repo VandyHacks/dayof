@@ -138,6 +138,16 @@ app.post('/savesub', (req, res) => {
   return false;
 });
 
+const triggerPushMsg = function (subscription, dataToSend) {
+  return webpush.sendNotification(subscription, dataToSend)
+    .catch((err) => { // eslint-disable-line
+      if (err.statusCode === 410) {
+        return deleteSubFromDB(subscription._id); // eslint-disable-line no-underscore-dangle
+      }
+      console.log('Subscription isn ot longer valid: ', err);
+    });
+};
+
 // Dayof route
 app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
@@ -145,7 +155,7 @@ app.post('/dayof', (req, res) => {
   ds.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((sub) => {
-      webpush.sendNotification(sub, payload);
+      triggerPushMsg(sub, payload);
     });
   });
 });

@@ -35,6 +35,21 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+function sendSubtoExpress(sub) {
+  return fetch('/savesub', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(sub),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Bad response from server.');
+      }
+    });
+}
+
 // Register SW, Register Push, Send Push
 async function run() {
   // Register Service Worker
@@ -53,6 +68,8 @@ async function run() {
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
     });
   console.log('Registered push');
+
+  sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
