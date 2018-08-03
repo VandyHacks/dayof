@@ -116,17 +116,6 @@ function deleteSubFromDB(id) {
   ds.remove({ _id: id }, {}, () => {});
 }
 
-function triggerPushMsg(subscribe, data) {
-  console.log('Checkpoint');
-  return webpush.sendNotification(subscribe, data)
-    .catch((err) => {
-      if (err.statusCode === 410) {
-        deleteSubFromDB(subscribe._id); // eslint-disable-line no-underscore-dangle
-      }
-      console.log('Subscription no longer valid: ', err);
-    });
-}
-
 // Savesub route
 app.post('/savesub', (req, res) => {
   if (req.body && req.body.endpoint) {
@@ -153,14 +142,12 @@ app.post('/savesub', (req, res) => {
 app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  let promiseChain = Promise.resolve();
   ds.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((sub) => {
-      promiseChain = promiseChain.then(() => triggerPushMsg(sub, payload));
+      webpush.sendNotification(sub, payload);
     });
   });
-  return promiseChain;
 });
 
 app.listen(PORT, () => {
