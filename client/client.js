@@ -3,7 +3,7 @@ const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 console.log('Accessed client.js');
 
 const pushCheck = document.querySelector('.notifs');
-const submitBtn = document.querySelector('.btn');
+// const submitBtn = document.querySelector('.btn');
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -50,7 +50,7 @@ async function run() {
 }
 
 // Check for service worker
-function startPush() {
+function startPush() { // eslint-disable-line no-unused-vars
   if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push are supported');
     if (pushCheck.checked) {
@@ -61,7 +61,7 @@ function startPush() {
   }
 }
 
-submitBtn.addEventListener('click', () => {
+/* submitBtn.addEventListener('click', () => {
   console.log('Checkpoint');
   if (document.getElementById('msg').value !== '') {
     if (window.confirm('Send message?')) {
@@ -69,4 +69,4 @@ submitBtn.addEventListener('click', () => {
       startPush();
     }
   }
-});
+}); */
