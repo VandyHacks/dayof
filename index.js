@@ -69,7 +69,7 @@ function dbquery(callback) {
 function wait() {
   setTimeout(() => {
     dbquery(wait);
-  }, 2000);
+  }, 30000);
 }
 
 dbquery(wait);
