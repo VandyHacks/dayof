@@ -103,7 +103,7 @@ module.exports = message;
 app.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
-  console.log('Checkpoint');
+  // console.log('Checkpoint');
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks' });
   webpush.sendNotification(sub, payload)

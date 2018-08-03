@@ -60,12 +60,11 @@ function startPush() {
 }
 
 submitBtn.addEventListener('click', () => {
+  console.log('Checkpoint');
   if (document.getElementById('msg').value !== '') {
     if (window.confirm('Send message?')) {
       alert('Messages sent!');
       startPush();
-      return true;
     }
   }
-  return false;
 });
