@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
 module.exports = message;
 
 // Dayof route
-app.post('/dayof', (req, res) => {
+/* app.post('/dayof', (req, res) => {
   const sub = req.body;
   console.log(sub);
   // console.log('Checkpoint');
@@ -110,7 +110,7 @@ app.post('/dayof', (req, res) => {
     .catch((err) => {
       console.error(err.stack);
     });
-});
+}); */
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
