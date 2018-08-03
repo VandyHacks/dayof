@@ -153,10 +153,11 @@ app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   let promiseChain = Promise.resolve();
+  console.log('Checkpoint');
   ds.find({}, (err, data) => {
     if (err) throw err;
-    data.forEach((element) => {
-      promiseChain = promiseChain.then(() => triggerPushMsg(element, payload));
+    data.forEach((sub) => {
+      promiseChain = promiseChain.then(() => triggerPushMsg(sub, payload));
     });
   });
   return promiseChain;
