@@ -5,6 +5,21 @@ console.log('Accessed client.js');
 const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
 
+let isSubscribed = false;
+let swRegistration = null;
+
+function initializeUI() {
+  swRegistration.pushManager.getSubscription()
+    .then((subscription) => {
+      isSubscribed = !(subscription === null);
+      if (isSubscribed) {
+        console.log('User IS subscribed.');
+      } else {
+        console.log('User is NOT subscribed.');
+      }
+    });
+}
+
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -26,6 +41,8 @@ async function run() {
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
     .register('./worker.js', { scope: '/' });
+  swRegistration = registration;
+  initializeUI();
   console.log('Registered service worker');
 
   // Register Push

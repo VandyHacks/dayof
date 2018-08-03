@@ -75,7 +75,7 @@ function wait() {
 dbquery(wait);
 
 app.get('/', cors(), (req, res) => {
-  res.sendFile(`${__dirname}/client/form.html`);
+  res.sendFile(`${__dirname}/form.html`);
   console.log('Page loaded');
 });
 
@@ -101,7 +101,7 @@ module.exports = message;
 
 // Dayof route
 app.post('/dayof', (req, res) => {
-  const sub = req.body;
+  const sub = req.body; // to know which computers to send push notification
   console.log(sub);
   // console.log('Checkpoint');
   res.sendStatus(201); // Resource created successfully
