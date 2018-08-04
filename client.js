@@ -1,6 +1,8 @@
 console.log('Accessed client.js');
 
-const publicVapidKey = process.env.WEBPUSH_PUBLIC;
+const keysimport = require('./index');
+
+const publicKey = keysimport.publicVapidKey;
 
 // const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
@@ -65,7 +67,7 @@ async function run() {
   const subscription = await registration.pushManager
     .subscribe({
       userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
+      applicationServerKey: urlBase64ToUint8Array(publicKey),
     });
   console.log('Registered push');
 

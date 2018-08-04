@@ -14,6 +14,8 @@ const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 // const ds = new Datastore();
 const app = express();
 
+module.exports = publicVapidKey;
+
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
