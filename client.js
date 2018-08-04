@@ -2,7 +2,7 @@ const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 
 console.log('Accessed client.js');
 
-const pushCheck = document.querySelector('.notifs');
+// const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
 
 let isSubscribed = false;
@@ -87,9 +87,7 @@ async function run() {
 function startPush() { // eslint-disable-line no-unused-vars
   if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push are supported');
-    if (pushCheck.checked) {
-      run().catch(error => console.error(error));
-    }
+    run().catch(error => console.error(error));
   } else {
     console.warn('Push notifications not supported');
   }
