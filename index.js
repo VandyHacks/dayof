@@ -5,13 +5,13 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-// const Datastore = require('nedb');
+const Datastore = require('nedb');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
-// const ds = new Datastore();
+const ds = new Datastore();
 const app = express();
 
 module.exports = publicVapidKey;
@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
     });
 });
 
-/* function saveSubtoDB(sub) {
+function saveSubtoDB(sub) {
   return new Promise((resolve, reject) => {
     ds.insert(sub, (err, newDoc) => {
       if (err) {
@@ -110,10 +110,10 @@ app.post('/', (req, res) => {
       resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
     });
   });
-} */
+}
 
 // Savesub route
-/* app.post('/savesub', (req, res) => {
+app.post('/savesub', (req, res) => {
   if (req.body && req.body.endpoint) {
     return saveSubtoDB(req.body)
       .then(() => {
@@ -154,25 +154,25 @@ const triggerPushMsg = function (subscription, dataToSend) {
       }
       console.log('Subscription is no longer valid: ', err);
     });
-}; */
+};
 
 // Dayof route
 app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  /* ds.find({}, (err, data) => {
+  ds.find({}, (err, data) => {
     if (err) throw err;
     console.log(data);
     data.forEach((sub) => {
       triggerPushMsg(sub, payload);
     });
-  }); */
-  const subscription = req.body;
+  });
+  /* const subscription = req.body;
   console.log(subscription);
   webpush.sendNotification(subscription, payload)
     .catch((err) => {
       console.log(err.stack);
-    });
+    }); */
 });
 
 app.listen(PORT, () => {
