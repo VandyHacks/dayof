@@ -5,7 +5,7 @@ const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL
 // const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
 
-let isSubscribed = false;
+/* let isSubscribed = false;
 let swRegistration = null;
 
 function initializeUI() {
@@ -18,7 +18,7 @@ function initializeUI() {
         console.log('User is NOT subscribed.');
       }
     });
-}
+} */
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -35,7 +35,7 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-function sendSubtoExpress(sub) {
+/* function sendSubtoExpress(sub) {
   return fetch('/savesub', {
     method: 'POST',
     headers: {
@@ -48,7 +48,7 @@ function sendSubtoExpress(sub) {
         throw new Error('Bad response from server.');
       }
     });
-}
+} */
 
 // Register SW, Register Push, Send Push
 async function run() {
@@ -59,8 +59,8 @@ async function run() {
     .catch((err) => {
       console.log(err);
     });
-  swRegistration = registration;
-  initializeUI();
+  // swRegistration = registration;
+  // initializeUI();
   console.log('Registered service worker');
 
   // Register Push
@@ -72,7 +72,7 @@ async function run() {
     });
   console.log('Registered push');
 
-  sendSubtoExpress(subscription);
+  // sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
