@@ -1,11 +1,9 @@
 console.log('Loaded service worker!');
 
-const request = new XMLHttpRequest();
-
-request.addEventListener('push', (ev) => {
+self.addEventListener('push', (ev) => { // eslint-disable-line no-restricted-globals
   const data = ev.data.json();
   console.log('Got push', data);
-  request.registration.showNotification(data.title, {
+  self.registration.showNotification(data.title, { // eslint-disable-line no-restricted-globals
     body: data.body,
   });
 });
