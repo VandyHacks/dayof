@@ -84,14 +84,14 @@ async function run() {
 }
 
 // Check for service worker
-function startPush() { // eslint-disable-line no-unused-vars
-  if ('serviceWorker' in navigator && 'PushManager' in window) {
-    console.log('Service Worker and Push are supported');
-    run().catch(error => console.error(error));
-  } else {
-    console.warn('Push notifications not supported');
-  }
+// function startPush() { // eslint-disable-line no-unused-vars
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push are supported');
+  run().catch(error => console.error(error));
+} else {
+  console.warn('Push notifications not supported');
 }
+// }
 
 /* submitBtn.addEventListener('click', () => {
   console.log('Checkpoint');
