@@ -160,6 +160,7 @@ const triggerPushMsg = function (subscription, dataToSend) {
 app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
+  console.log('Checkpoint');
   ds.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((sub) => {
