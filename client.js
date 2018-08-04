@@ -5,7 +5,7 @@ console.log('Accessed client.js');
 // const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
 
-let isSubscribed = false;
+/* let isSubscribed = false;
 let swRegistration = null;
 
 function initializeUI() {
@@ -18,7 +18,7 @@ function initializeUI() {
         console.log('User is NOT subscribed.');
       }
     });
-}
+} */
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -35,7 +35,7 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-function sendSubtoExpress(sub) {
+/* function sendSubtoExpress(sub) {
   return fetch('/savesub', {
     method: 'POST',
     headers: {
@@ -48,16 +48,16 @@ function sendSubtoExpress(sub) {
         throw new Error('Bad response from server.');
       }
     });
-}
+} */
 
 // Register SW, Register Push, Send Push
 async function run() {
   // Register Service Worker
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
-    .register('./worker.js', { scope: '/' });
-  swRegistration = registration;
-  initializeUI();
+    .register('/worker.js', { scope: '/' });
+  // swRegistration = registration;
+  // initializeUI();
   console.log('Registered service worker');
 
   // Register Push
@@ -69,7 +69,7 @@ async function run() {
     });
   console.log('Registered push');
 
-  sendSubtoExpress(subscription);
+  // sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
@@ -84,14 +84,14 @@ async function run() {
 }
 
 // Check for service worker
-function startPush() { // eslint-disable-line no-unused-vars
-  if ('serviceWorker' in navigator && 'PushManager' in window) {
-    console.log('Service Worker and Push are supported');
-    run().catch(error => console.error(error));
-  } else {
-    console.warn('Push notifications not supported');
-  }
+// function startPush() { // eslint-disable-line no-unused-vars
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push are supported');
+  run().catch(error => console.error(error));
+} else {
+  console.warn('Push notifications not supported');
 }
+// }
 
 /* submitBtn.addEventListener('click', () => {
   console.log('Checkpoint');
