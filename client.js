@@ -76,14 +76,24 @@ async function run() {
 
   // Send Push Notification
   console.log('Sending push');
-  await fetch('/dayof', {
+  await fetch('/register', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
-      'content-type': 'application/json',
+      'Content-type': 'application/json',
     },
   });
   console.log('Sent push');
+
+  document.getElementById('pushnotif').onclick = function () {
+    fetch('/dayof', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(subscription),
+    });
+  };
 }
 
 // Check for service worker
