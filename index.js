@@ -98,8 +98,6 @@ app.post('/', (req, res) => {
     });
 });
 
-module.exports = message;
-
 /* function saveSubtoDB(sub) {
   return new Promise((resolve, reject) => {
     ds.insert(sub, (err, newDoc) => {
