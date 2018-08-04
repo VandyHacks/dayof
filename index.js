@@ -112,10 +112,6 @@ function saveSubtoDB(sub) {
   });
 }
 
-function deleteSubFromDB(id) {
-  ds.remove({ _id: id }, {}, () => {});
-}
-
 // Savesub route
 app.post('/savesub', (req, res) => {
   if (req.body && req.body.endpoint) {
@@ -135,8 +131,20 @@ app.post('/savesub', (req, res) => {
         }));
       });
   }
+  res.status(400);
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({
+    error: {
+      id: 'no-endpoint',
+      message: 'Subscription must have endpoint',
+    },
+  }));
   return false;
 });
+
+function deleteSubFromDB(id) {
+  ds.remove({ _id: id }, {}, () => {});
+}
 
 const triggerPushMsg = function (subscription, dataToSend) {
   return webpush.sendNotification(subscription, dataToSend)
@@ -144,7 +152,7 @@ const triggerPushMsg = function (subscription, dataToSend) {
       if (err.statusCode === 410) {
         return deleteSubFromDB(subscription._id); // eslint-disable-line no-underscore-dangle
       }
-      console.log('Subscription isn ot longer valid: ', err);
+      console.log('Subscription is no longer valid: ', err);
     });
 };
 

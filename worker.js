@@ -1,4 +1,4 @@
-const source = require('../index');
+const source = require('./index');
 
 console.log('Loaded service worker!');
 
