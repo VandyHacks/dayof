@@ -161,8 +161,8 @@ app.post('/dayof', (req, res) => {
   res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   ds.find({}, (err, data) => {
-    console.log('Checkpoint');
     if (err) throw err;
+    console.log(data);
     data.forEach((sub) => {
       triggerPushMsg(sub, payload);
     });
