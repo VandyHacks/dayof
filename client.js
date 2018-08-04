@@ -1,6 +1,6 @@
-console.log('Accessed client.js');
-
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
+
+console.log('Accessed client.js');
 
 // const pushCheck = document.querySelector('.notifs');
 // const submitBtn = document.querySelector('.btn');
