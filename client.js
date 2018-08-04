@@ -55,7 +55,7 @@ async function run() {
   // Register Service Worker
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
-    .register('/worker.js', { scope: '/' })
+    .register('./worker.js', { scope: '/' })
     .catch((err) => {
       console.log(err);
     });
