@@ -156,9 +156,13 @@ const triggerPushMsg = function (subscription, dataToSend) {
     });
 }; */
 
+app.post('/register', (req, res) => {
+  res.sendStatus(201);
+});
+
 // Dayof route
 app.post('/dayof', (req, res) => {
-  res.sendStatus(201); // Resource created successfully
+  // res.sendStatus(201); // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   /* ds.find({}, (err, data) => {
     if (err) throw err;
@@ -167,9 +171,10 @@ app.post('/dayof', (req, res) => {
       triggerPushMsg(sub, payload);
     });
   }); */
-  const subscription = req.body;
-  console.log(subscription);
-  webpush.sendNotification(subscription, payload)
+  const sub = req.body.subscription;
+  console.log(sub);
+  webpush.sendNotification(sub, payload)
+    .then(res.sendStatus(201))
     .catch((err) => {
       console.log(err.stack);
     });
