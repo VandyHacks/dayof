@@ -1,9 +1,11 @@
 console.log('Loaded service worker!');
 
-window.self.addEventListener('push', (ev) => {
+const request = new XMLHttpRequest();
+
+request.addEventListener('push', (ev) => {
   const data = ev.data.json();
   console.log('Got push', data);
-  window.self.registration.showNotification(data.title, {
+  request.registration.showNotification(data.title, {
     body: data.body,
   });
 });
