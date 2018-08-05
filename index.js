@@ -102,7 +102,7 @@ app.post('/', (req, res) => {
 
 // Dayof route
 app.post('/dayof', (req, res) => {
-  // res.sendStatus(201); // Resource created successfully
+  // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   const sub = req.body.subscription;
   console.log(sub);
