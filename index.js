@@ -100,10 +100,6 @@ app.post('/', (req, res) => {
     });
 });
 
-/* app.post('/register', (req, res) => {
-  res.sendStatus(201);
-}); */
-
 // Dayof route
 app.post('/dayof', (req, res) => {
   // res.sendStatus(201); // Resource created successfully

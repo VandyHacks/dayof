@@ -2,24 +2,6 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
-// const pushCheck = document.querySelector('.notifs');
-// const submitBtn = document.querySelector('.btn');
-
-/* let isSubscribed = false;
-let swRegistration = null;
-
-function initializeUI() {
-  swRegistration.pushManager.getSubscription()
-    .then((subscription) => {
-      isSubscribed = !(subscription === null);
-      if (isSubscribed) {
-        console.log('User IS subscribed.');
-      } else {
-        console.log('User is NOT subscribed.');
-      }
-    });
-} */
-
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -84,13 +66,12 @@ async function run() {
     },
   });
   console.log('Sent push');
+}
 
 // Check for service worker
-// function startPush() { // eslint-disable-line no-unused-vars
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push are supported');
   run().catch(error => console.error(error));
 } else {
   console.warn('Push notifications not supported');
 }
-// }
