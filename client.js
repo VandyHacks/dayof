@@ -2,24 +2,6 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
-// const pushCheck = document.querySelector('.notifs');
-// const submitBtn = document.querySelector('.btn');
-
-/* let isSubscribed = false;
-let swRegistration = null;
-
-function initializeUI() {
-  swRegistration.pushManager.getSubscription()
-    .then((subscription) => {
-      isSubscribed = !(subscription === null);
-      if (isSubscribed) {
-        console.log('User IS subscribed.');
-      } else {
-        console.log('User is NOT subscribed.');
-      }
-    });
-} */
-
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -35,65 +17,39 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-/* function sendSubtoExpress(sub) {
-  return fetch('/savesub', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(sub),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Bad response from server.');
-      }
+function run() {
+  navigator.serviceWorker.register('worker.js');
+  navigator.serviceWorker.ready
+    .then((registration) => { // eslint-disable-line
+      return registration.pushManager.getSubscription()
+        .then(async (subscription) => { // eslint-disable-line
+          if (subscription) {
+            return subscription;
+          }
+          return registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(publicKey),
+          });
+        });
+    })
+    .then((subscription) => {
+      fetch('/register', {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(subscription),
+      });
+      document.getElementById('pushnotif').onclick = () => {
+        fetch('/dayof', {
+          method: 'post',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(subscription),
+        });
+      };
     });
-} */
-
-// Register SW, Register Push, Send Push
-async function run() {
-  // Register Service Worker
-  console.log('Registering service worker');
-  const registration = await navigator.serviceWorker
-    .register('./worker.js', { scope: '/' })
-    .catch((err) => {
-      console.log(err);
-    });
-  // swRegistration = registration;
-  // initializeUI();
-  console.log('Registered service worker');
-
-  // Register Push
-  console.log('Registering push');
-  const subscription = await registration.pushManager
-    .subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(publicKey),
-    });
-  console.log('Registered push');
-
-  // sendSubtoExpress(subscription);
-
-  // Send Push Notification
-  console.log('Sending push');
-  await fetch('/register', {
-    method: 'POST',
-    body: JSON.stringify(subscription),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-  console.log('Sent push');
-
-  document.getElementById('pushnotif').onclick = function () {
-    fetch('/dayof', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(subscription),
-    });
-  };
 }
 
 // Check for service worker
@@ -105,13 +61,3 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.warn('Push notifications not supported');
 }
 // }
-
-/* submitBtn.addEventListener('click', () => {
-  console.log('Checkpoint');
-  if (document.getElementById('msg').value !== '') {
-    if (window.confirm('Send message?')) {
-      alert('Messages sent!');
-      startPush();
-    }
-  }
-}); */
