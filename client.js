@@ -17,47 +17,61 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-function run() {
-  navigator.serviceWorker.register('worker.js');
-  navigator.serviceWorker.ready
-    .then((registration) => { // eslint-disable-line
-      return registration.pushManager.getSubscription()
-        .then(async (subscription) => { // eslint-disable-line
-          if (subscription) {
-            return subscription;
-          }
-          return registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array(publicKey),
-          });
-        });
-    })
-    .then((subscription) => {
-      fetch('/register', {
-        method: 'post',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(subscription),
-      });
-      document.getElementById('pushnotif').onclick = () => {
-        fetch('/dayof', {
-          method: 'post',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(subscription),
-        });
-      };
+/* function sendSubtoExpress(sub) {
+  return fetch('/savesub', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(sub),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Bad response from server.');
+      }
     });
+} */
+
+// Register SW, Register Push, Send Push
+async function run() {
+  // Register Service Worker
+  console.log('Registering service worker');
+  const registration = await navigator.serviceWorker
+    .register('./worker.js', { scope: '/' })
+    .catch((err) => {
+      console.log(err);
+    });
+  // swRegistration = registration;
+  // initializeUI();
+  console.log('Registered service worker');
+
+  // Register Push
+  console.log('Registering push');
+  const subscription = await registration.pushManager
+    .subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(publicKey),
+    });
+  console.log('Registered push');
+
+  // sendSubtoExpress(subscription);
+
+  // Send Push Notification
+  console.log('Sending push');
+  await fetch('/dayof', {
+    method: 'POST',
+    body: JSON.stringify(subscription),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  console.log('Sent push');
 }
 
 // Check for service worker
-// function startPush() { // eslint-disable-line no-unused-vars
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push are supported');
   run().catch(error => console.error(error));
 } else {
   console.warn('Push notifications not supported');
 }
-// }
