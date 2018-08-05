@@ -100,77 +100,10 @@ app.post('/', (req, res) => {
     });
 });
 
-/* function saveSubtoDB(sub) {
-  return new Promise((resolve, reject) => {
-    ds.insert(sub, (err, newDoc) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
-    });
-  });
-} */
-
-// Savesub route
-/* app.post('/savesub', (req, res) => {
-  if (req.body && req.body.endpoint) {
-    return saveSubtoDB(req.body)
-      .then(() => {
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify({ data: { success: true } }));
-      })
-      .catch(() => {
-        res.status(500);
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify({
-          error: {
-            id: 'unable-to-save-subscription',
-            message: 'The subscription was received but we were unable to save it to our database.',
-          },
-        }));
-      });
-  }
-  res.status(400);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    error: {
-      id: 'no-endpoint',
-      message: 'Subscription must have endpoint',
-    },
-  }));
-  return false;
-});
-
-function deleteSubFromDB(id) {
-  ds.remove({ _id: id }, {}, () => {});
-}
-
-const triggerPushMsg = function (subscription, dataToSend) {
-  return webpush.sendNotification(subscription, dataToSend)
-    .catch((err) => { // eslint-disable-line
-      if (err.statusCode === 410) {
-        return deleteSubFromDB(subscription._id); // eslint-disable-line no-underscore-dangle
-      }
-      console.log('Subscription is no longer valid: ', err);
-    });
-}; */
-
-app.post('/register', (req, res) => {
-  res.sendStatus(201);
-});
-
 // Dayof route
 app.post('/dayof', (req, res) => {
-  // res.sendStatus(201); // Resource created successfully
+  // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  /* ds.find({}, (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    data.forEach((sub) => {
-      triggerPushMsg(sub, payload);
-    });
-  }); */
   const sub = req.body.subscription;
   console.log(sub);
   webpush.sendNotification(sub, payload)
