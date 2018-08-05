@@ -76,7 +76,7 @@ async function run() {
 
   // Send Push Notification
   console.log('Sending push');
-  await fetch('/register', {
+  await fetch('/dayof', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
@@ -84,17 +84,6 @@ async function run() {
     },
   });
   console.log('Sent push');
-
-  document.getElementById('pushnotif').onclick = function () {
-    fetch('/dayof', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(subscription),
-    });
-  };
-}
 
 // Check for service worker
 // function startPush() { // eslint-disable-line no-unused-vars
@@ -105,13 +94,3 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.warn('Push notifications not supported');
 }
 // }
-
-/* submitBtn.addEventListener('click', () => {
-  console.log('Checkpoint');
-  if (document.getElementById('msg').value !== '') {
-    if (window.confirm('Send message?')) {
-      alert('Messages sent!');
-      startPush();
-    }
-  }
-}); */
