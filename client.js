@@ -1,6 +1,7 @@
 console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
+const ttl = 10;
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -61,7 +62,10 @@ async function run() {
   console.log('PushSubscription: ', JSON.stringify(PushSubscription));
   await fetch('/dayof', {
     method: 'POST',
-    body: JSON.stringify(subscription),
+    body: JSON.stringify({
+      subscribe: subscription,
+      timetolive: ttl,
+    }),
     headers: {
       'Content-type': 'application/json',
     },

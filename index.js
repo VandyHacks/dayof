@@ -104,9 +104,12 @@ app.post('/', (req, res) => {
 app.post('/dayof', (req, res) => {
   // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  const sub = req.body;
+  const sub = req.body.subscribe;
+  const options = {
+    TTL: req.body.timetolive,
+  };
   console.log(sub);
-  webpush.sendNotification(sub, payload)
+  webpush.sendNotification(sub, payload, options)
     .then(res.sendStatus(201))
     .catch((err) => {
       console.log(err.stack);
