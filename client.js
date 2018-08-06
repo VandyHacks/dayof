@@ -32,6 +32,7 @@ function sendSubtoExpress(sub) {
     body: JSON.stringify(sub),
   })
     .then((res) => {
+      console.log(res);
       if (!res.ok) {
         throw new Error('Bad response from server.');
       }

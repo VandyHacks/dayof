@@ -113,6 +113,7 @@ const isValidSaveRequest = (req, res) => {
 
 function saveSubscriptionToDatabase(subscription) {
   return new Promise((resolve, reject) => {
+    console.log('Inserting subscription to database');
     ds.insert(subscription, (err, newDoc) => {
       if (err) {
         reject(err);
@@ -130,7 +131,7 @@ app.post('/savesub', (req, res) => {
         console.log('Subscription saved to database');
       })
       .catch(() => {
-        console.log('Subscription not saved to database');
+        res.send('Subscription not saved to database');
       });
   }
 });
