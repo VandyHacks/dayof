@@ -62,7 +62,7 @@ async function run() {
   console.log('Registered push');
 
   // Send PushSubscription to backend
-  sendSubtoExpress(subscription);
+  await sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
