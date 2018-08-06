@@ -58,6 +58,7 @@ async function run() {
 
   // Send Push Notification
   console.log('Sending push');
+  console.log('PushSubscription: ', JSON.stringify(PushSubscription));
   await fetch('/dayof', {
     method: 'POST',
     body: JSON.stringify(subscription),
