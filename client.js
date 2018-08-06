@@ -1,6 +1,6 @@
 console.log('Accessed client.js');
 
-const publicKey = process.env.PUBLIC_VAPID_KEY;
+const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 const ttl = 10;
 
 function urlBase64ToUint8Array(base64String) {
