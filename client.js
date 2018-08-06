@@ -1,5 +1,3 @@
-// const database = require('./index');
-
 console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
@@ -25,7 +23,7 @@ const options = {
   applicationServerKey: urlBase64ToUint8Array(publicKey),
 };
 
-/* function sendSubtoExpress(sub) {
+function sendSubtoExpress(sub) {
   return fetch('/savesub', {
     method: 'POST',
     headers: {
@@ -37,8 +35,14 @@ const options = {
       if (!res.ok) {
         throw new Error('Bad response from server.');
       }
+      return res.json();
+    })
+    .then((responseData) => {
+      if (!(responseData.data && responseData.data.success)) {
+        throw new Error('Bad response from server.');
+      }
     });
-} */
+}
 
 // Register SW, Register Push, Send Push
 async function run() {
@@ -49,18 +53,16 @@ async function run() {
     .catch((err) => {
       console.log(err);
     });
-  // swRegistration = registration;
-  // initializeUI();
   console.log('Registered service worker');
 
   // Register Push
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
-  // database.insert(subscription);
   console.log('Registered push');
 
-  // sendSubtoExpress(subscription);
+  // Send PushSubscription to backend
+  sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');

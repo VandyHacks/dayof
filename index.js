@@ -99,15 +99,63 @@ app.post('/', (req, res) => {
     });
 });
 
+const isValidSaveRequest = (req, res) => {
+  // Check for endpoint
+  if (!req.body || !req.body.endpoint) {
+    // Not valid subscription
+    res.status(400);
+    res.setHeader('Content-type', 'application/json');
+    res.send(JSON.stringify({
+      error: {
+        id: 'no-endpoint',
+        message: 'Subscription must have an endpoint.',
+      },
+    }));
+    return false;
+  }
+  return true;
+};
+
+function saveSubscriptionToDatabase(subscription) {
+  return new Promise((resolve, reject) => {
+    ds.insert(subscription, (err, newDoc) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
+    });
+  });
+}
+
+app.post('/savesub', (req, res) => {
+  if (isValidSaveRequest) {
+    saveSubscriptionToDatabase(req.body)
+      .then(() => {
+        res.setHeader('Content-type', 'application/json');
+        res.send(JSON.stringify({ data: { success: true } }));
+      })
+      .catch(() => {
+        res.setStatus(500);
+        res.setHeader('Content-type', 'application/json');
+        res.send(JSON.stringify({
+          error: {
+            id: 'unable-to-save-subscription',
+            message: 'Subscription received but unable to save to database',
+          },
+        }));
+      });
+  }
+});
+
 // Dayof route
 app.post('/dayof', (req, res) => {
   // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  const sub = req.body.subscribe;
+  // const sub = req.body.subscribe;
   const options = {
     TTL: req.body.timeout,
   };
-  ds.insert(sub);
+  // ds.insert(sub);
   ds.find({}, (err, data) => {
     console.log(data);
     if (err) throw err;
