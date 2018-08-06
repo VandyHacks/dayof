@@ -68,9 +68,26 @@ async function run() {
   console.log('Sent push');
 }
 
+function requestPermission() {
+  return new Promise((resolve, reject) => {
+    const permissionResult = Notification.requestPermission((result) => {
+      resolve(result);
+    });
+    if (permissionResult) {
+      permissionResult.then(resolve, reject);
+    }
+  })
+    .then((permissionResult) => {
+      if (permissionResult !== 'granted') {
+        throw new Error('Permission not granted.');
+      }
+    });
+}
+
 // Check for service worker
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push are supported');
+  requestPermission();
   run().catch(error => console.error(error));
 } else {
   console.warn('Push notifications not supported');
