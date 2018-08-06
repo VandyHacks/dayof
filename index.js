@@ -91,6 +91,7 @@ app.post('/', (req, res) => {
     })),
   )
     .then(
+      console.log('Message sent'),
       res.redirect('back'),
     )
     .catch((err) => {
@@ -104,13 +105,7 @@ const isValidSaveRequest = (req, res) => {
   if (!req.body || !req.body.endpoint) {
     // Not valid subscription
     res.status(400);
-    res.setHeader('Content-type', 'application/json');
-    res.send(JSON.stringify({
-      error: {
-        id: 'no-endpoint',
-        message: 'Subscription must have an endpoint.',
-      },
-    }));
+    console.log('Subscription must have endpoint');
     return false;
   }
   return true;
@@ -132,17 +127,10 @@ app.post('/savesub', (req, res) => {
     saveSubscriptionToDatabase(req.body)
       .then(() => {
         res.setHeader('Content-type', 'application/json');
-        res.send(JSON.stringify({ data: { success: true } }));
+        console.log('Subscription saved to database');
       })
       .catch(() => {
-        res.setStatus(500);
-        res.setHeader('Content-type', 'application/json');
-        res.send(JSON.stringify({
-          error: {
-            id: 'unable-to-save-subscription',
-            message: 'Subscription received but unable to save to database',
-          },
-        }));
+        console.log('Subscription not saved to database');
       });
   }
 });
