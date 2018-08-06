@@ -5,23 +5,20 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-// const Datastore = require('nedb');
+const Datastore = require('nedb');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
-// const ds = new Datastore();
+const ds = new Datastore();
 const app = express();
-
-module.exports = publicVapidKey;
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
 app.use(helmet());
 app.use(express.static(__dirname));
-app.use(express.static(`${__dirname}/client`));
 
 app.use(cors());
 
@@ -106,14 +103,21 @@ app.post('/dayof', (req, res) => {
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   const sub = req.body.subscribe;
   const options = {
-    TTL: req.body.timetolive,
+    TTL: req.body.timeout,
   };
   console.log(sub);
-  webpush.sendNotification(sub, payload, options)
-    .then(res.sendStatus(201))
-    .catch((err) => {
-      console.log(err.stack);
+  ds.insert(sub);
+  ds.find({}, (err, data) => {
+    console.log(data);
+    if (err) throw err;
+    data.forEach((element) => {
+      webpush.sendNotification(element, payload, options)
+        .then(res.sendStatus(201))
+        .catch((error) => {
+          console.log(error.stack);
+        });
     });
+  });
 });
 
 app.listen(PORT, () => {

@@ -70,7 +70,7 @@ async function run() {
           method: 'POST',
           body: JSON.stringify({
             subscribe: subscription,
-            timetolive: ttl,
+            timeout: ttl,
           }),
           headers: {
             'Content-type': 'application/json',
