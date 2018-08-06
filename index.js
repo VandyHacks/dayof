@@ -121,6 +121,9 @@ function saveSubscriptionToDatabase(subscription) {
       }
       resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
     });
+    ds.find({}, (err, docs) => {
+      console.log(docs);
+    });
   });
 }
 
