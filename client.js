@@ -62,7 +62,7 @@ async function run() {
   // Send Push Notification
   console.log('Sending push');
   console.log('PushSubscription: ', JSON.stringify(subscription));
-  document.getElementById('pushnotif').onclick = () => {
+  /* document.getElementById('pushnotif').onclick = () => {
     if (document.getElementById('msg').value !== '') {
       if (window.confirm('Send message?')) {
         alert('Messages sent!');
@@ -78,7 +78,17 @@ async function run() {
         });
       }
     }
-  };
+  }; */
+  document.getElementById('pushtest').onclick = await fetch('/dayof', {
+    method: 'POST',
+    body: JSON.stringify({
+      subscribe: subscription,
+      timeout: ttl,
+    }),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
   console.log('Sent push');
 }
 
