@@ -121,5 +121,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
-document.getElementById('notification').innerText = message;
