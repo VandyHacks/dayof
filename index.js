@@ -113,9 +113,10 @@ const isValidSaveRequest = (req, res) => {
 
 function saveSubscriptionToDatabase(subscription) {
   return new Promise((resolve, reject) => {
-    console.log('Inserting subscription to database');
+    console.log('Saving subscription to database');
     ds.insert(subscription, (err, newDoc) => {
       if (err) {
+        console.log('Error occurred');
         reject(err);
       }
       resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
@@ -131,7 +132,7 @@ app.post('/savesub', (req, res) => {
         console.log('Subscription saved to database');
       })
       .catch(() => {
-        res.send('Subscription not saved to database');
+        console.log('Subscription not saved to database');
       });
   }
 });
