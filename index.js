@@ -14,6 +14,8 @@ const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ds = new Datastore();
 const app = express();
 
+module.exports = ds;
+
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
@@ -101,12 +103,10 @@ app.post('/', (req, res) => {
 app.post('/dayof', (req, res) => {
   // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  const sub = req.body.subscribe;
+  // const sub = req.body.subscribe;
   const options = {
     TTL: req.body.timeout,
   };
-  console.log(sub);
-  ds.insert(sub);
   ds.find({}, (err, data) => {
     console.log(data);
     if (err) throw err;
