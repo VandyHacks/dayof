@@ -1,7 +1,7 @@
 console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
-const ttl = 10;
+const ttl = 30;
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -17,6 +17,11 @@ function urlBase64ToUint8Array(base64String) {
   }
   return outputArray;
 }
+
+const options = {
+  userVisibleOnly: true,
+  applicationServerKey: urlBase64ToUint8Array(publicKey),
+};
 
 /* function sendSubtoExpress(sub) {
   return fetch('/savesub', {
@@ -49,18 +54,15 @@ async function run() {
   // Register Push
   console.log('Registering push');
   const subscription = await registration.pushManager
-    .subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(publicKey),
-    });
+    .subscribe(options);
   console.log('Registered push');
 
   // sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
-  console.log('PushSubscription: ', JSON.stringify(subscription.endpoint));
-  await fetch('/dayof', {
+  console.log('PushSubscription: ', JSON.stringify(subscription));
+  document.getElementById('pushnotif').onclick = await fetch('/dayof', {
     method: 'POST',
     body: JSON.stringify({
       subscribe: subscription,
