@@ -114,20 +114,16 @@ const isValidSaveRequest = (req, res) => {
 function saveSubscriptionToDatabase(subscription) {
   return new Promise((resolve, reject) => {
     console.log('Saving subscription to database');
-    ds.find(subscription, (error, doc) => {
-      if (doc === undefined || doc.length === 0) {
-        ds.insert(subscription, (err, newDoc) => {
-          if (err) {
-            console.log('Error occurred');
-            reject(err);
-          }
-          resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
-        });
+    ds.insert(subscription, (err, newDoc) => {
+      if (err) {
+        console.log('Error occurred');
+        reject(err);
       }
-    })
-      .then(ds.find({}, (err, docs) => {
-        console.log(docs);
-      }));
+      resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
+    });
+    ds.find({}, (err, docs) => {
+      console.log(docs);
+    });
   });
 }
 
