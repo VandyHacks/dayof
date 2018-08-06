@@ -62,7 +62,7 @@ async function run() {
   // Send Push Notification
   console.log('Sending push');
   console.log('PushSubscription: ', JSON.stringify(subscription));
-  document.getElementById('pushnotif').onclick = fetch('/dayof', {
+  document.getElementById('pushnotif').onclick = await fetch('/dayof', {
     method: 'POST',
     body: JSON.stringify({
       subscribe: subscription,
