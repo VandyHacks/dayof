@@ -32,7 +32,7 @@ webpush.setVapidDetails(
   privateVapidKey,
 );
 
-mongoose.connect(uri);
+mongoose.connect(uri, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
