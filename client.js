@@ -1,4 +1,4 @@
-const database = require('./index');
+// const database = require('./index');
 
 console.log('Accessed client.js');
 
@@ -57,7 +57,7 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
-  database.insert(subscription);
+  // database.insert(subscription);
   console.log('Registered push');
 
   // sendSubtoExpress(subscription);
