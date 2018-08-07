@@ -23,7 +23,7 @@ const options = {
   applicationServerKey: urlBase64ToUint8Array(publicKey),
 };
 
-function sendSubtoExpress(sub) {
+function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
   fetch('/savesub', {
     method: 'POST',
     headers: {
