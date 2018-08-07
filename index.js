@@ -143,7 +143,7 @@ app.post('/savesub', (req, res) => {
 // Dayof route
 app.post('/dayof', (req, res) => {
   // Resource created successfully
-  console.log(res);
+  console.log(res.ok);
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   // const sub = req.body.subscribe;
   const options = {
