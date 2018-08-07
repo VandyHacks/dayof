@@ -12,6 +12,7 @@ const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
+const ttl = 600;
 const app = express();
 
 app.use(parser.urlencoded({ extended: true }));
@@ -105,17 +106,12 @@ const isValidSaveRequest = (req, res) => {
 
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
-    const push = new PushSub({
-      endpoint: req.body.endpoint,
-      keys: {
-        p256dh: req.body.keys.p256dh,
-        auth: req.body.keys.auth,
-      },
-    });
+    const push = new PushSub(req.body);
     console.log('Saving subscription to database');
     push.save()
       .then(() => {
         res.setHeader('Content-type', 'application/json');
+        res.sendStatus(201);
         console.log('Push subscription saved');
       })
       .catch((err) => {
@@ -130,7 +126,7 @@ app.post('/dayof', (req, res) => {
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   // const sub = req.body.subscribe;
   const options = {
-    TTL: req.body.timeout,
+    TTL: ttl,
   };
   // PushSub.insert(sub);
   PushSub.find({}, (err, data) => {
