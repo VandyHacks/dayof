@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
     });
 });
 
-const isValidSaveRequest = (req, res) => {
+/* const isValidSaveRequest = (req, res) => {
   // Check for endpoint
   if (!req.body || !req.body.endpoint) {
     // Not valid subscription
@@ -138,18 +138,17 @@ app.post('/savesub', (req, res) => {
         console.log('Subscription not saved to database');
       });
   }
-});
+}); */
 
 // Dayof route
 app.post('/dayof', (req, res) => {
   // Resource created successfully
-  console.log(res.ok);
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  // const sub = req.body.subscribe;
+  const sub = req.body.subscribe;
   const options = {
     TTL: req.body.timeout,
   };
-  // ds.insert(sub);
+  ds.insert(sub);
   ds.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
