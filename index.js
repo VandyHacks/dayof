@@ -5,16 +5,14 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-const Datastore = require('nedb');
+const Push = require('./schemas/schemas').pushSchema;
+const Hack = require('./schemas/schemas').hackerSchema;
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
-const ds = new Datastore();
 const app = express();
-
-module.exports = ds;
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -45,14 +43,8 @@ const phoneArr = [];
 
 let message;
 
-const hackerSchema = new mongoose.Schema({
-  firstName: { type: String, max: 20 },
-  lastName: { type: String, max: 20 },
-  school: { type: String, max: 50 },
-  email: { type: String, max: 100 },
-  phone: { type: String, max: 15 },
-});
-const Hacker = db.model('Hacker', hackerSchema);
+const Hacker = db.model('Hacker', Hack);
+const PushSub = db.model('PushSubscription', Push);
 
 function dbquery(callback) {
   Hacker.find({}, (err, data) => {
@@ -111,31 +103,23 @@ const isValidSaveRequest = (req, res) => {
   return true;
 };
 
-function saveSubscriptionToDatabase(subscription) {
-  return new Promise((resolve, reject) => {
-    console.log('Saving subscription to database');
-    ds.insert(subscription, (err, newDoc) => {
-      if (err) {
-        console.log('Error occurred');
-        reject(err);
-      }
-      resolve(newDoc._id); // eslint-disable-line no-underscore-dangle
-    });
-    ds.find({}, (err, docs) => {
-      console.log(docs);
-    });
-  });
-}
-
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
-    saveSubscriptionToDatabase(req.body)
+    const push = new Push({
+      endpoint: req.body.subscribe.endpoint,
+      keys: {
+        p256dh: req.body.subscribe.keys.p256dh,
+        auth: req.body.subscribe.keys.auth,
+      },
+    });
+    console.log('Saving subscription to database');
+    push.save()
       .then(() => {
         res.setHeader('Content-type', 'application/json');
-        console.log('Subscription saved to database');
+        console.log('Push subscription saved');
       })
-      .catch(() => {
-        console.log('Subscription not saved to database');
+      .catch((err) => {
+        console.log('Unable to save push subscription', err);
       });
   }
 });
@@ -148,8 +132,8 @@ app.post('/dayof', (req, res) => {
   const options = {
     TTL: req.body.timeout,
   };
-  // ds.insert(sub);
-  ds.find({}, (err, data) => {
+  // PushSub.insert(sub);
+  PushSub.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
       webpush.sendNotification(element, payload, options)
