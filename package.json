@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/k-zhai/VandyHacksNotifications.git"
+    "url": "git+https://github.com/k-zhai/vh-notifications.git"
   },
   "keywords": [
     "VandyHacks",
@@ -18,9 +18,9 @@
   "author": "k-zhai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/k-zhai/VandyHacksNotifications/issues"
+    "url": "https://github.com/k-zhai/vh-notifications/issues"
   },
-  "homepage": "https://github.com/k-zhai/VandyHacksNotifications#readme",
+  "homepage": "https://github.com/k-zhai/vh-notifications#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",

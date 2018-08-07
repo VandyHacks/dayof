@@ -23,7 +23,7 @@ const options = {
   applicationServerKey: urlBase64ToUint8Array(publicKey),
 };
 
-/* function sendSubtoExpress(sub) {
+function sendSubtoExpress(sub) {
   fetch('/savesub', {
     method: 'POST',
     headers: {
@@ -43,7 +43,7 @@ const options = {
         throw new Error('Bad response from server.');
       }
     });
-} */
+}
 
 // Register SW, Register Push, Send Push
 async function run() {
@@ -63,7 +63,7 @@ async function run() {
   console.log('Registered push');
 
   // Send PushSubscription to backend
-  // await sendSubtoExpress(subscription);
+  await sendSubtoExpress(subscription);
 
   // Send Push Notification
   console.log('Sending push');
