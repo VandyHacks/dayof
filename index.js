@@ -107,6 +107,7 @@ const isValidSaveRequest = (req, res) => {
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
+    console.log(push);
     console.log('Saving subscription to database');
     push.save()
       .then(() => {
@@ -132,7 +133,6 @@ app.post('/dayof', (req, res) => {
   PushSub.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
-      console.log(element);
       webpush.sendNotification(element, payload, options)
         .then(res.sendStatus(201))
         .catch((error) => {
