@@ -23,7 +23,7 @@ const options = {
 };
 
 function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
-  return fetch('/savesub', { // possibly endpoint should be /dayof
+  return fetch('/savesub', {
     method: 'POST',
     body: JSON.stringify(sub),
     headers: {
