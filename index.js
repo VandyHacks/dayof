@@ -111,7 +111,7 @@ app.post('/savesub', (req, res) => {
     push.save()
       .then(() => {
         res.setHeader('Content-type', 'application/json');
-        res.sendStatus(201);
+        // res.sendStatus(201);
         console.log('Push subscription saved');
       })
       .catch((err) => {
