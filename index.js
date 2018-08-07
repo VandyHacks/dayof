@@ -41,6 +41,7 @@ db.once('open', () => {
 });
 
 const phoneArr = [];
+const subArr = [];
 
 let message;
 
@@ -108,15 +109,18 @@ app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
     console.log('Saving subscription to database');
-    push.save()
-      .then(() => {
-        res.setHeader('Content-type', 'application/json');
-        res.sendStatus(201);
-        console.log('Push subscription saved');
-      })
-      .catch((err) => {
-        console.log('Unable to save push subscription', err);
-      });
+    if (subArr.findIndex(push) === -1) {
+      subArr.push(push);
+      push.save()
+        .then(() => {
+          res.setHeader('Content-type', 'application/json');
+          res.sendStatus(201);
+          console.log('Push subscription saved');
+        })
+        .catch((err) => {
+          console.log('Unable to save push subscription', err);
+        });
+    }
   }
 });
 
