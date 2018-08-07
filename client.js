@@ -1,7 +1,7 @@
 console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
-const ttl = 30;
+const ttl = 3600;
 
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -24,12 +24,12 @@ const options = {
 };
 
 function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
-  return fetch('/savesub', {
+  return fetch('/savesub', { // possibly endpoint should be /dayof
     method: 'POST',
+    body: JSON.stringify(sub),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(sub),
   })
     .then((res) => {
       console.log(res);
