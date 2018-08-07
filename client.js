@@ -35,7 +35,7 @@ function sendSubtoExpress(sub) { // subscriptions are not displayed if this is n
       if (!res.ok) {
         throw new Error('Bad response from server.');
       }
-      return res.json();
+      return JSON.parse(JSON.stringify(res));
     })
     .then((responseData) => {
       if (!(responseData.data && responseData.data.success)) {
