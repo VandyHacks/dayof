@@ -105,7 +105,13 @@ const isValidSaveRequest = (req, res) => {
 
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
-    const push = new Push(req.body);
+    const push = new PushSub({
+      endpoint: req.body.subscribe.endpoint,
+      keys: {
+        p256dh: req.body.subscribe.keys.p256dh,
+        auth: req.body.subscribe.keys.auth,
+      },
+    });
     console.log('Saving subscription to database');
     push.save()
       .then(() => {
