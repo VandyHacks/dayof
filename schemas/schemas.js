@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const pushSchema = new mongoose.Schema({
   endpoint: String,
+  expiration: String,
   keys: {
     p256hd: String,
     auth: String,
