@@ -150,7 +150,6 @@ app.post('/dayof', (req, res) => {
   };
   // ds.insert(sub);
   ds.find({}, (err, data) => {
-    console.log(data);
     if (err) throw err;
     data.forEach((element) => {
       webpush.sendNotification(element, payload, options)
