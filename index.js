@@ -152,12 +152,12 @@ app.post('/dayof', (req, res) => {
   ds.find({}, (err, data) => {
     if (err) throw err;
     data.forEach((element) => {
-      webpush.sendNotification(element, payload, options)
-        .then(res.sendStatus(201))
-        .catch((error) => {
-          console.log(error.stack);
-        });
-    });
+      webpush.sendNotification(element, payload, options);
+    })
+      .then(res.sendStatus(201))
+      .catch((error) => {
+        console.log(error.stack);
+      });
   });
 });
 
