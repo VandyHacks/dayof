@@ -69,9 +69,14 @@ function wait() {
 
 dbquery(wait);
 
+app.get('/live', cors(), (req, res) => {
+  res.sendFile(`${__dirname}/live.html`);
+  console.log('Live notifications page loaded');
+});
+
 app.get('/', cors(), (req, res) => {
   res.sendFile(`${__dirname}/form.html`);
-  console.log('Page loaded');
+  console.log('Admin page loaded');
 });
 
 app.post('/', (req, res) => {
