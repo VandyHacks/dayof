@@ -106,6 +106,7 @@ const isValidSaveRequest = (req, res) => {
 
 function exists(subscription) {
   PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key }, (err, doc) => {
+    if (err) throw err;
     if (!doc.length) {
       return false;
     }
@@ -118,6 +119,7 @@ app.post('/savesub', (req, res) => {
     const push = new PushSub(req.body);
     console.log(req.body);
     console.log(push);
+    console.log(exists(push));
     if (!exists(push)) {
       console.log('Saving subscription to database');
       push.save()
