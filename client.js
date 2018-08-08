@@ -76,16 +76,6 @@ async function run() {
       }
     }
   };
-  /* document.getElementById('pushtest').onclick = await fetch('/dayof', {
-    method: 'POST',
-    body: JSON.stringify({
-      subscribe: subscription,
-      timeout: ttl,
-    }),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  }); */
   console.log('Sent push');
 }
 

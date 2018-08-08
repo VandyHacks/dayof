@@ -104,21 +104,30 @@ const isValidSaveRequest = (req, res) => {
   return true;
 };
 
+function exists(subscription) {
+  if (PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key })) {
+    return false;
+  }
+  return true;
+}
+
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
-    console.log(req.body);
-    console.log(push);
-    console.log('Saving subscription to database');
-    push.save()
-      .then(() => {
-        res.setHeader('Content-type', 'application/json');
-        res.sendStatus(201);
-        console.log('Push subscription saved');
-      })
-      .catch((err) => {
-        console.log('Unable to save push subscription', err);
-      });
+    if (exists(push)) {
+      console.log('Saving subscription to database');
+      push.save()
+        .then(() => {
+          res.setHeader('Content-type', 'application/json');
+          res.sendStatus(201);
+          console.log('Push subscription saved');
+        })
+        .catch((err) => {
+          console.log('Unable to save push subscription', err);
+        });
+    } else {
+      console.log('Subscription already exists in database');
+    }
   }
 });
 
