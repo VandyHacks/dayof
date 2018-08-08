@@ -105,8 +105,12 @@ const isValidSaveRequest = (req, res) => {
 };
 
 function exists(subscription) {
-  console.log(PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key }));
-  return PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key });
+  PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key }, (err, doc) => {
+    if (!doc.length) {
+      return false;
+    }
+    return true;
+  });
 }
 
 app.post('/savesub', (req, res) => {
