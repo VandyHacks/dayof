@@ -124,18 +124,20 @@ app.post('/savesub', (req, res) => {
         })
         .catch((err) => {
           console.log('Unable to save push subscription', err);
+          res.sendStatus(500);
         });
     } else {
       console.log('Subscription already exists in database');
+      res.sendStatus(201);
     }
   }
 });
 
-/* async function sendPush(subs, payload, options) {
+async function sendPush(subs, payload, options) {
   await Promise.all(subs.map(async (element) => {
     webpush.sendNotification(element, payload, options);
   }));
-} */
+}
 
 // Dayof route
 app.post('/dayof', (req, res) => {
@@ -148,11 +150,7 @@ app.post('/dayof', (req, res) => {
   // PushSub.insert(sub);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
-    Promise.all(
-      data.forEach((element) => {
-        webpush.sendNotification(element, payload, options);
-      }),
-    )
+    sendPush(data, payload, options)
       .then(
         console.log('Push notification sent'),
         res.sendStatus(201),
