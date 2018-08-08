@@ -48,6 +48,7 @@ async function run() {
     .catch((err) => {
       console.log(err);
     });
+  console.log(registration);
   console.log('Registered service worker');
 
   // Register Push
