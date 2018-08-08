@@ -33,7 +33,7 @@ function sendSubtoExpress(sub) { // subscriptions are not displayed if this is n
     .then((res) => {
       console.log(res);
       if (!res.ok) {
-        throw new Error('Bad response from server.');
+        console.log('Bad response from server.');
       }
       return JSON.parse(JSON.stringify(res));
     });
