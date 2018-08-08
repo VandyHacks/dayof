@@ -69,7 +69,7 @@ function wait() {
 
 dbquery(wait);
 
-app.get('/live', cors(), (req, res) => {
+app.get('/dayof', cors(), (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 });
