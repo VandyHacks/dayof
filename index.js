@@ -124,6 +124,7 @@ app.post('/savesub', (req, res) => {
       })
       .catch((err) => {
         console.log('Unable to save push subscription', err);
+        res.sendStatus(500);
       });
     /* } else {
       console.log('Subscription already exists in database');
@@ -160,6 +161,7 @@ app.post('/dayof', (req, res) => {
       )
       .catch((error) => {
         console.log(error.stack);
+        res.sendStatus(500);
       });
   });
 });
