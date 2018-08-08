@@ -150,11 +150,9 @@ app.post('/dayof', (req, res) => {
   // PushSub.insert(sub);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
-    Promise.all(
-      data.forEach((element) => {
-        webpush.sendNotification(element, payload, options);
-      }),
-    )
+    data.forEach((element) => {
+      webpush.sendNotification(element, payload, options);
+    })
       .then(
         console.log('Push notification sent'),
         res.sendStatus(201),
