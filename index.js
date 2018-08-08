@@ -112,9 +112,9 @@ function exists(subscription) {
     }
     return true;
   })
-  .catch((err) => {
-    console.log(err);
-  }
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 app.post('/savesub', (req, res) => {
