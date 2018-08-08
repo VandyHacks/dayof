@@ -131,11 +131,11 @@ app.post('/savesub', (req, res) => {
   }
 });
 
-async function sendPush(subs, payload, options) {
+/* async function sendPush(subs, payload, options) {
   await Promise.all(subs.map(async (element) => {
     webpush.sendNotification(element, payload, options);
   }));
-}
+} */
 
 // Dayof route
 app.post('/dayof', (req, res) => {
@@ -148,7 +148,11 @@ app.post('/dayof', (req, res) => {
   // PushSub.insert(sub);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
-    sendPush(data, payload, options)
+    Promise.all(
+      data.forEach((element) => {
+        webpush.sendNotification(element, payload, options);
+      }),
+    )
       .then(
         console.log('Push notification sent'),
         res.sendStatus(201),
