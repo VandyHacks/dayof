@@ -154,6 +154,7 @@ app.post('/dayof', (req, res) => {
   const options = {
     TTL: ttl,
   };
+  document.getElementById('notif').innerText += message;
   // PushSub.insert(sub);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
