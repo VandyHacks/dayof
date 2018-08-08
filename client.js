@@ -23,7 +23,7 @@ const options = {
 };
 
 function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
-  return fetch('/savesub', {
+  return fetch('/savesub', { // possibly endpoint should be /dayof
     method: 'POST',
     body: JSON.stringify(sub),
     headers: {
@@ -33,7 +33,7 @@ function sendSubtoExpress(sub) { // subscriptions are not displayed if this is n
     .then((res) => {
       console.log(res);
       if (!res.ok) {
-        console.log('Bad response from server.');
+        throw new Error('Bad response from server.');
       }
       return JSON.parse(JSON.stringify(res));
     });

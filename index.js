@@ -74,7 +74,7 @@ app.get('/', cors(), (req, res) => {
   console.log('Page loaded');
 });
 
-app.post('/', (req, res) => { // Issue: sends message even when use presses cancel
+app.post('/', (req, res) => {
   Promise.all(
     message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
@@ -104,17 +104,11 @@ const isValidSaveRequest = (req, res) => {
   return true;
 };
 
-/* function exists(subscription) {
-  if (PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key })) {
-    return true;
-  }
-  return false;
-} */
-
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
-    // if (!exists(push)) {
+    console.log(req.body);
+    console.log(push);
     console.log('Saving subscription to database');
     push.save()
       .then(() => {
@@ -124,20 +118,9 @@ app.post('/savesub', (req, res) => {
       })
       .catch((err) => {
         console.log('Unable to save push subscription', err);
-        res.sendStatus(500);
       });
-    /* } else {
-      console.log('Subscription already exists in database');
-      res.sendStatus(201);
-    } */
   }
 });
-
-/* async function sendPush(subs, payload, options) {
-  await Promise.all(subs.map(async (element) => {
-    webpush.sendNotification(element, payload, options);
-  }));
-} */
 
 // Dayof route
 app.post('/dayof', (req, res) => {
@@ -161,7 +144,6 @@ app.post('/dayof', (req, res) => {
       )
       .catch((error) => {
         console.log(error.stack);
-        res.sendStatus(500);
       });
   });
 });
