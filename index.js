@@ -156,21 +156,27 @@ app.post('/dayof', (req, res) => {
   };
   document.getElementById('notif').innerText += message;
   // PushSub.insert(sub);
-  PushSub.find({}, (err, data) => {
-    if (err) throw err;
-    Promise.all(
-      data.forEach((element) => {
-        webpush.sendNotification(element, payload, options);
-      }),
-    )
-      .then(
-        console.log('Push notification sent'),
-        res.sendStatus(201),
-      )
-      .catch((error) => {
-        console.log(error.stack);
-      });
-  });
+  document.getElementById('pushnotif').onclick = () => {
+    if (document.getElementById('msg').value !== '') {
+      if (window.confirm('Send message?')) {
+        PushSub.find({}, (err, data) => {
+          if (err) throw err;
+          Promise.all(
+            data.forEach((element) => {
+              webpush.sendNotification(element, payload, options);
+            }),
+          )
+            .then(
+              console.log('Push notification sent'),
+              res.sendStatus(201),
+            )
+            .catch((error) => {
+              console.log(error.stack);
+            });
+        });
+      }
+    }
+  };
 });
 
 app.listen(PORT, () => {
