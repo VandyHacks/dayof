@@ -127,6 +127,7 @@ app.post('/savesub', (req, res) => {
         });
     } else {
       console.log('Subscription already exists in database');
+      res.sendStatus(201);
     }
   }
 });
