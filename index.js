@@ -105,16 +105,14 @@ const isValidSaveRequest = (req, res) => {
 };
 
 function exists(subscription) {
-  if (PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key })) {
-    console.log('Already exists');
-    return true;
-  }
-  return false;
+  return PushSub.findOne({ endpoint: subscription.endpoint, key: subscription.key });
 }
 
 app.post('/savesub', (req, res) => {
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
+    console.log(req.body);
+    console.log(push);
     if (!exists(push)) {
       console.log('Saving subscription to database');
       push.save()
