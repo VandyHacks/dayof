@@ -1,4 +1,4 @@
-console.log('Accessed client.js');
+console.log('Accessed publicclient.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
@@ -63,15 +63,7 @@ async function run() {
   // Send Push Notification
   console.log('Sending push');
   console.log('PushSubscription: ', JSON.stringify(subscription));
-
-  await fetch('/dayof', {
-    method: 'POST',
-    body: JSON.stringify(subscription),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-  /* document.getElementById('pushnotif').onclick = () => {
+  document.getElementById('pushnotif').onclick = () => {
     if (document.getElementById('msg').value !== '') {
       if (window.confirm('Send message?')) {
         alert('Messages sent!');
@@ -84,7 +76,7 @@ async function run() {
         });
       }
     }
-  }; */
+  };
   console.log('Sent push');
 }
 

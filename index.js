@@ -75,7 +75,7 @@ app.get('/dayof', cors(), (req, res) => {
 });
 
 app.get('/', cors(), (req, res) => {
-  res.sendFile(`${__dirname}/form.html`);
+  res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
 
@@ -122,38 +122,7 @@ const isValidSaveRequest = (req, res) => {
     });
 } */
 
-function sendPush(response, payload, options) {
-  // PushSub.insert(sub);
-  document.getElementById('pushnotif').onclick = () => {
-    if (document.getElementById('msg').value !== '') {
-      if (window.confirm('Send message?')) {
-        PushSub.find({}, (err, data) => {
-          if (err) throw err;
-          Promise.all(
-            data.forEach((element) => {
-              webpush.sendNotification(element, payload, options);
-            }),
-          )
-            .then(
-              console.log('Push notification sent'),
-              response.sendStatus(201),
-            )
-            .catch((error) => {
-              console.log(error.stack);
-            });
-        });
-      }
-    }
-  };
-}
-
 app.post('/savesub', (req, res) => {
-  // Resource created successfully
-  const payload = JSON.stringify({ title: 'VandyHacks', body: message });
-  // const sub = req.body.subscribe;
-  const options = {
-    TTL: ttl,
-  };
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
     console.log(req.body);
@@ -174,18 +143,33 @@ app.post('/savesub', (req, res) => {
       console.log('Subscription already exists in database');
       res.sendStatus(201);
     } */
-    window.addEventListener('DOMContentLoaded', sendPush(res, payload, options), false);
   }
 });
 
 // Dayof route
 app.post('/dayof', (req, res) => {
-  document.getElementById('notif').innerText += message;
-  if (res.ok) {
-    res.sendStatus(201);
-  } else {
-    res.sendStatus(500);
-  }
+  // Resource created successfully
+  const payload = JSON.stringify({ title: 'VandyHacks', body: message });
+  // const sub = req.body.subscribe;
+  const options = {
+    TTL: ttl,
+  };
+  // PushSub.insert(sub);
+  PushSub.find({}, (err, data) => {
+    if (err) throw err;
+    Promise.all(
+      data.forEach((element) => {
+        webpush.sendNotification(element, payload, options);
+      }),
+    )
+      .then(
+        console.log('Push notification sent'),
+        res.sendStatus(201),
+      )
+      .catch((error) => {
+        console.log(error.stack);
+      });
+  });
 });
 
 app.listen(PORT, () => {
