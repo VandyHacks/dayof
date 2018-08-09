@@ -17,9 +17,9 @@
       console.log("Checkpoint 1");
       function loadnotification() {
         console.log("Checkpoint 2");
-        console.log(getStatus().submit);
-        if (getStatus().submit) {
-          document.getElementById("notif").innerHTML += `<p>${getMessage.msg}</p><br>`;
+        console.log(sessionStorage.getItem('submitted'));
+        if (sessionStorage.getItem('submitted')) {
+          document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('message')}</p><br>`;
           location.reload;
         }
       }

@@ -2,25 +2,6 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
-const submitted = function (newStatus) { // eslint-disable-line
-  let status = { submit: newStatus }; // eslint-disable-line
-  return status;
-};
-const message = function (newMsg) { // eslint-disable-line
-  let text = { msg: newMsg }; // eslint-disable-line
-  return text;
-};
-
-const getStatus = function () { // eslint-disable-line
-  const text = { submit: submitted };
-  return text;
-};
-
-const getMessage = function () { // eslint-disable-line
-  const text = { msg: message };
-  return text;
-};
-
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
