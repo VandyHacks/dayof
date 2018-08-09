@@ -31,6 +31,22 @@
     </div>
     <!--confirmation popup after checking if textarea is empty-->
     <script type="application/javascript" src="adminclient.js"></script>
+    <script>
+      document.getElementById('pushnotif').onclick = () => {
+        if (document.getElementById('msg').value !== '') {
+          if (window.confirm('Send message?')) {
+            alert('Messages sent!');
+            fetch('/sendpush', {
+              method: 'POST',
+              body: JSON.stringify(subscriptionexport().sub), // sent as req
+              headers: {
+                'Content-type': 'application/json',
+              },
+            });
+          }
+        }
+      };
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
