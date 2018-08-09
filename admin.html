@@ -42,10 +42,7 @@
             sessionStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: JSON.stringify(document.getElementById("msg").value), // sent as req
-              headers: {
-                'Content-type': 'application/json',
-              },
+              body: document.getElementById("msg"), // sent as req
             });
           }
         }
