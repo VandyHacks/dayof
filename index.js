@@ -128,6 +128,7 @@ const isValidSaveRequest = (req, res) => {
 } */
 
 app.post('/savesub', (req, res) => {
+  console.log(isValidSaveRequest);
   if (isValidSaveRequest) {
     const push = new PushSub(req.body);
     console.log(req.body);
