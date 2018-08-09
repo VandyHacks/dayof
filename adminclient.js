@@ -17,7 +17,7 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-let subscriptionexport;
+let subscriptionexport; // eslint-disable-line no-unused-vars
 
 const options = {
   userVisibleOnly: true,
