@@ -17,6 +17,8 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+let subscriptionexport;
+
 const options = {
   userVisibleOnly: true,
   applicationServerKey: urlBase64ToUint8Array(publicKey),
@@ -55,6 +57,7 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
+  subscriptionexport = subscription;
   console.log('Registered push');
 
   // Send PushSubscription to backend
