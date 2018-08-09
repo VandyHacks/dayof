@@ -106,7 +106,12 @@ const isValidSaveRequest = (req, res) => {
     console.log('Subscription must have endpoint');
     return false;
   }
-  return true;
+  let valid;
+  PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
+    valid = (count !== 0);
+  });
+  console.log(valid);
+  return valid;
 };
 
 /* function exists(subscription) {
