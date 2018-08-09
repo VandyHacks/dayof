@@ -23,7 +23,7 @@
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
             </div>
             <div class="text-right" >
-              <input type="submit" id="pushnotif" class="btn btn-outline-secondary" value="Send"><br>
+              <input type="submit" id="pushnotif" class="btn btn-outline-secondary" onclick="return confirmSend()" value="Send"><br>
             </div>
           </form>
         </div>
@@ -31,6 +31,25 @@
     </div>
     <!--confirmation popup after checking if textarea is empty-->
     <script type="application/javascript" src="adminclient.js"></script>
+    <script>
+      function confirmSend() {
+        console.log('Sending push');
+        console.log('PushSubscription: ', JSON.stringify(subscription));
+        if (document.getElementById('msg').value !== '') {
+          if (window.confirm('Send message?')) {
+            alert('Messages sent!');
+            fetch('/dayof', {
+              method: 'POST',
+              body: JSON.stringify(subscription), // sent as req
+              headers: {
+                'Content-type': 'application/json',
+              },
+            });
+          }
+        }
+      }
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

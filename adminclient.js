@@ -61,7 +61,7 @@ async function run() {
   await sendSubtoExpress(subscription);
 
   // Send Push Notification
-  console.log('Sending push');
+  /* console.log('Sending push');
   console.log('PushSubscription: ', JSON.stringify(subscription));
   document.getElementById('pushnotif').onclick = () => {
     if (document.getElementById('msg').value !== '') {
@@ -77,7 +77,7 @@ async function run() {
       }
     }
   };
-  console.log('Sent push');
+  console.log('Sent push'); */
 }
 
 function requestPermission() {
