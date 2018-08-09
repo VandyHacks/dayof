@@ -34,7 +34,7 @@
     <script>
       function confirmSend() {
         console.log('Sending push');
-        console.log('PushSubscription: ', JSON.stringify(subscription));
+        console.log('PushSubscription: ', JSON.stringify(subscriptionexport().sub));
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
             alert('Messages sent!');
