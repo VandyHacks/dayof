@@ -163,6 +163,7 @@ app.post('/sendpush', (req, res) => {
     TTL: ttl,
   };
   // PushSub.insert(sub);
+  console.log(payload);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
     Promise.all(

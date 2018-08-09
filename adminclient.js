@@ -2,11 +2,11 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
-let submitted = function (newStatus) { // eslint-disable-line
+const submitted = function (newStatus) { // eslint-disable-line
   let status = { submit: newStatus }; // eslint-disable-line
   return status;
 };
-let message = function (newMsg) { // eslint-disable-line
+const message = function (newMsg) { // eslint-disable-line
   let text = { msg: newMsg }; // eslint-disable-line
   return text;
 };
