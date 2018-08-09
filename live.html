@@ -9,13 +9,13 @@
     <title>VandyHacks Notifications</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  <body onload="loadnotification()">
+  <body id = "notifbody">
     <div id="notif"></div>
     
     <script type="application/javascript" src="adminclient.js"></script>
     <script>
       console.log("Checkpoint 1");
-      setInterval(function loadnotification() {
+      document.getElementById("notifbody").onload = setInterval(function loadnotification() {
         console.log("Checkpoint 2");
         if (sessionStorage.getItem('submitted')) {
           document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('message')}</p><br>`;
