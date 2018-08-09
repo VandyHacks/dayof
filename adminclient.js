@@ -73,7 +73,7 @@ async function run() {
     if (document.getElementById('msg').value !== '') {
       if (window.confirm('Send message?')) {
         alert('Messages sent!');
-        fetch('/dayof', {
+        fetch('/sendpush', {
           method: 'POST',
           body: JSON.stringify(subscription), // sent as req
           headers: {
