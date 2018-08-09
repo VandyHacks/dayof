@@ -15,14 +15,14 @@
     <script type="application/javascript" src="adminclient.js"></script>
     <script>
       console.log("Checkpoint 1");
-      function loadnotification() {
+      setInterval(function loadnotification() {
         console.log("Checkpoint 2");
         console.log(sessionStorage.getItem('submitted'));
         if (sessionStorage.getItem('submitted')) {
           document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('message')}</p><br>`;
           location.reload;
         }
-      }
+      }, 5000);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
