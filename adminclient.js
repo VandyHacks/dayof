@@ -57,7 +57,10 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
-  subscriptionexport = subscription;
+  subscriptionexport = function () {
+    const text = { sub: subscription };
+    return text;
+  };
   console.log('Registered push');
 
   // Send PushSubscription to backend
