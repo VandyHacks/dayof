@@ -15,8 +15,9 @@
     <script type="application/javascript" src="adminclient.js"></script>
     <script>
       function loadnotification() {
-        if (status().submit) {
-          document.getElementById("notif").innerHTML += `<p>${message}</p><br>`;
+        if (getStatus().submit) {
+          document.getElementById("notif").innerHTML += `<p>${getMessage.msg}</p><br>`;
+          location.reload;
         }
       }
     </script>

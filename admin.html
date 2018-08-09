@@ -38,6 +38,8 @@
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
             alert('Messages sent!');
+            message(document.getElementById('msg').value);
+            submitted(true);
             fetch('/sendpush', {
               method: 'POST',
               body: JSON.stringify(subscriptionexport().sub), // sent as req
