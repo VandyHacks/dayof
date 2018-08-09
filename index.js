@@ -89,6 +89,7 @@ app.post('/', (req, res) => {
     })),
   )
     .then(
+      console.log(message),
       console.log('Message sent'),
       res.redirect('back'),
     )
