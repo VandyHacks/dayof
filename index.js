@@ -91,6 +91,7 @@ app.post('/', (req, res) => {
     .then(
       console.log(message),
       console.log('Message sent'),
+      sessionStorage('msg', message),
       res.redirect('back'),
     )
     .catch((err) => {
@@ -159,7 +160,7 @@ app.post('/savesub', (req, res) => {
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
   console.log(req.body);
-  const payload = JSON.stringify({ title: 'VandyHacks', body: message });
+  const payload = JSON.stringify({ title: 'VandyHacks', body: req.body });
   // const sub = req.body.subscribe;
   const options = {
     TTL: ttl,
