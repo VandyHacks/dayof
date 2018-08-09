@@ -1,4 +1,4 @@
-console.log('Accessed publicclient.js');
+console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
@@ -16,6 +16,8 @@ function urlBase64ToUint8Array(base64String) {
   }
   return outputArray;
 }
+
+let subscriptionexport; // eslint-disable-line no-unused-vars
 
 const options = {
   userVisibleOnly: true,
@@ -55,16 +57,14 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
+  subscriptionexport = function () {
+    const text = { sub: subscription };
+    return text;
+  };
   console.log('Registered push');
 
   // Send PushSubscription to backend
   await sendSubtoExpress(subscription);
-
-  // Send Push Notification
-  console.log('Sending push');
-  console.log('PushSubscription: ', JSON.stringify(subscription));
-  // document.getElementById('notif').innerHTML += '<p>'
-  console.log('Sent push');
 }
 
 function requestPermission() {
