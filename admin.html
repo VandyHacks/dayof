@@ -23,7 +23,7 @@
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
             </div>
             <div class="text-right" >
-              <input type="submit" id="pushnotif" class="btn btn-outline-secondary" onclick="return confirmSend()" onsubmit="sendPush()" value="Send"><br>
+              <input type="submit" id="pushnotif" class="btn btn-outline-secondary" value="Send"><br>
             </div>
           </form>
         </div>
@@ -31,25 +31,6 @@
     </div>
     <!--confirmation popup after checking if textarea is empty-->
     <script type="application/javascript" src="adminclient.js"></script>
-    <script>
-      function confirmSend() {
-        console.log('Sending push');
-        console.log('PushSubscription: ', JSON.stringify(subscriptionexport().sub));
-        if (document.getElementById('msg').value !== '') {
-          if (window.confirm('Send message?')) {
-            alert('Messages sent!');
-          }
-        }
-      }
-      function sendPush() {
-        sessionStorage.setItem('message', document.getElementById('msg').value);
-        sessionStorage.setItem('submitted', true);
-        fetch('/sendpush', {
-          method: 'POST',
-          body: document.getElementById("msg").value, // sent as req
-        });
-      }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
