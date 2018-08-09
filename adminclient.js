@@ -2,6 +2,21 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
+let submitted = false;
+let message; // eslint-disable-line
+document.getElementById('msg').addEventListener('submit', () => {
+  submitted = true;
+  message = function () {
+    const text = { msg: document.getElementById('msg').value };
+    return text;
+  };
+});
+
+const status = function () { // eslint-disable-line
+  const text = { submit: submitted };
+  return text;
+};
+
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)

@@ -147,7 +147,7 @@ app.post('/savesub', (req, res) => {
 });
 
 // Dayof route
-app.post('/dayof', (req, res) => {
+app.post('/sendpush', (req, res) => {
   // Resource created successfully
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   // const sub = req.body.subscribe;
