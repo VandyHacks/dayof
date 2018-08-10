@@ -36,8 +36,9 @@
       document.getElementById('pushnotif').onclick = () => {
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
-            alert('Messages sent!');
+            alert('Messages sent!'); // Page reloads, msgvalue gets reset to ''
             localStorage.setItem('msgvalue', document.getElementById('msg').value);
+            console.log(localStorage.getItem('msgvalue'));
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
