@@ -109,7 +109,7 @@ async function isValidSaveRequest(req, res) {
   }
   const valid = await PushSub.countDocuments({ endpoint: req.body.endpoint, key: req.body.key },
     async (err, count) => {
-      console.log(count);
+      console.log('Count: ', count);
       return (count === 0);
     });
   return valid;
@@ -129,7 +129,7 @@ async function isValidSaveRequest(req, res) {
 } */
 
 app.post('/savesub', (req, res) => {
-  console.log(isValidSaveRequest(req, res));
+  console.log('Valid: ', isValidSaveRequest(req, res));
   if (isValidSaveRequest(req, res)) {
     const push = new PushSub(req.body);
     // console.log(exists(push));
