@@ -7,9 +7,12 @@ function run() {
     if (document.getElementById('msg').value !== '') {
       if (window.confirm('Send message?')) {
         alert('Messages sent!');
+        fetch('/', {
+          method: 'POST',
+          body: document.getElementById('msg').value,
+        });
         fetch('/sendpush', {
           method: 'POST',
-          body: sessionStorage.getItem('msg'),
           headers: {
             'Content-type': 'application/json',
           },
