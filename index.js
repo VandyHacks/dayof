@@ -109,6 +109,7 @@ function isValidSaveRequest(req, res) {
   }
   let valid;
   console.log('Checkpoint 1');
+  console.log(req.body);
   PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
     valid = (count !== 0);
   });
