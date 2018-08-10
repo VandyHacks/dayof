@@ -43,9 +43,6 @@
             fetch('/sendpush', {
               method: 'POST',
               body: document.getElementById('msg').value, // added
-              headers: {
-                'Content-type': 'application/json',
-              },
             });
           }
         }
