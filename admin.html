@@ -41,7 +41,6 @@
             sessionStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: document.getElementById('msg').value,
               headers: {
                 'Content-type': 'application/json',
               },
