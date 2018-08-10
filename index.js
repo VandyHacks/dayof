@@ -99,7 +99,7 @@ app.post('/', (req, res) => {
     });
 });
 
-async function isValidSaveRequest(req, res) {
+function isValidSaveRequest(req, res) {
   // Check for endpoint
   if (!req.body || !req.body.endpoint) {
     // Not valid subscription
