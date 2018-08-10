@@ -107,46 +107,33 @@ function isValidSaveRequest(req, res) {
     console.log('Subscription must have endpoint');
     return false;
   }
-  let valid;
-  PushSub.countDocuments({ endpoint: req.body.endpoint, key: req.body.key }, (count) => {
-    valid = (count === 0);
-  });
-  return valid;
+  return true;
 }
 
-/* function exists(subscription) {
-  return PushSub.find({ endpoint: subscription.endpoint, key: subscription.key }, (err, doc) => {
-    if (err) throw err;
-    if (!doc.length) {
-      return false;
-    }
-    return true;
-  })
-    .catch((err) => {
-      console.log(err);
-    });
-} */
+function exists(subscription) {
+  return PushSub.countDocuments({ endpoint: subscription.endpoint, key: subscription.key });
+}
 
 app.post('/savesub', (req, res) => {
-  console.log('Valid: ', isValidSaveRequest(req, res));
   if (isValidSaveRequest(req, res)) {
     const push = new PushSub(req.body);
-    // console.log(exists(push));
-    // if (!exists(push)) {
-    console.log('Saving subscription to database');
-    push.save()
-      .then(() => {
-        res.setHeader('Content-type', 'application/json');
+    exists(push).then((count) => {
+      if (count === 0) {
+        console.log('Saving subscription to database');
+        push.save()
+          .then(() => {
+            res.setHeader('Content-type', 'application/json');
+            res.sendStatus(201);
+            console.log('Push subscription saved');
+          })
+          .catch((err) => {
+            console.log('Unable to save push subscription', err);
+          });
+      } else {
+        console.log('Subscription already exists in database');
         res.sendStatus(201);
-        console.log('Push subscription saved');
-      })
-      .catch((err) => {
-        console.log('Unable to save push subscription', err);
-      });
-    /* } else {
-      console.log('Subscription already exists in database');
-      res.sendStatus(201);
-    } */
+      }
+    });
   }
 });
 
