@@ -3,15 +3,15 @@ console.log('Accessed adminclient.js');
 // Send Push
 function run() {
   console.log('Sending push');
-  document.getElementById('pushnotif').onclick = () => {
+  document.getElementById('pushnotif').onclick = async () => {
     if (document.getElementById('msg').value !== '') {
       if (window.confirm('Send message?')) {
         alert('Messages sent!');
-        fetch('/', {
+        await fetch('/', {
           method: 'POST',
           body: document.getElementById('msg').value,
         });
-        fetch('/sendpush', {
+        await fetch('/sendpush', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
