@@ -18,9 +18,10 @@
         console.log(sessionStorage.getItem('submitted'));
         if (sessionStorage.getItem('submitted')) {
           document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('message')}</p><br>`;
+          sessionStorage.setItem('submitted', false);
           location.reload;
         }
-        sessionStorage.setItem('submitted', false);
+        
       }, 5000);
     </script>
 
