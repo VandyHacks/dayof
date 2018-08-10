@@ -81,7 +81,7 @@ app.get('/', cors(), (req, res) => {
 
 app.post('/', (req, res) => {
   Promise.all(
-    message = req.body,
+    message = req.body.msg,
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
@@ -158,7 +158,6 @@ app.post('/savesub', (req, res) => {
 // Dayof route
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
-  console.log(req.body);
   const payload = JSON.stringify({ title: 'VandyHacks', body: message });
   // const sub = req.body.subscribe;
   const options = {

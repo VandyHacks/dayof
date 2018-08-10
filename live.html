@@ -17,7 +17,7 @@
       document.getElementById("notifbody").onload = setInterval(function loadnotification() {
         console.log(sessionStorage.getItem('submitted'));
         if (sessionStorage.getItem('submitted')) {
-          document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('message')}</p><br>`;
+          document.getElementById("notif").innerHTML += `<p>${sessionStorage.getItem('msgvalue')}</p><br>`;
           sessionStorage.setItem('submitted', false);
           location.reload;
         }
