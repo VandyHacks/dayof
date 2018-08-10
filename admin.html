@@ -45,6 +45,9 @@
             fetch('/sendpush', {
               method: 'POST',
               body: msgbody.nodeValue, // added
+              headers: {
+                'Content-type': 'application/json'
+              }
             });
           }
         }
