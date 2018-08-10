@@ -99,7 +99,7 @@ app.post('/', (req, res) => {
     });
 });
 
-const isValidSaveRequest = (req, res) => {
+function isValidSaveRequest(req, res) {
   // Check for endpoint
   if (!req.body || !req.body.endpoint) {
     // Not valid subscription
@@ -115,7 +115,7 @@ const isValidSaveRequest = (req, res) => {
   console.log('Checkpoint 2');
   console.log(valid);
   return valid;
-};
+}
 
 /* function exists(subscription) {
   return PushSub.find({ endpoint: subscription.endpoint, key: subscription.key }, (err, doc) => {
