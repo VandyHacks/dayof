@@ -1,7 +1,7 @@
 console.log('Accessed client.js');
 
-sessionStorage.setItem('msgvalue', '');
-sessionStorage.setItem('submitted', false);
+localStorage.setItem('msgvalue', '');
+localStorage.setItem('submitted', false);
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 

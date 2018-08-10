@@ -37,8 +37,8 @@
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
             alert('Messages sent!');
-            sessionStorage.setItem('msgvalue', document.getElementById('msg').value);
-            sessionStorage.setItem('submitted', true);
+            localStorage.setItem('msgvalue', document.getElementById('msg').value);
+            localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
               headers: {
