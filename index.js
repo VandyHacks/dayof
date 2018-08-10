@@ -107,11 +107,7 @@ async function isValidSaveRequest(req, res) {
     console.log('Subscription must have endpoint');
     return false;
   }
-  const valid = await PushSub.countDocuments({ endpoint: req.body.endpoint, key: req.body.key },
-    async (err, count) => {
-      console.log('Count: ', count);
-      return (count === 0);
-    });
+  const valid = await PushSub.countDocuments({ endpoint: req.body.endpoint, key: req.body.key });
   return valid;
 }
 
