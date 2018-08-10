@@ -108,14 +108,10 @@ async function isValidSaveRequest(req, res) {
     return false;
   }
   let valid;
-  console.log('Checkpoint 1');
-  console.log(req.body);
   await PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
     console.log(count);
     valid = (count === 0);
   });
-  console.log('Checkpoint 2');
-  console.log(valid);
   return valid;
 }
 
@@ -134,7 +130,7 @@ async function isValidSaveRequest(req, res) {
 
 app.post('/savesub', (req, res) => {
   console.log(isValidSaveRequest(req, res));
-  if (isValidSaveRequest) {
+  if (isValidSaveRequest(req, res)) {
     const push = new PushSub(req.body);
     console.log(req.body);
     console.log(push);
