@@ -107,11 +107,11 @@ async function isValidSaveRequest(req, res) {
     console.log('Subscription must have endpoint');
     return false;
   }
-  let valid;
-  await PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
-    console.log(count);
-    valid = (count === 0);
-  });
+  const valid = await PushSub.countDocuments({ endpoint: req.body.endpoint, key: req.body.key },
+    async (err, count) => {
+      console.log(count);
+      return (count === 0);
+    });
   return valid;
 }
 
@@ -132,8 +132,6 @@ app.post('/savesub', (req, res) => {
   console.log(isValidSaveRequest(req, res));
   if (isValidSaveRequest(req, res)) {
     const push = new PushSub(req.body);
-    console.log(req.body);
-    console.log(push);
     // console.log(exists(push));
     // if (!exists(push)) {
     console.log('Saving subscription to database');
