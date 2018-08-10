@@ -99,7 +99,7 @@ app.post('/', (req, res) => {
     });
 });
 
-function isValidSaveRequest(req, res) {
+async function isValidSaveRequest(req, res) {
   // Check for endpoint
   if (!req.body || !req.body.endpoint) {
     // Not valid subscription
@@ -110,7 +110,7 @@ function isValidSaveRequest(req, res) {
   let valid;
   console.log('Checkpoint 1');
   console.log(req.body);
-  PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
+  await PushSub.count({ endpoint: req.body.endpoint, key: req.body.key }, (err, count) => {
     console.log(count);
     valid = (count === 0);
   });
