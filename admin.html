@@ -43,7 +43,6 @@
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: msgbody, // added
               headers: {
                 'Content-type': 'application/json'
               }
