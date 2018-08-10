@@ -40,12 +40,13 @@
             localStorage.setItem('msgvalue', document.getElementById('msg').value); // assigning msgvalue
             console.log(localStorage.getItem('msgvalue')); // shows what's in the textarea
             const msgbody = localStorage.getItem('msgvalue');
+            console.log(JSON.stringify(msgbody));
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
               body: JSON.stringify(msgbody), // added
               headers: {
-                'Content-type': 'application/json',
+                'Content-type': 'application/json'
               }
             });
           }
