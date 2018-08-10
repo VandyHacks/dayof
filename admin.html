@@ -44,7 +44,7 @@
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: JSON.stringify(msgbody), // added
+              body: JSON.stringify(JSON.parse(msgbody)), // added
               headers: {
                 'Content-type': 'application/json'
               }
