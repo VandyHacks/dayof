@@ -141,7 +141,7 @@ app.post('/savesub', (req, res) => {
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
   console.log(message); // added
-  const payload = JSON.stringify({ title: 'VandyHacks', body: message }); // eslint-disable-line changed message to req.body
+  const payload = JSON.stringify({ title: 'VandyHacks', body: req.body }); // eslint-disable-line changed message to req.body
   // const sub = req.body.subscribe;
   const options = {
     TTL: ttl,
