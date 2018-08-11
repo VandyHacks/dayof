@@ -39,11 +39,12 @@
             alert('Messages sent!'); // Page reloads, msgvalue gets reset to ''
             localStorage.setItem('msgvalue', document.getElementById('msg').value); // assigning msgvalue
             const msgbody = document.getElementById('msg').value;
+            console.log(msgbody);
             console.log(JSON.stringify(msgbody));
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: JSON.parse(JSON.stringify(msgbody)), // unexpected token issue
+              body: JSON.parse(JSON.stringify(msgbody)), // unexpected token T (in Test) issue
               headers: {
                 'Content-type': 'application/json'
               }
