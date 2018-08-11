@@ -38,15 +38,18 @@
           if (window.confirm('Send message?')) {
             alert('Messages sent!'); // Page reloads, msgvalue gets reset to ''
             localStorage.setItem('msgvalue', document.getElementById('msg').value); // assigning msgvalue
-            const msgbody = document.getElementById('msg').value;
+            const msgbody = { 
+              value: document.getElementById('msg').value, 
+            };
             console.log(msgbody); // Test
             console.log(JSON.stringify(msgbody)); // "Test"
             localStorage.setItem('submitted', true);
+            l
             fetch('/sendpush', {
               method: 'POST',
-              body: msgbody, // unexpected token T (in Test) issue
+              body: JSON.stringify(msgbody), // unexpected token T (in Test) issue
               headers: {
-                'Content-type': 'text/html'
+                'Content-type': 'application/json'
               }
             });
           }
