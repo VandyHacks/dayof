@@ -44,7 +44,7 @@
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: JSON.stringify('Test'), // unexpected token T (in Test) issue
+              body: JSON.parse(JSON.stringify('Test')), // unexpected token T (in Test) issue
               headers: {
                 'Content-type': 'application/json'
               }
