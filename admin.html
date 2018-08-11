@@ -44,7 +44,6 @@
             console.log(msgbody); // Test
             console.log(JSON.stringify(msgbody)); // "Test"
             localStorage.setItem('submitted', true);
-            l
             fetch('/sendpush', {
               method: 'POST',
               body: JSON.stringify(msgbody), // unexpected token T (in Test) issue
