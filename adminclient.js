@@ -23,6 +23,7 @@ const options = {
 };
 
 function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
+  console.log(sub);
   console.log(JSON.stringify(sub));
   return fetch('/savesub', {
     method: 'POST',
