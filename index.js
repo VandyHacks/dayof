@@ -42,8 +42,6 @@ db.once('open', () => {
 
 const phoneArr = [];
 
-let message;
-
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
 
@@ -80,16 +78,14 @@ app.get('/', cors(), (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  message = req.body.msg;
   Promise.all(
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${message}`,
+      body: `VandyHacks: ${req.body.msg}`,
     })),
   )
     .then(
-      console.log(message),
       console.log('Message sent'),
       res.redirect('back'),
     )
@@ -142,11 +138,9 @@ app.post('/sendpush', (req, res) => {
   // Resource created successfully
   console.log(req.body); // added
   const payload = JSON.stringify({ title: 'VandyHacks', body: req.body.value }); // eslint-disable-line changed message to req.body
-  // const sub = req.body.subscribe;
   const options = {
     TTL: ttl,
   };
-  // PushSub.insert(sub);
   console.log(payload);
   PushSub.find({}, (err, data) => {
     if (err) throw err;

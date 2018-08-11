@@ -41,12 +41,10 @@
             const msgbody = { 
               value: document.getElementById('msg').value, 
             };
-            console.log(msgbody); // Test
-            console.log(JSON.stringify(msgbody)); // "Test"
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: JSON.stringify(msgbody), // unexpected token T (in Test) issue
+              body: JSON.stringify(msgbody), 
               headers: {
                 'Content-type': 'application/json'
               }

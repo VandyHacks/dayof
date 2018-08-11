@@ -2,8 +2,6 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
-let getsub; // eslint-disable-line
-
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -24,7 +22,7 @@ const options = {
   applicationServerKey: urlBase64ToUint8Array(publicKey),
 };
 
-function sendSubtoExpress(sub) { // subscriptions are not displayed if this is not running
+function sendSubtoExpress(sub) {
   console.log(sub);
   console.log(JSON.stringify(sub));
   return fetch('/savesub', {
@@ -59,10 +57,6 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
-  getsub = function () {
-    const text = { subs: subscription };
-    return text;
-  };
   console.log('Registered push');
 
   // Send PushSubscription to backend
