@@ -16,7 +16,7 @@
     <script>
       document.getElementById("notifbody").onload = setInterval(function () {
         console.log(localStorage.getItem('submitted'));
-        if (localStorage.getItem('submitted')) {
+        if (localStorage.getItem('submitted') == 'true') {
           console.log(localStorage.getItem('submitted'));
           console.log(localStorage.getItem('msgvalue'));
           document.getElementById("notif").innerHTML += `<p>${localStorage.getItem('msgvalue')}</p><br>`;
