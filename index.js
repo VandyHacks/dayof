@@ -140,8 +140,8 @@ app.post('/savesub', (req, res) => {
 // Dayof route
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
-  console.log(message); // added
-  const payload = JSON.stringify({ title: 'VandyHacks', body: req.body }); // eslint-disable-line changed message to req.body
+  console.log(req.body); // added
+  const payload = JSON.stringify({ title: 'VandyHacks', body: JSON.stringify(req.body) }); // eslint-disable-line changed message to req.body
   // const sub = req.body.subscribe;
   const options = {
     TTL: ttl,
