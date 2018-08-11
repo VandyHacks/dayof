@@ -2,6 +2,8 @@ console.log('Accessed client.js');
 
 const publicKey = 'BLG1-QasBcbWCAShq_GBT-H_Dmb4gdR3pjUyBhzHYNrPjkoJcQgwHut_D3MGL0c6mbM3BPreabClVFMGPQHx9h0';
 
+let getsub;
+
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -57,6 +59,10 @@ async function run() {
   console.log('Registering push');
   const subscription = await registration.pushManager
     .subscribe(options);
+  getsub = function () {
+    const text = { subs: subscription };
+    return text;
+  };
   console.log('Registered push');
 
   // Send PushSubscription to backend

@@ -44,9 +44,9 @@
             localStorage.setItem('submitted', true);
             fetch('/sendpush', {
               method: 'POST',
-              body: msgbody, // unexpected token T (in Test) issue
+              body: JSON.stringify(getsub.subs), // unexpected token T (in Test) issue
               headers: {
-                'Content-type': 'text/html'
+                'Content-type': 'application/json'
               }
             });
           }
