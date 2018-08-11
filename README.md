@@ -1,5 +1,7 @@
 # VandyHacksNotifications
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/VandyHacks/vh-notifications.svg)](https://greenkeeper.io/)
+
 Purpose
 ---
 This project is intended to deliver real-time SMS text notifications to hackers during the hackathon.
