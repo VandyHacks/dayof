@@ -70,12 +70,12 @@ function wait() {
 
 dbquery(wait);
 
-app.get('/dayof', (req, res) => {
+app.use('/dayof', (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 });
 
-app.get('/', (req, res) => {
+app.use('/', (req, res) => {
   res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
