@@ -14,12 +14,8 @@ const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ttl = 600;
-const app = express()
-  .listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-  });
-
-// const wss = new SocketServer({ app, port: PORT });
+const app = express();
+const wss = new SocketServer({ app, port: PORT });
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -168,6 +164,10 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
 
 module.exports = app;
