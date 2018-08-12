@@ -5,12 +5,10 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-const WebSocket = require('ws');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 
 const uri = process.env.PROD_MONGODB;
-const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ttl = 600;
@@ -23,12 +21,6 @@ app.use(helmet());
 app.use(express.static(__dirname));
 
 app.use(cors());
-
-const wss = new WebSocket.Server({ port: PORT });
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
-});
 
 webpush.setGCMAPIKey(process.env.GCM_KEY);
 webpush.setVapidDetails(
