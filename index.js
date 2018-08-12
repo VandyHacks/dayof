@@ -19,7 +19,7 @@ const app = express()
     console.log(`Server listening on port ${PORT}`);
   });
 
-const wss = new SocketServer({ app });
+const wss = new SocketServer({ app, port: 5000 });
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
