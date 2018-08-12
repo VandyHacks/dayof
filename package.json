@@ -23,6 +23,7 @@
   "homepage": "https://github.com/k-zhai/vh-notifications#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bufferutil": "4.0.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
@@ -30,7 +31,9 @@
     "mongoose": "^5.2.2",
     "nedb": "^1.8.0",
     "twilio": "^3.17.5",
-    "web-push": "^3.3.2"
+    "utf-8-validate": "5.0.1",
+    "web-push": "^3.3.2",
+    "ws": "6.0.0"
   },
   "devDependencies": {
     "@types/underscore": "^1.8.8",
