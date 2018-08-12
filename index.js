@@ -5,7 +5,7 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-const SocketServer = require('ws').Server;
+// const SocketServer = require('ws').Server;
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 
@@ -15,7 +15,7 @@ const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ttl = 600;
 const app = express();
-const wss = new SocketServer({ app, port: PORT });
+// const wss = new SocketServer({ app, port: PORT });
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
