@@ -15,7 +15,6 @@ const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ttl = 600;
 const app = express();
-const wss = new SocketServer({ app });
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -41,6 +40,22 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Database open');
 });
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
+app.get('/dayof', (req, res) => {
+  res.sendFile(`${__dirname}/live.html`);
+  console.log('Live notifications page loaded');
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/admin.html`);
+  console.log('Admin page loaded');
+});
+
+const wss = new SocketServer({ app });
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
@@ -73,16 +88,6 @@ function wait() {
 }
 
 dbquery(wait);
-
-app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/live.html`);
-  console.log('Live notifications page loaded');
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/admin.html`);
-  console.log('Admin page loaded');
-});
 
 app.post('/', (req, res) => {
   Promise.all(
@@ -164,10 +169,6 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
 });
 
 module.exports = app;
