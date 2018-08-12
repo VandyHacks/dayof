@@ -27,6 +27,8 @@ app.use(express.static(__dirname));
 
 app.use(cors());
 
+server.use((req, res) => res.sendFile(`${__dirname}/live.html`));
+
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
