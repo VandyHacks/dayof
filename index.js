@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 5000;
 const publicVapidKey = process.env.WEBPUSH_PUBLIC;
 const privateVapidKey = process.env.WEBPUSH_PRIVATE;
 const ttl = 600;
-const app = express();
+const app = express()
+  .listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+
+const wss = new SocketServer({ app });
 
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
@@ -41,26 +46,10 @@ db.once('open', () => {
   console.log('Database open');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
-
-app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/live.html`);
-  console.log('Live notifications page loaded');
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/admin.html`);
-  console.log('Admin page loaded');
-});
-
-const wss = new SocketServer({ app });
-
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
-});
+})
 
 const phoneArr = [];
 
@@ -88,6 +77,16 @@ function wait() {
 }
 
 dbquery(wait);
+
+app.get('/dayof', (req, res) => {
+  res.sendFile(`${__dirname}/live.html`);
+  console.log('Live notifications page loaded');
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/admin.html`);
+  console.log('Admin page loaded');
+});
 
 app.post('/', (req, res) => {
   Promise.all(
