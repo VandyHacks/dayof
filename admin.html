@@ -29,6 +29,7 @@
         </div>
       </div>
     </div>
+
     <!--confirmation popup after checking if textarea is empty-->
     <script type="application/javascript" src="adminclient.js"></script>
     <script>
@@ -36,8 +37,8 @@
       document.getElementById('pushnotif').onclick = () => {
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
-            alert('Messages sent!'); // Page reloads, msgvalue gets reset to ''
-            localStorage.setItem('msgvalue', document.getElementById('msg').value); // assigning msgvalue
+            alert('Messages sent!');
+            localStorage.setItem('msgvalue', document.getElementById('msg').value);
             const msgbody = { 
               value: document.getElementById('msg').value, 
             };

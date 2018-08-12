@@ -67,12 +67,12 @@ function wait() {
 
 dbquery(wait);
 
-app.get('/dayof', cors(), (req, res) => {
+app.get('/dayof', (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 });
 
-app.get('/', cors(), (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
