@@ -24,7 +24,7 @@ app.use(express.static(__dirname));
 
 app.use(cors());
 
-const wss = new WebSocket.Server({ app });
+const wss = new WebSocket.Server({ port: PORT });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
@@ -164,10 +164,6 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
 });
 
 module.exports = app;
