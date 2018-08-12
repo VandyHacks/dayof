@@ -5,7 +5,7 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
-const WebSocket = require('ws');
+// const WebSocket = require('ws');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 
@@ -70,12 +70,12 @@ function wait() {
 
 dbquery(wait);
 
-app.use('/dayof', (req, res) => {
+app.get('/dayof', (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 });
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
@@ -162,12 +162,12 @@ app.post('/sendpush', (req, res) => {
   });
 });
 
-const server = app;
+/* const server = app;
 
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
-});
+}); */
 
 module.exports = app;
