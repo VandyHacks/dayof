@@ -42,10 +42,10 @@ db.once('open', () => {
   console.log('Database open');
 });
 
-wss.on('connection', (ws) => {
+/* wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
-})
+}) */
 
 const phoneArr = [];
 
