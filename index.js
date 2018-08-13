@@ -79,6 +79,7 @@ const server = app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
+server.listen(PORT);
 
 app.post('/', (req, res) => {
   Promise.all(
