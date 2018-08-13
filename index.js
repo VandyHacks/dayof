@@ -68,16 +68,23 @@ function wait() {
 
 dbquery(wait);
 
-app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/live.html`);
-  console.log('Live notifications page loaded');
+const server = express()
+  .use((req, res) => {
+    res.sendFile(`${__dirname}/live.html`);
+    console.log('Live notifications page loaded');
+  })
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const wss = new WebSocket.Server({ server });
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
 });
 
-const server = app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/admin.html`);
+app.get('/', (req, res) => {
+  res.sendFile();
   console.log('Admin page loaded');
 });
-server.listen(PORT);
 
 app.post('/', (req, res) => {
   Promise.all(
@@ -159,12 +166,6 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
-});
-
-const wss = new WebSocket.Server({ server });
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
 });
 
 module.exports = app;
