@@ -19,20 +19,27 @@
       const el = document.getElementById("notif");
       // const d = new Date();
 
-      ws.onopen = function (event) {
-        console.log(event);
-        console.log(event.data);
-        event.forEach((element) => {
-          el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
-        })
-      }
+      fetch('/updatemsg', {
+        method: 'POST',
+        headers: JSON.stringify(null),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
 
       ws.onmessage = function (event) {
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
-        location.reload;
+        console.log(event);
+        console.log(event.data);
+        if (event.data === 'reload') { 
+          location.reload;
+        } else {
+          event.forEach((element) => {
+            el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
+          })
+        }
       }
 
-      //set localstorage value equal to el.innerHTML
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

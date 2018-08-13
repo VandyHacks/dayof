@@ -161,6 +161,9 @@ app.post('/sendpush', (req, res) => {
     )
       .then(
         console.log('Push notification sent'),
+        wss.clients.forEach((client) => {
+          client.send('Reload');
+        }),
         res.sendStatus(201),
       )
       .catch((error) => {
@@ -174,13 +177,22 @@ app.post('/sendpush', (req, res) => {
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
     });
+});
 
+app.post('/updatemsg', (req, res) => {
   Message.find({}, (err, docs) => {
     if (err) console.log(err);
-    wss.clients.forEach((client) => {
-      client.send(docs); // Changed from req.body.value to newMsg
-      console.log('Data sent to client: ', client);
-    });
+    Promise.all(
+      wss.clients.forEach((client) => {
+        client.send(docs); // Changed from req.body.value to newMsg
+        console.log('Data sent to client: ', client);
+      }),
+    )
+      .then(res.sendStatus(201))
+      .catch((error) => {
+        console.log('Error occurred: ', error);
+        res.sendStatus(500);
+      });
   });
 });
 
