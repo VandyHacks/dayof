@@ -8,6 +8,7 @@ const webpush = require('web-push');
 const WebSocket = require('ws');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
+const Msg = require('./schemas/schemas').msgSchema;
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -45,6 +46,7 @@ const phoneArr = [];
 
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
+const Message = db.model('Message', Msg);
 
 function dbquery(callback) {
   Hacker.find({}, (err, data) => {
@@ -165,9 +167,19 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
-  wss.clients.forEach((client) => {
-    client.send(req.body.value);
-    console.log('Data sent to client: ', client);
+  const d = new Date();
+  const newMsg = new Message({ msg: req.body.value, time: d });
+  newMsg.save()
+    .catch((err) => {
+      console.log('Unable to save message to database: ', err);
+    });
+
+  Message.find({}, (err, docs) => {
+    if (err) console.log(err);
+    wss.clients.forEach((client) => {
+      client.send(docs); // Changed from req.body.value to newMsg
+      console.log('Data sent to client: ', client);
+    });
   });
 });
 

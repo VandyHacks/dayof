@@ -17,10 +17,14 @@
       const HOST = location.origin.replace(/^http/, 'ws');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("notif");
-      const d = new Date();
       
+
       ws.onmessage = function (event) {
-        el.innerHTML += `<p>${d}<br>${event.data}</p>`
+        // el.innerHTML += `<p>${d}<br>${event.data}</p>`
+        console.log(event);
+        event.data.forEach((element) => {
+          el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`;
+        })
       }
     </script>
 
