@@ -185,7 +185,7 @@ app.post('/updatemsg', (req, res) => {
     console.log(docs);
     Promise.all(
       wss.clients.forEach((client) => {
-        client.send(docs); // Changed from req.body.value to newMsg
+        client.send(JSON.stringify(docs)); // Changed from req.body.value
         console.log('Data sent to client');
       }),
     )
