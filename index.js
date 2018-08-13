@@ -24,8 +24,6 @@ app.use(express.static(__dirname));
 
 app.use(cors());
 
-app.listen(PORT);
-
 webpush.setGCMAPIKey(process.env.GCM_KEY);
 webpush.setVapidDetails(
   'mailto:kzhai190@gmail.com', // change to environment variable
