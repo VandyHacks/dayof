@@ -151,7 +151,7 @@ app.post('/sendpush', (req, res) => {
   };
   wss.clients.forEach((client) => {
     client.send(req.body.value);
-    console.log('Data sent to client');
+    console.log('Data sent to client: ', client);
   });
   console.log(payload);
   PushSub.find({}, (err, data) => {
