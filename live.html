@@ -20,6 +20,7 @@
       // const d = new Date();
 
       ws.onopen = function (event) {
+        console.log(event);
         event.forEach((element) => {
           el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
         })
