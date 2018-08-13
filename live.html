@@ -32,7 +32,7 @@
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
         console.log(event.data);
         if (event.data === 'reload') { 
-          location.reload();
+          location.reload(true);
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
