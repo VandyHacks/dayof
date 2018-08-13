@@ -16,7 +16,7 @@
     <script>
       const HOST = location.origin.replace(/^http/, 'ws');
       const ws = new WebSocket(HOST);
-      const el = element.getElementById("notif");
+      const el = document.getElementById("notif");
       const d = new Date();
       
       ws.onmessage = function (event) {
