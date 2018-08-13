@@ -17,16 +17,20 @@
       const HOST = location.origin.replace(/^http/, 'ws');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("notif");
-      
+      // const d = new Date();
 
-      ws.onmessage = function (event) {
-        // el.innerHTML += `<p>${d}<br>${event.data}</p>`
-        el.innerHtml = '';
-        console.log(event);
+      ws.onload = function (event) {
         event.forEach((element) => {
-          el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`;
+          el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
         })
       }
+      
+      ws.onmessage = function (event) {
+        // el.innerHTML += `<p>${d}<br>${event.data}</p>`
+        location.reload;
+      }
+
+      //set localstorage value equal to el.innerHTML
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
