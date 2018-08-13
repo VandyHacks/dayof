@@ -19,15 +19,6 @@
       const el = document.getElementById("notif");
       // const d = new Date();
 
-      fetch('/updatemsg', {
-        method: 'POST',
-        headers: JSON.stringify(null),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      })
-      .then(console.log('Fetched'));
-
       ws.onmessage = function (event) {
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
         console.log(event.data);
