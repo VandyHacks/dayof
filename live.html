@@ -34,7 +34,7 @@
         if (event.data === 'reload') { 
           location.reload;
         } else {
-          event.forEach((element) => {
+          event.data.forEach((element) => {
             el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
           })
         }
