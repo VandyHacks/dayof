@@ -23,7 +23,7 @@
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
             </div>
             <div class="text-right" >
-              <input type="submit" id="pushnotif" onclick="return confirmMsg()" class="btn btn-outline-secondary" value="Send"><br>
+              <input type="submit" id="pushnotif" onclick="return confirmMsg();" class="btn btn-outline-secondary" value="Send"><br>
             </div>
           </form>
         </div>
@@ -35,7 +35,9 @@
       console.log('Sending push');
       function confirmMsg() {
         if (document.getElementById('msg').value !== '') {
-          if (window.confirm('Send message?')) {
+          const confirmation = window.confirm('Send message?');
+          console.log(confirmation);
+          if (confirmation) {
             alert('Messages sent!');
             const msgbody = { 
               value: document.getElementById('msg').value, 
