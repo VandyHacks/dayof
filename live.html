@@ -21,6 +21,7 @@
 
       ws.onopen = function (event) {
         console.log(event);
+        console.log(event.data);
         event.forEach((element) => {
           el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
         })
