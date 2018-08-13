@@ -182,10 +182,11 @@ app.post('/sendpush', (req, res) => {
 app.post('/updatemsg', (req, res) => {
   Message.find({}, (err, docs) => {
     if (err) console.log(err);
+    console.log(docs);
     Promise.all(
       wss.clients.forEach((client) => {
         client.send(docs); // Changed from req.body.value to newMsg
-        console.log('Data sent to client: ', client);
+        console.log('Data sent to client');
       }),
     )
       .then(res.sendStatus(201))
