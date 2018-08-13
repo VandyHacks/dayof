@@ -162,7 +162,7 @@ app.post('/sendpush', (req, res) => {
       .then(
         console.log('Push notification sent'),
         wss.clients.forEach((client) => {
-          client.send('Reload');
+          client.send('reload');
         }),
         res.sendStatus(201),
       )
