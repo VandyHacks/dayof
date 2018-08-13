@@ -82,7 +82,7 @@ wss.on('connection', (ws) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile();
+  res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
 });
 
