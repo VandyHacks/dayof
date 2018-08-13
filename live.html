@@ -26,6 +26,7 @@
           'Content-type': 'application/json',
         },
       })
+      .then(console.log('Fetched'));
 
       ws.onmessage = function (event) {
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
