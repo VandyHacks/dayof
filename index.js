@@ -68,17 +68,11 @@ function wait() {
 
 dbquery(wait);
 
-const server = express()
-  .use((req, res) => {
-    res.sendFile(`${__dirname}/live.html`);
-    console.log('Live notifications page loaded');
-  })
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.listen(PORT);
 
-const wss = new WebSocket.Server({ server });
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
+const server = app.get('/dayof', (req, res) => {
+  res.sendFile(`${__dirname}/live.html`);
+  console.log('Live notifications page loaded');
 });
 
 app.get('/', (req, res) => {
@@ -166,6 +160,12 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
+});
+
+const wss = new WebSocket.Server({ server });
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
 });
 
 module.exports = app;
