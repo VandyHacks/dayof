@@ -35,9 +35,7 @@
       console.log('Sending push');
       function confirmMsg() {
         if (document.getElementById('msg').value !== '') {
-          const confirmation = window.confirm('Send message?');
-          console.log(confirmation);
-          if (confirmation) {
+          if (window.confirm('Send message?')) {
             alert('Messages sent!');
             const msgbody = { 
               value: document.getElementById('msg').value, 
