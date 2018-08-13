@@ -22,7 +22,7 @@
       ws.onmessage = function (event) {
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
         console.log(event);
-        event.data.forEach((element) => {
+        event.forEach((element) => {
           el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`;
         })
       }
