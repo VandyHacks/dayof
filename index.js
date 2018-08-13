@@ -149,10 +149,6 @@ app.post('/sendpush', (req, res) => {
   const options = {
     TTL: ttl,
   };
-  wss.clients.forEach((client) => {
-    client.send(req.body.value);
-    console.log('Data sent to client: ', client);
-  });
   console.log(payload);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
@@ -168,6 +164,10 @@ app.post('/sendpush', (req, res) => {
       .catch((error) => {
         console.log(error.stack);
       });
+  });
+  wss.clients.forEach((client) => {
+    client.send(req.body.value);
+    console.log('Data sent to client: ', client);
   });
 });
 
