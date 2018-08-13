@@ -149,6 +149,9 @@ app.post('/sendpush', (req, res) => {
   const options = {
     TTL: ttl,
   };
+  wss.clients.forEach((client) => {
+    client.send(req.body.value);
+  });
   console.log(payload);
   PushSub.find({}, (err, data) => {
     if (err) throw err;
