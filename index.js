@@ -167,6 +167,7 @@ app.post('/sendpush', (req, res) => {
         console.log(error.stack);
       });
   });
+
   const d = new Date();
   const newMsg = new Message({ msg: req.body.value, time: d });
   newMsg.save()
