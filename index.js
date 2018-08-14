@@ -186,7 +186,10 @@ app.post('/updatemsg', (req, res) => {
       wss.clients.forEach((client) => {
         client.send(JSON.stringify(docs)); // Changed from req.body.value
         console.log('Data sent to client');
-      }),
+      })
+        .catch((err) => {
+          console.log('Error: ', err);
+        }
     )
       .then(res.sendStatus(201));
   });
