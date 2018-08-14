@@ -23,11 +23,11 @@
         // el.innerHTML += `<p>${d}<br>${event.data}</p>`
         console.log(event.data);
         if (event.data === 'reload') { 
-          location.reload(true);
+          console.log('Message sent, reload page');
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
-            el.innerHTML += `<p>${element.time}<br>${element.msg}</p>`
+            el.innerHTML = `<p>${element.time}<br>${element.msg}</p>` + el.innerHTML;
           })
         }
       }
