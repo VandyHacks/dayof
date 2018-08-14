@@ -85,6 +85,7 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
   wscopy.isAlive = true;
+  console.log(wscopy.isAlive);
   wscopy.on('pong', heartbeat);
   setInterval(() => {
     console.log(wscopy.readyState);
@@ -94,7 +95,7 @@ wss.on('connection', (ws) => {
     }
     wscopy.ping('pingdata');
     console.log('Pinged');
-  }, 30000);
+  }, 5000);
   wscopy.on('close', () => console.log('Client disconnected'));
 });
 
