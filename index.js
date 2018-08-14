@@ -76,9 +76,20 @@ const server = app.get('/dayof', (req, res) => {
 })
   .listen(PORT);
 
+function heartbeat() {
+  this.isAlive = true;
+}
+
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  ws.on('pong', heartbeat);
+  setInterval(() => {
+    if (ws.isAlive === false) {
+      ws.terminate();
+    }
+    ws.ping('pingdata');
+  }, 15000);
   ws.on('close', () => console.log('Client disconnected'));
 });
 
@@ -196,17 +207,6 @@ app.post('/updatemsg', (req, res) => {
     .catch((error) => {
       console.log(error);
     });
-
-  /* Message.find({}, (err, docs) => {
-    if (err) console.log(err);
-    Promise.all(
-      wss.clients.forEach((client) => {
-        client.send(JSON.stringify(docs)); // Changed from req.body.value
-        console.log('Data sent to client');
-      }),
-    )
-      .then(res.sendStatus(201));
-  }); */
 });
 
 module.exports = app;
