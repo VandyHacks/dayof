@@ -79,11 +79,11 @@ const server = app.get('/dayof', (req, res) => {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  function pingclient() {
+  /* function pingclient() {
     ws.ping();
     setTimeout(pingclient(), 10000);
   }
-  pingclient(ws);
+  pingclient(ws); */
   ws.on('close', () => console.log('Client disconnected'));
 });
 
