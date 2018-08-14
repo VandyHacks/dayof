@@ -83,14 +83,16 @@ function heartbeat() {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  ws.on('pong', heartbeat);
+  const wscopy = ws;
+  wscopy.isAlive = true;
+  wscopy.on('pong', heartbeat);
   setInterval(() => {
-    if (ws.isAlive === false) {
-      ws.terminate();
+    if (wscopy.isAlive === false) {
+      wscopy.terminate();
     }
-    ws.ping('pingdata');
-  }, 15000);
-  ws.on('close', () => console.log('Client disconnected'));
+    wscopy.ping('pingdata');
+  }, 30000);
+  wscopy.on('close', () => console.log('Client disconnected'));
 });
 
 app.get('/', (req, res) => {
