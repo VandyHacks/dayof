@@ -79,11 +79,6 @@ const server = app.get('/dayof', (req, res) => {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  /* function pingclient() {
-    ws.ping();
-    setTimeout(pingclient(), 10000);
-  }
-  pingclient(ws); */
   ws.on('close', () => console.log('Client disconnected'));
 });
 
@@ -187,7 +182,6 @@ app.post('/sendpush', (req, res) => {
 app.post('/updatemsg', (req, res) => {
   Message.find({}, (err, docs) => {
     if (err) console.log(err);
-    console.log(docs);
     Promise.all(
       wss.clients.forEach((client) => {
         client.send(JSON.stringify(docs)); // Changed from req.body.value
