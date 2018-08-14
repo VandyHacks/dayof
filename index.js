@@ -180,20 +180,32 @@ app.post('/sendpush', (req, res) => {
 });
 
 app.post('/updatemsg', (req, res) => {
-  const promise = new Promise((resolve, reject) => {
-    Message.find({}, (err, docs) => {
-      if (err) reject(err);
+  const promise = function () {
+    return Message.find({}, (err, docs) => {
+      if (err) console.log(err);
       wss.clients.forEach((client) => {
         client.send(JSON.stringify(docs)); // Changed from req.body.value
         console.log('Data sent to client');
       });
     });
-  });
-  Promise.all(promise)
+  };
+
+  Promise.all([promise])
     .then(res.sendStatus(201))
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.log(error);
     });
+
+  /* Message.find({}, (err, docs) => {
+    if (err) console.log(err);
+    Promise.all(
+      wss.clients.forEach((client) => {
+        client.send(JSON.stringify(docs)); // Changed from req.body.value
+        console.log('Data sent to client');
+      }),
+    )
+      .then(res.sendStatus(201));
+  }); */
 });
 
 module.exports = app;
