@@ -188,11 +188,7 @@ app.post('/updatemsg', (req, res) => {
         console.log('Data sent to client');
       }),
     )
-      .then(res.sendStatus(201))
-      .catch((error) => {
-        console.log('Error occurred: ', error);
-        res.sendStatus(500);
-      });
+      .then(res.sendStatus(201));
   });
 });
 
