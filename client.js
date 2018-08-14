@@ -69,7 +69,10 @@ async function run() {
       'Content-type': 'application/json',
     },
   })
-    .then(console.log('Fetched'));
+    .then(console.log('Fetched'))
+    .catch((err) => {
+      console.log('Error fetching: ', err);
+    });
 }
 
 function requestPermission() {
