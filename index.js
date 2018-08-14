@@ -187,9 +187,9 @@ app.post('/updatemsg', (req, res) => {
         client.send(JSON.stringify(docs)); // Changed from req.body.value
         console.log('Data sent to client');
       })
-        .catch((err) => {
-          console.log('Error: ', err);
-        }
+        .catch((error) => {
+          console.log('Error: ', error);
+        }),
     )
       .then(res.sendStatus(201));
   });
