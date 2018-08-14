@@ -180,19 +180,20 @@ app.post('/sendpush', (req, res) => {
 });
 
 app.post('/updatemsg', (req, res) => {
-  Message.find({}, (err, docs) => {
-    if (err) console.log(err);
-    Promise.all(
+  const promise = new Promise((resolve, reject) => {
+    Message.find({}, (err, docs) => {
+      if (err) reject(err);
       wss.clients.forEach((client) => {
         client.send(JSON.stringify(docs)); // Changed from req.body.value
         console.log('Data sent to client');
-      })
-        .catch((error) => {
-          console.log('Error: ', error);
-        }),
-    )
-      .then(res.sendStatus(201));
+      });
+    });
   });
+  Promise.all(promise)
+    .then(res.sendStatus(201))
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = app;
