@@ -70,6 +70,11 @@ function wait() {
 
 dbquery(wait);
 
+function pingclient(ws) {
+  ws.ping();
+  setTimeout(pingclient, 10000);
+}
+
 const server = app.get('/dayof', (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
@@ -79,6 +84,7 @@ const server = app.get('/dayof', (req, res) => {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  pingclient(ws);
   ws.on('close', () => console.log('Client disconnected'));
 });
 
