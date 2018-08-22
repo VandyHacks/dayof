@@ -85,18 +85,16 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
   wscopy.isAlive = true;
-  while (wscopy.readyState === 1) {
-    wscopy.on('pong', heartbeat);
-    setInterval(() => {
-      console.log(wscopy.readyState);
-      if (wscopy.isAlive === false) {
-        console.log('Connection terminated');
-        wscopy.terminate();
-      }
-      wscopy.ping('pingdata');
-      console.log('Pinged');
-    }, 5000);
-  }
+  wscopy.on('pong', heartbeat);
+  setInterval(() => {
+    console.log(wscopy.readyState);
+    if (wscopy.isAlive === false) {
+      console.log('Connection terminated');
+      wscopy.terminate();
+    }
+    wscopy.ping('pingdata');
+    console.log('Pinged');
+  }, 5000);
   wscopy.on('close', () => console.log('Client disconnected'));
 });
 
