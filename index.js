@@ -85,16 +85,18 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
   wscopy.isAlive = true;
-  wscopy.on('pong', heartbeat);
-  setInterval(() => {
-    wscopy.ping('pingdata');
-    console.log('Pinged');
-    console.log(wscopy.readyState);
-    if (wscopy.isAlive === false) {
-      console.log('Connection terminated');
-      wscopy.terminate();
-    }
-  }, 5000);
+  while (wscopy.readyState === 1) {
+    wscopy.on('pong', heartbeat);
+    setInterval(() => {
+      console.log(wscopy.readyState);
+      if (wscopy.isAlive === false) {
+        console.log('Connection terminated');
+        wscopy.terminate();
+      }
+      wscopy.ping('pingdata');
+      console.log('Pinged');
+    }, 5000);
+  }
   wscopy.on('close', () => console.log('Client disconnected'));
 });
 
@@ -104,13 +106,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  Promise.all(
+  const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${req.body.msg}`,
-    })),
-  )
+    }));
+    resolve();
+  });
+  Promise.all([promise])
     .then(
       console.log('Message sent'),
       res.redirect('back'),
@@ -200,7 +204,7 @@ app.post('/updatemsg', (req, res) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
-        client.send(JSON.stringify(docs)); // Changed from req.body.value
+        client.send(JSON.stringify(docs));
         console.log('Data sent to client');
       });
     });
