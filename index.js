@@ -76,14 +76,14 @@ const server = app.get('/dayof', (req, res) => {
 })
   .listen(PORT);
 
-function heartbeat() {
+/* function heartbeat() {
   this.isAlive = true;
-}
+} */
 
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  const wscopy = ws;
+  /* const wscopy = ws;
   wscopy.isAlive = true;
   wscopy.on('pong', heartbeat);
   setInterval(() => {
@@ -94,8 +94,8 @@ wss.on('connection', (ws) => {
     }
     wscopy.ping('pingdata');
     console.log('Pinged');
-  }, 5000);
-  wscopy.on('close', () => console.log('Client disconnected'));
+  }, 5000); */
+  ws.on('close', () => console.log('Client disconnected'));
 });
 
 app.get('/', (req, res) => {
