@@ -170,24 +170,27 @@ app.post('/sendpush', (req, res) => {
     TTL: ttl,
   };
   console.log(payload);
-  PushSub.find({}, (err, data) => {
-    if (err) throw err;
-    Promise.all(
+  const promise = new Promise((resolve, reject) => {
+    PushSub.find({}, (err, data) => {
+      if (err) reject(err);
       data.forEach((element) => {
+        console.log('Data: ', element);
         webpush.sendNotification(element, payload, options);
-      }),
-    )
-      .then(
-        console.log('Push notification sent'),
-        wss.clients.forEach((client) => {
-          client.send('reload');
-        }),
-        res.sendStatus(201),
-      )
-      .catch((error) => {
-        console.log(error.stack);
       });
+    });
+    resolve();
   });
+  Promise.all([promise])
+    .then(
+      console.log('Push notification sent'),
+      wss.clients.forEach((client) => {
+        client.send('reload');
+      }),
+      res.sendStatus(201),
+    )
+    .catch((error) => {
+      console.log(error.stack);
+    });
 
   const d = new Date();
   const newMsg = new Message({ msg: req.body.value, time: d });
