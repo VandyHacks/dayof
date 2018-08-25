@@ -76,9 +76,9 @@ const server = app.get('/dayof', (req, res) => {
 })
   .listen(PORT);
 
-/* function heartbeat() {
+function heartbeat() {
   this.isAlive = true;
-} */
+}
 
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
