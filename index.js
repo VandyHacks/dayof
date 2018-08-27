@@ -93,8 +93,10 @@ wss.on('connection', (ws) => {
       wscopy.terminate();
       clearInterval(keepAlive);
     }
-    wscopy.ping('pingdata');
-    console.log('Pinged');
+    while (wscopy.readyState === 1) {
+      wscopy.ping('pingdata');
+      console.log('Pinged');
+    }
   }, 5000);
   ws.on('close', () => console.log('Client disconnected'));
 });
