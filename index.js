@@ -89,8 +89,8 @@ wss.on('connection', (ws) => {
   const keepAlive = setInterval(() => {
     console.log(wscopy.readyState);
     if (wscopy.readyState !== 1 || !wscopy.isAlive) { // issue here
-      wscopy.terminate();
       clearInterval(keepAlive);
+      wscopy.terminate();
     }
     wscopy.ping('pingdata');
     console.log('Pinged');
