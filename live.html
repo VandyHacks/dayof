@@ -37,7 +37,7 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time)
-            el.innerHTML = `<p><em>${d}</em><br>${element.msg}</p>` + el.innerHTML;
+            el.innerHTML = `<p><i>${d}</i><br>${element.msg}</p>` + el.innerHTML;
           })
         }
       }
