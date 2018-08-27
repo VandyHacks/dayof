@@ -88,7 +88,7 @@ wss.on('connection', (ws) => {
   wscopy.on('pong', heartbeat);
   const keepAlive = setInterval(() => {
     console.log(wscopy.readyState);
-    if (wscopy.readyState !== 1 || !wscopy.isAlive) { // issue here
+    if (wscopy.readyState !== 1 || !wscopy.isAlive) {
       clearInterval(keepAlive);
       wscopy.terminate();
     } else {
