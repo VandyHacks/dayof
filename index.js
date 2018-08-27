@@ -91,9 +91,10 @@ wss.on('connection', (ws) => {
     if (wscopy.readyState !== 1 || !wscopy.isAlive) { // issue here
       clearInterval(keepAlive);
       wscopy.terminate();
+    } else {
+      wscopy.ping('pingdata');
+      console.log('Pinged');
     }
-    wscopy.ping('pingdata');
-    console.log('Pinged');
   }, 5000);
   ws.on('close', () => {
     wscopy.isAlive = false;
