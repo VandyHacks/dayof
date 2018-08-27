@@ -86,11 +86,12 @@ wss.on('connection', (ws) => {
   const wscopy = ws;
   wscopy.isAlive = true;
   wscopy.on('pong', heartbeat);
-  setInterval(() => {
+  const keepAlive = setInterval(() => {
     console.log(wscopy.readyState);
     if (wscopy.isAlive === false || wscopy.readyState === 3) {
       console.log('Connection terminated');
       wscopy.terminate();
+      clearInterval(keepAlive);
     }
     wscopy.ping('pingdata');
     console.log('Pinged');
