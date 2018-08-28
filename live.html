@@ -18,19 +18,10 @@
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("notif");
-      // const newMsg = false;
-
-      /* ws.onclose = function () {
-        if (newMsg) {
-          el.innerHTML = '<p>New messages available</p>' + el.innerHTML;
-        }
-      } */
 
       ws.onmessage = function (event) {
-        // el.innerHTML += `<p>${d}<br>${event.data}</p>`
         console.log(event.data);
         if (event.data === 'reload') {
-          // newMsg = true; 
           console.log('Message sent, reload page');
           location.reload();
         } else {
