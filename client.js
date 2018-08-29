@@ -17,20 +17,29 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-/* function sendSubtoExpress(sub) {
+const options = {
+  userVisibleOnly: true,
+  applicationServerKey: urlBase64ToUint8Array(publicKey),
+};
+
+function sendSubtoExpress(sub) {
+  console.log(sub);
+  console.log(JSON.stringify(sub));
   return fetch('/savesub', {
     method: 'POST',
+    body: JSON.stringify(sub),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(sub),
   })
     .then((res) => {
+      console.log(res);
       if (!res.ok) {
         throw new Error('Bad response from server.');
       }
+      return JSON.parse(JSON.stringify(res));
     });
-} */
+}
 
 // Register SW, Register Push, Send Push
 async function run() {
@@ -41,36 +50,51 @@ async function run() {
     .catch((err) => {
       console.log(err);
     });
-  // swRegistration = registration;
-  // initializeUI();
+  console.log(registration);
   console.log('Registered service worker');
 
   // Register Push
   console.log('Registering push');
   const subscription = await registration.pushManager
-    .subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(publicKey),
-    });
+    .subscribe(options);
   console.log('Registered push');
 
-  // sendSubtoExpress(subscription);
+  // Send PushSubscription to backend
+  await sendSubtoExpress(subscription);
 
-  // Send Push Notification
-  console.log('Sending push');
-  await fetch('/dayof', {
+  fetch('/updatemsg', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
       'Content-type': 'application/json',
     },
-  });
-  console.log('Sent push');
+  })
+    .then(console.log('Fetched'))
+    .catch((err) => {
+      console.log('Error fetching: ', err);
+    });
+}
+
+function requestPermission() {
+  return new Promise((resolve, reject) => {
+    const permissionResult = Notification.requestPermission((result) => {
+      resolve(result);
+    });
+    if (permissionResult) {
+      permissionResult.then(resolve, reject);
+    }
+  })
+    .then((permissionResult) => {
+      if (permissionResult !== 'granted') {
+        throw new Error('Permission not granted.');
+      }
+    });
 }
 
 // Check for service worker
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push are supported');
+  requestPermission();
   run().catch(error => console.error(error));
 } else {
   console.warn('Push notifications not supported');
