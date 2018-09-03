@@ -168,7 +168,7 @@ app.post('/savesub', (req, res) => {
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
   console.log(req.body); // added
-  const payload = JSON.stringify({ title: 'VandyHacks', body: req.body.value });
+  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.head}`, body: req.body.value });
   const options = {
     TTL: ttl,
   };
@@ -196,7 +196,7 @@ app.post('/sendpush', (req, res) => {
     });
 
   const d = new Date();
-  const newMsg = new Message({ msg: req.body.value, time: d });
+  const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
   newMsg.save()
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
