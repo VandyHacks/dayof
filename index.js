@@ -168,7 +168,7 @@ app.post('/savesub', (req, res) => {
 app.post('/sendpush', (req, res) => {
   // Resource created successfully
   console.log(req.body); // added
-  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.head}`, body: req.body.value });
+  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value });
   const options = {
     TTL: ttl,
   };
