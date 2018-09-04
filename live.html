@@ -28,7 +28,7 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time)
-            el.innerHTML = `<div class="container"><i>${d}</i> / <em>${element.header}</em><br>${element.msg}</div>` + el.innerHTML;
+            el.innerHTML = `<div class="container"><i>${d}</i> / <b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
           })
         }
       }
