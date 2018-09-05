@@ -14,6 +14,7 @@
     <div id="notif"></div>
     
     <script type="application/javascript" src="client.js"></script>
+
     <script>
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
@@ -28,12 +29,20 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time)
-            el.innerHTML = `<div class="card"><i>${d}</i> / <b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
+            el.innerHTML = `<div class="card"><i>${d}</i><b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
           })
         }
       }
 
     </script>
+
+    <style>
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 40%;
+      }
+    </style>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
