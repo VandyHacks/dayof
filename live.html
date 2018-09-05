@@ -17,9 +17,9 @@
       .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
-        width: 40%;
+        width: 50%;
         padding: 10px;
-        text-align: center;
+        justify-content: center;
       }
       .container {
         text-align: left;
@@ -44,7 +44,7 @@
             const d = new Date(element.time).toUTCString();
             const msgstring = `<div class="card">
                                 <div class="container">
-                                  <i>${d}</i><b>${element.header}</b><br>${element.msg}
+                                  <i>${d}</i><br><b>${element.header}</b><br>${element.msg}
                                 </div>
                               </div>`
             el.innerHTML =  msgstring + el.innerHTML;
