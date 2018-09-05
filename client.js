@@ -61,18 +61,6 @@ async function run() {
 
   // Send PushSubscription to backend
   await sendSubtoExpress(subscription);
-
-  fetch('/updatemsg', {
-    method: 'POST',
-    body: JSON.stringify(subscription),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  })
-    .then(console.log('Fetched'))
-    .catch((err) => {
-      console.log('Error fetching: ', err);
-    });
 }
 
 function requestPermission() {

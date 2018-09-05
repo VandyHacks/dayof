@@ -10,29 +10,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body id = "notifbody">
-    <h4 style="text-align: center">VandyHacks Live Notifications</h4>
     <div id="notif"></div>
     
     <script type="application/javascript" src="client.js"></script>
     <script>
-      const HOST = location.origin.replace(/^https/, 'wss');
-      const ws = new WebSocket(HOST);
-      const el = document.getElementById("notif");
-
-      ws.onmessage = function (event) {
-        console.log(event.data);
-        if (event.data === 'reload') {
-          console.log('Message sent, reload page');
-          location.reload();
-        } else {
-          const arr = JSON.parse(event.data);
-          arr.forEach((element) => {
-            const d = new Date(element.time)
-            el.innerHTML = `<div class="card"><i>${d}</i> / <b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
-          })
+      document.getElementById("notifbody").onload = setInterval(function () {
+        if (localStorage.getItem('submitted') == 'true') {
+          console.log(localStorage.getItem('submitted'));
+          console.log(localStorage.getItem('msgvalue'));
+          const d = new Date();
+          document.getElementById("notif").innerHTML += `<p>${d}<br>${localStorage.getItem('msgvalue')}</p>`;
+          localStorage.setItem('submitted', false);
         }
-      }
-
+      }, 5000);
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
