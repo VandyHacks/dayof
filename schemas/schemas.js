@@ -16,4 +16,9 @@ const hackerSchema = new mongoose.Schema({
   phone: { type: String, max: 15 },
 });
 
-module.exports = { pushSchema, hackerSchema };
+const msgSchema = new mongoose.Schema({
+  msg: String,
+  time: Date,
+});
+
+module.exports = { pushSchema, hackerSchema, msgSchema };

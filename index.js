@@ -5,8 +5,10 @@ const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
+const WebSocket = require('ws');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
+const Msg = require('./schemas/schemas').msgSchema;
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -25,7 +27,7 @@ app.use(cors());
 
 webpush.setGCMAPIKey(process.env.GCM_KEY);
 webpush.setVapidDetails(
-  'mailto:kzhai190@gmail.com',
+  'mailto:kzhai190@gmail.com', // change to environment variable
   publicVapidKey,
   privateVapidKey,
 );
@@ -44,6 +46,7 @@ const phoneArr = [];
 
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
+const Message = db.model('Message', Msg);
 
 function dbquery(callback) {
   Hacker.find({}, (err, data) => {
@@ -67,9 +70,36 @@ function wait() {
 
 dbquery(wait);
 
-app.get('/dayof', (req, res) => {
+const server = app.get('/dayof', (req, res) => {
   res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
+})
+  .listen(PORT);
+
+function heartbeat() {
+  this.isAlive = true;
+}
+
+const wss = new WebSocket.Server({ server });
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  const wscopy = ws;
+  wscopy.isAlive = true;
+  wscopy.on('pong', heartbeat);
+  const keepAlive = setInterval(() => {
+    console.log(wscopy.readyState);
+    if (wscopy.readyState !== 1 || !wscopy.isAlive) {
+      clearInterval(keepAlive);
+      wscopy.terminate();
+    } else {
+      wscopy.ping('pingdata');
+      console.log('Pinged');
+    }
+  }, 5000);
+  ws.on('close', () => {
+    wscopy.isAlive = false;
+    console.log('Client disconnected');
+  });
 });
 
 app.get('/', (req, res) => {
@@ -78,13 +108,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  Promise.all(
+  const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${req.body.msg}`,
-    })),
-  )
+    }));
+    resolve();
+  });
+  Promise.all([promise])
     .then(
       console.log('Message sent'),
       res.redirect('back'),
@@ -142,25 +174,53 @@ app.post('/sendpush', (req, res) => {
     TTL: ttl,
   };
   console.log(payload);
-  PushSub.find({}, (err, data) => {
-    if (err) throw err;
-    Promise.all(
+  const promise = new Promise((resolve, reject) => {
+    PushSub.find({}, (err, data) => {
+      if (err) reject(err);
       data.forEach((element) => {
+        console.log('Data: ', element);
         webpush.sendNotification(element, payload, options);
-      }),
-    )
-      .then(
-        console.log('Push notification sent'),
-        res.sendStatus(201),
-      )
-      .catch((error) => {
-        console.log(error.stack);
       });
+    });
+    resolve();
   });
+  Promise.all([promise])
+    .then(
+      console.log('Push notification sent'),
+      wss.clients.forEach((client) => {
+        client.send('reload');
+      }),
+      res.sendStatus(201),
+    )
+    .catch((error) => {
+      console.log(error.stack);
+    });
+
+  const d = new Date();
+  const newMsg = new Message({ msg: req.body.value, time: d });
+  newMsg.save()
+    .catch((err) => {
+      console.log('Unable to save message to database: ', err);
+    });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+app.post('/updatemsg', (req, res) => {
+  const promise = new Promise((resolve, reject) => {
+    Message.find({}, (err, docs) => {
+      if (err) reject(err);
+      wss.clients.forEach((client) => {
+        client.send(JSON.stringify(docs));
+        console.log('Data sent to client');
+      });
+    });
+    resolve();
+  });
+
+  Promise.all([promise])
+    .then(res.sendStatus(201))
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 module.exports = app;
