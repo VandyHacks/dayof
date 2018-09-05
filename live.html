@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body id = "notifbody">
-    <h4>VandyHacks Live Notifications</h4>
+    <h4 style="text-align: center">VandyHacks Live Notifications</h4>
     <div id="notif"></div>
     
     <script type="application/javascript" src="client.js"></script>
@@ -28,7 +28,7 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time)
-            el.innerHTML = `<p><i>${d}</i><br>${element.msg}</p>` + el.innerHTML;
+            el.innerHTML = `<div class="card"><i>${d}</i> / <b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
           })
         }
       }

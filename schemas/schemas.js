@@ -17,6 +17,7 @@ const hackerSchema = new mongoose.Schema({
 });
 
 const msgSchema = new mongoose.Schema({
+  header: String,
   msg: String,
   time: Date,
 });
