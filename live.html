@@ -28,7 +28,7 @@
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
-            const d = new Date(element.time)
+            const d = new Date(element.time).toUTCString();
             el.innerHTML = `<div class="card"><i>${d}</i><b>${element.header}</b><br>${element.msg}</div>` + el.innerHTML;
           })
         }
