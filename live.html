@@ -33,11 +33,6 @@
       const el = document.getElementById("notif");
 
       ws.onmessage = function (event) {
-        const msgstring = `<div class="card">
-                            <div class="container">
-                              <i>${d}</i><b>${element.header}</b><br>${element.msg}
-                            </div>
-                          </div>`
         console.log(event.data);
         if (event.data === 'reload') {
           console.log('Message sent, reload page');
@@ -46,7 +41,12 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time).toUTCString();
-            el.innerHTML =  + el.innerHTML;
+            const msgstring = `<div class="card">
+                                <div class="container">
+                                  <i>${d}</i><b>${element.header}</b><br>${element.msg}
+                                </div>
+                              </div>`
+            el.innerHTML =  msgstring + el.innerHTML;
           })
         }
       }
