@@ -40,6 +40,9 @@
       .collapse:hover {
         color: red;
       }
+      .content {
+        overflow: hidden;
+      }
     </style>
     
     <script type="application/javascript" src="client.js"></script>
@@ -68,6 +71,21 @@
             el.innerHTML =  msgstring + el.innerHTML;
           })
         }
+      }
+    </script>
+
+    <script>
+      const coll = document.getElementById("collapse");
+      for (let i=0; i<coll.length; i++) {
+        coll[i].addEventListener("click", () => {
+          this.classList.toggle("active");
+          const content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
       }
     </script>
 
