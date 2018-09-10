@@ -32,6 +32,14 @@
       .container {
         text-align: left;
       }
+      .collapse {
+        display: flex;
+        text-align: right;
+        justify-content: flex-end;
+      }
+      .collapse:hover {
+        color: red;
+      }
     </style>
     
     <script type="application/javascript" src="client.js"></script>
@@ -52,7 +60,9 @@
             const d = new Date(element.time).toUTCString();
             const msgstring = `<div class="card">
                                 <div class="container">
-                                  <i id="date">${d}</i><br><b>${element.header}</b><br>${element.msg}
+                                  <i id="date">${d}</i><br><b>${element.header}</b><br>
+                                  <button class="collapse">Details</button>
+                                  <div class="content"><p>${element.msg}</p></div>
                                 </div>
                               </div>`
             el.innerHTML =  msgstring + el.innerHTML;
