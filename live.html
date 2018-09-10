@@ -32,12 +32,12 @@
       .container {
         text-align: left;
       }
-      .collapse {
+      .collapsible {
         display: flex;
         text-align: right;
         justify-content: flex-end;
       }
-      .collapse:hover {
+      .collapsible:hover {
         color: red;
       }
       .content {
@@ -64,7 +64,7 @@
             const msgstring = `<div class="card">
                                 <div class="container">
                                   <i id="date">${d}</i><br><b>${element.header}</b><br>
-                                  <button class="collapse">Details</button>
+                                  <button class="collapsible">Details</button>
                                   <div class="content"><p>${element.msg}</p></div>
                                 </div>
                               </div>`
@@ -75,7 +75,7 @@
     </script>
 
     <script>
-      const coll = document.getElementById("collapse");
+      const coll = document.getElementById("collapsible");
       for (let i=0; i<coll.length; i++) {
         coll[i].addEventListener("click", () => {
           this.classList.toggle("active");
