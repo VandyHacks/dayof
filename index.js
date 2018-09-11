@@ -83,6 +83,22 @@ function heartbeat() {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  ws.on('message', () => {
+    const promise = new Promise((resolve, reject) => {
+      Message.find({}, (err, docs) => {
+        if (err) reject(err);
+        wss.clients.forEach((client) => {
+          client.send(JSON.stringify(docs));
+          console.log('Data sent to client');
+        });
+      });
+      resolve();
+    });
+    Promise.all([promise])
+      .catch((error) => {
+        console.log(error);
+      });
+  });
   const wscopy = ws;
   wscopy.isAlive = true;
   wscopy.ping('pingdata');
@@ -203,15 +219,13 @@ app.post('/sendpush', (req, res) => {
     });
 });
 
-app.post('/updatemsg', (req, res) => {
+/* app.post('/updatemsg', (req, res) => {
   const promise = new Promise((resolve, reject) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
-        if (client === wss.connection) {
-          client.send(JSON.stringify(docs));
-          console.log('Data sent to client');
-        }
+        client.send(JSON.stringify(docs));
+        console.log('Data sent to client');
       });
     });
     resolve();
@@ -222,6 +236,6 @@ app.post('/updatemsg', (req, res) => {
     .catch((error) => {
       console.log(error);
     });
-});
+}); */
 
 module.exports = app;
