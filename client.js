@@ -62,7 +62,7 @@ async function run() {
   // Send PushSubscription to backend
   await sendSubtoExpress(subscription);
 
-  /* fetch('/updatemsg', {
+  fetch('/updatemsg', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
@@ -72,7 +72,7 @@ async function run() {
     .then(console.log('Fetched'))
     .catch((err) => {
       console.log('Error fetching: ', err);
-    }); */
+    });
 }
 
 function requestPermission() {
