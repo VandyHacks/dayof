@@ -19,7 +19,11 @@
         <div class="col">
           <form action="/" method="post" class="justify-content-center">
             <div class="form-group">
-              <label for="msg">Enter message below:</label>
+              <label for="header">Enter notification header: </label>
+              <input type="text" class="form-control" id="header" name="header" placeholder="Header here...">
+            </div>
+            <div class="form-group">
+              <label for="msg">Enter notification body:</label>
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
             </div>
             <div class="text-right" >
@@ -37,7 +41,8 @@
         if (document.getElementById('msg').value !== '') {
           if (window.confirm('Send message?')) {
             alert('Messages sent!');
-            const msgbody = { 
+            const msgbody = {
+              header: document.getElementById('header').value,
               value: document.getElementById('msg').value, 
             };
             fetch('/sendpush', {
