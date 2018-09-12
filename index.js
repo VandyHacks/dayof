@@ -80,10 +80,13 @@ function heartbeat() {
   this.isAlive = true;
 }
 
+let connect;
+
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
+  connect = ws;
   wscopy.isAlive = true;
   wscopy.ping('pingdata');
   wscopy.on('pong', heartbeat);
@@ -208,10 +211,10 @@ app.post('/updatemsg', (req, res) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
-        console.log('client: ', client);
-        console.log('wss: ', wss);
-        client.send(JSON.stringify(docs));
-        console.log('Data sent to client');
+        if (client === connect) {
+          client.send(JSON.stringify(docs));
+          console.log('Data sent to client');
+        }
       });
     });
     resolve();
