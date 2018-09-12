@@ -208,8 +208,8 @@ app.post('/updatemsg', (req, res) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
-        console.log('connection: ', wss.connection);
         console.log('client: ', client);
+        console.log('wss: ', wss);
         client.send(JSON.stringify(docs));
         console.log('Data sent to client');
       });
