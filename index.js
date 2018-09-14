@@ -6,6 +6,8 @@ const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
 const WebSocket = require('ws');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
@@ -104,10 +106,10 @@ wss.on('connection', (ws) => {
   });
 });
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/admin.html`);
   console.log('Admin page loaded');
-});
+}); */
 
 app.post('/', (req, res) => {
   const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
@@ -225,6 +227,40 @@ app.post('/updatemsg', (req, res) => {
     .catch((error) => {
       console.log(error);
     });
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/login', (req, res) => {
+  res.sendFile(`${__dirname}/auth.html`);
+});
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  }),
+  (req, res) => {
+    res.redirect(`${__dirname}/admin.html`);
+  });
+
+passport.use(new LocalStrategy(
+  (password, done) => {
+    if (password !== process.env.PASSWORD) {
+      return done(null, false, { message: 'Incorrect password.' });
+    }
+    return done(null, false);
+  },
+));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user.id);
+});
+
+passport.deserializeUser((user, cb) => {
+  cb(null, user);
 });
 
 module.exports = app;

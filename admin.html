@@ -20,13 +20,13 @@
           <form action="/" method="post" class="justify-content-center">
             <div class="form-group">
               <label for="header">Enter notification header: </label>
-              <input type="text" class="form-control" id="header" name="header" placeholder="Header here...">
+              <input type="text" class="form-control" id="header" name="header" placeholder="Header here..." required>
             </div>
             <div class="form-group">
               <label for="msg">Enter notification body:</label>
               <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
             </div>
-            <div class="text-right" >
+            <div class="text-right" id="submit">
               <input type="submit" id="pushnotif" onclick="return confirmMsg();" class="btn btn-outline-secondary" value="Send"><br>
             </div>
           </form>
@@ -34,11 +34,19 @@
       </div>
     </div>
 
+    <style>
+      #submit {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+    </style>
+
     <!--confirmation popup after checking if textarea is empty-->
     <script>
       console.log('Sending push');
       function confirmMsg() {
-        if (document.getElementById('msg').value !== '') {
+        if (document.getElementById('msg').value !== '' && document.getElementById('header').value !== '') {
           if (window.confirm('Send message?')) {
             alert('Messages sent!');
             const msgbody = {
