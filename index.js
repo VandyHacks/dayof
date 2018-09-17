@@ -83,6 +83,7 @@ function heartbeat() {
 }
 
 let connect;
+let loggedin = false;
 
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
@@ -106,9 +107,27 @@ wss.on('connection', (ws) => {
   });
 });
 
+app.get('/login', (req, res) => {
+  res.sendFile(`${__dirname}/auth.html`);
+  console.log('Login page loaded');
+});
+
 app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/admin.html`);
-  console.log('Admin page loaded');
+  if (!loggedin) {
+    res.redirect('/login');
+  } else {
+    res.sendFile(`${__dirname}/admin.html`);
+    console.log('Admin page loaded');
+  }
+});
+
+app.post('/login', (req, res) => {
+  if (req.body.pw === process.env.PASSWORD) {
+    loggedin = true;
+    res.redirect('/');
+  } else {
+    res.redirect('login');
+  }
 });
 
 app.post('/', (req, res) => {
