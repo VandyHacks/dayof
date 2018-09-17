@@ -122,7 +122,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  console.log(req.body.pw);
+  console.log(req.body);
   console.log(process.env.PASSWORD);
   if (req.body.pw === process.env.PASSWORD) {
     loggedin = true;
