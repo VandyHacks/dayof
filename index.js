@@ -125,8 +125,9 @@ app.post('/login', (req, res) => {
   if (req.body.pw === process.env.PASSWORD) {
     loggedin = true;
     res.redirect('/');
+    console.log('Logged in');
   } else {
-    res.redirect('login');
+    res.redirect('/login');
   }
 });
 
