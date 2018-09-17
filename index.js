@@ -128,6 +128,7 @@ app.post('/login', (req, res) => {
     console.log('Logged in');
   } else {
     res.redirect('/login');
+    window.alert('Failed Login');
   }
 });
 
