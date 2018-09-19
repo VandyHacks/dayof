@@ -103,7 +103,6 @@ wss.on('connection', (ws) => {
   }, 5000);
   ws.on('close', () => {
     wscopy.isAlive = false;
-    loggedin = false;
     console.log('Client disconnected');
   });
 });
@@ -131,6 +130,12 @@ app.post('/login', (req, res) => {
     res.redirect('/login');
   }
 });
+
+setTimeout(() => {
+  if (loggedin) {
+    loggedin = false;
+  }
+}, 300000);
 
 app.post('/', (req, res) => {
   const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
