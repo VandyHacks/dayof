@@ -119,6 +119,7 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/admin.html`);
     console.log('Admin page loaded');
   }
+  loggedin = false;
 });
 
 app.post('/login', (req, res) => {
@@ -128,7 +129,6 @@ app.post('/login', (req, res) => {
     console.log('Logged in');
   } else {
     res.redirect('/login');
-    window.alert('Failed Login');
   }
 });
 
