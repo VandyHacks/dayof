@@ -103,6 +103,7 @@ wss.on('connection', (ws) => {
   }, 5000);
   ws.on('close', () => {
     wscopy.isAlive = false;
+    loggedin = false;
     console.log('Client disconnected');
   });
 });
@@ -119,7 +120,6 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/admin.html`);
     console.log('Admin page loaded');
   }
-  loggedin = false;
 });
 
 app.post('/login', (req, res) => {
