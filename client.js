@@ -94,8 +94,8 @@ function requestPermission() {
 // Check for service worker
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   console.log('Service Worker and Push are supported');
-  requestPermission();
-  run().catch(error => console.error(error));
+  requestPermission()
+    .then(run().catch(error => console.error(error)));
 } else {
   console.warn('Push notifications not supported');
 }
