@@ -44,7 +44,7 @@
     </style>
 
     <!--confirmation popup after checking if textarea is empty-->
-    <script>
+    <!--<script>
       console.log('Sending push');
       function confirmMsg() {
         if (document.getElementById('msg').value !== '' && document.getElementById('header').value !== '') {
@@ -52,7 +52,7 @@
             alert('Messages sent!');
             const msgbody = {
               header: document.getElementById('header').value,
-              value: document.getElementById('msg').value, 
+              value: document.getElementById('msg').value,
             };
             fetch('/sendpush', {
               method: 'POST',
@@ -69,7 +69,7 @@
           }
         }
       }
-    </script>
+    </script>-->
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
