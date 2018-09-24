@@ -41,8 +41,26 @@ function sendSubtoExpress(sub) {
     });
 }
 
+function requestPermission() {
+  return new Promise((resolve, reject) => {
+    const permissionResult = Notification.requestPermission((result) => {
+      resolve(result);
+    });
+    if (permissionResult) {
+      permissionResult.then(resolve, reject);
+    }
+  })
+    .then((permissionResult) => {
+      if (permissionResult !== 'granted') {
+        throw new Error('Permission not granted.');
+      }
+    });
+}
+
 // Register SW, Register Push, Send Push
 async function run() {
+  await requestPermission();
+
   // Register Service Worker
   console.log('Registering service worker');
   const registration = await navigator.serviceWorker
@@ -75,30 +93,9 @@ async function run() {
     });
 }
 
-function requestPermission() {
-  return new Promise((resolve, reject) => {
-    const permissionResult = Notification.requestPermission((result) => {
-      resolve(result);
-    });
-    if (permissionResult) {
-      permissionResult.then(resolve, reject);
-    }
-  })
-    .then((permissionResult) => {
-      if (permissionResult !== 'granted') {
-        throw new Error('Permission not granted.');
-      }
-    });
-}
-
 // Check for service worker
 if ('serviceWorker' in navigator && 'PushManager' in window) {
-  console.log('Service Worker and Push are supported');
-  requestPermission()
-    .then(
-      console.log('Permission granted'),
-      run().catch(error => console.error(error)),
-    );
+  run().catch(error => console.error(error));
 } else {
   console.warn('Push notifications not supported');
 }
