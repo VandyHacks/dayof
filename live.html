@@ -58,7 +58,7 @@
             if (hour > 12) {
               formatted = `${hour - 12}:${min}:${sec}p`;
             }
-            const time = `${d.getDay()} ${d.getDate()} ${formatted}`;
+            const time = `${d.getDay().toString()} ${formatted}`;
             const msgstring = `<div class="card">
                                 <div class="container">
                                   <i id="date">${time}</i><br><b>${element.header}</b><br>${element.msg}
