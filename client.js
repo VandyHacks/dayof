@@ -93,35 +93,6 @@ async function run() {
     });
 }
 
-console.log('Sending push');
-
-function confirmMsg() {
-  if (document.getElementById('msg').value !== '' && document.getElementById('header').value !== '') {
-    if (window.confirm('Send message?')) {
-      alert('Messages sent!');
-      const msgbody = {
-        header: document.getElementById('header').value,
-        value: document.getElementById('msg').value,
-      };
-      fetch('/sendpush', {
-        method: 'POST',
-        body: JSON.stringify(msgbody),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      return false;
-    }
-  }
-  return false;
-}
-
-document.addEventListener('click', () => confirmMsg());
-
 // Check for service worker
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   run().catch(error => console.error(error));
