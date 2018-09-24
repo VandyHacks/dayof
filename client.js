@@ -17,6 +17,7 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+
 const options = {
   userVisibleOnly: true,
   applicationServerKey: urlBase64ToUint8Array(publicKey),
