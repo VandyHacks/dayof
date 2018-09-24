@@ -50,18 +50,10 @@
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
-            const d = new Date(element.time);
-            const hour = d.getHours();
-            const min = d.getMinutes();
-            const sec = d.getSeconds();
-            let formatted = `${d.toTimeString()}a`;
-            if (hour > 12) {
-              formatted = `${hour - 12}:${min}:${sec}p`;
-            }
-            const time = `${d.getDay().toString()} ${formatted}`;
+            const d = new Date(element.time).toString();
             const msgstring = `<div class="card">
                                 <div class="container">
-                                  <i id="date">${time}</i><br><b>${element.header}</b><br>${element.msg}
+                                  <i id="date">${d}</i><br><b>${element.header}</b><br>${element.msg}
                                 </div>
                               </div>`
             el.innerHTML =  msgstring + el.innerHTML;
