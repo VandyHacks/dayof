@@ -6,9 +6,9 @@ const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
 const WebSocket = require('ws');
-const Push = require('./schemas/schemas').pushSchema;
-const Hack = require('./schemas/schemas').hackerSchema;
-const Msg = require('./schemas/schemas').msgSchema;
+const Push = require('../schemas/schemas').pushSchema;
+const Hack = require('../schemas/schemas').hackerSchema;
+const Msg = require('../schemas/schemas').msgSchema;
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -71,7 +71,7 @@ function wait() {
 dbquery(wait);
 
 const server = app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/live.html`);
+  res.sendFile(`${__dirname}/client/live.html`);
   console.log('Live notifications page loaded');
 })
   .listen(PORT);
@@ -114,7 +114,7 @@ app.get('/', (req, res) => {
   if (!loggedin) {
     res.redirect('/login');
   } else {
-    res.sendFile(`${__dirname}/admin.html`);
+    res.sendFile(`${__dirname}/client/admin.html`);
     console.log('Admin page loaded');
   }
 });
