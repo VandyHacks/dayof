@@ -2,7 +2,6 @@
   "name": "vandyhacksnotifications",
   "version": "1.0.0",
   "description": "SMS Notifications",
-  "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "lint": "eslint index.js"
