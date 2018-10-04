@@ -106,7 +106,7 @@ wss.on('connection', (ws) => {
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(`${__dirname}/auth.html`);
+  res.sendFile(`${__dirname}/client/auth.html`);
   console.log('Login page loaded');
 });
 
