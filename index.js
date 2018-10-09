@@ -71,7 +71,7 @@ function wait() {
 dbquery(wait);
 
 const server = app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/client/live.html`);
+  res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 })
   .listen(PORT);
@@ -106,8 +106,7 @@ wss.on('connection', (ws) => {
 });
 
 app.get('/login', (req, res) => {
-  console.log(`${__dirname}/client/auth.html`);
-  res.sendFile(`${__dirname}/client/auth.html`);
+  res.sendFile(`${__dirname}/auth.html`);
   console.log('Login page loaded');
 });
 
@@ -115,7 +114,7 @@ app.get('/', (req, res) => {
   if (!loggedin) {
     res.redirect('/login');
   } else {
-    res.sendFile(`${__dirname}/client/admin.html`);
+    res.sendFile(`${__dirname}/admin.html`);
     console.log('Admin page loaded');
   }
 });
