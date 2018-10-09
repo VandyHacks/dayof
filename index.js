@@ -6,9 +6,9 @@ const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
 const webpush = require('web-push');
 const WebSocket = require('ws');
-const Push = require('../schemas/schemas').pushSchema;
-const Hack = require('../schemas/schemas').hackerSchema;
-const Msg = require('../schemas/schemas').msgSchema;
+const Push = require('./schemas/schemas').pushSchema;
+const Hack = require('./schemas/schemas').hackerSchema;
+const Msg = require('./schemas/schemas').msgSchema;
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
