@@ -1,0 +1,31 @@
+body {
+  background-color: #F9F1E4
+}
+.container {
+  display: grid;
+}
+#title {
+  text-align: left;
+  color: #66B9BF
+}
+#subheading {
+  color: #E99456;
+}
+#notif {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 560px;
+  margin: 5px;
+  padding: 10px;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.container {
+  text-align: left;
+}
