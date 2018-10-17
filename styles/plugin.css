@@ -41,7 +41,7 @@
 .timetable > aside::before {
   content: "";
   display: block;
-  background-color: white;
+  background-color: #F9F1E4;
   height: 46px;
   position: relative;
   margin-top: -46px;
@@ -67,7 +67,7 @@
   z-index: 3;
   width: 100%;
   overflow: hidden;
-  background-color: white;
+  background-color: #F9F1E4;
   transform-style: preserve-3d;
 }
 .timetable > section > header ul {
@@ -131,11 +131,11 @@
   bottom: 0;
 }
 .timetable ul.room-timeline li:before {
-  background-image: linear-gradient(to right, #E5E5E5 1px, transparent 1px);
+  background-image: linear-gradient(to right, #868888 1px, transparent 1px);
   background-size: 24px auto;
 }
 .timetable ul.room-timeline li:after {
-  background-image: linear-gradient(to right, #E5E5E5, #E5E5E5 1px, #F4F4F4 1px, #F4F4F4 2px, #E5E5E5 2px, #E5E5E5 3px, transparent 3px, transparent);
+  background-image: linear-gradient(to right, #868888, #868888 1px, #868888 1px, #868888 1px, #868888 1px, #868888 1px, transparent 3px, transparent);
   background-size: 96px auto;
   background-position: -2px 0;
 }
@@ -150,7 +150,8 @@
   white-space: normal;
   overflow: hidden;
   color: #F2F9FA;
-  border: 1px solid #66B9BF;
+	border: 1px solid #66B9BF;
+	border-radius: 10px;
   transform-style: preserve-3d;
 }
 .timetable .time-entry small {
