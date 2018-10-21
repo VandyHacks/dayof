@@ -10,7 +10,7 @@
   display: grid;
   font-weight: 400;
   grid-template-columns: auto auto auto auto;
-  grid-column-gap: 10px;
+  grid-column-gap: 30px;
   justify-items: center;
   justify-content: center;
   margin-right: 20%;
@@ -21,7 +21,8 @@
   flex-direction: column-reverse;
   font-size: 0.7em;
   text-align: right;
-  padding-bottom: 7px;
+  padding-bottom: 5px;
+  line-height: 4px;
 }
 
 #countdown .time {
