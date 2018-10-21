@@ -2,7 +2,7 @@ body {
   background-color: #F9F1E4
 }
 .container {
-  display: grid;
+  display: flex;
 }
 #title {
   text-align: left;
@@ -10,6 +10,7 @@ body {
 }
 #subheading {
   color: #E99456;
+  font-weight: bold;
 }
 #notif {
   display: flex;

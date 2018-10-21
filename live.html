@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="styles/announcements.css">
     <link rel="icon" href="vhfavicon.png" type="image/png">
   </head>
-  <body id = "notifbody">
+  <body>
     <div class="container">
       <h2 id="title">V A N D Y&reg;H A C K S V</h2>
     </div>
+    <div class="container">
+      <h3 id="subheading">Live Announcements</h3>
+    </div>
     <div class="announcements container">
-      <h3 id="subheading"><b>Live Announcements</b></h3>
       <div class="announcements">
         <div class="notiftimes" id="notiftimes">
         </div>
@@ -27,7 +29,7 @@
       </div>
     </div>
     <div class="container">
-      <h3 id="subheading"><b>Schedule</b></h3>
+      <h3 id="subheading">Schedule</h3>
     </div>
     <div class="container-main">
       <div class="container-time">
@@ -680,8 +682,8 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time).getTime();
-            const msgstringtimes = `<div class="container">${d}</div>`
-            const msgstringtext = `<div class="container>${eltext}</div>`
+            const msgstringtimes = `<div class="notiftimestamp">${d}</div>`
+            const msgstringtext = `<div class="notifbody">${eltext}</div>`
             eltimes.innerHTML =  msgstringtimes + eltimes.innerHTML;
             eltext.innerHTML = msgstringtext + eltext.innerHTML
           })
