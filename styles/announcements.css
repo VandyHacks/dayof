@@ -14,20 +14,20 @@
 }
 
 .container{
-  margin-left: 0% !important;
+  width: 100% !important;
 }
 
 .notiftimes {
   display: flex;
   flex-direction: column;
   text-align: right;
-  width: 15%;
+  width: 10%;
 }
 
 .notiftext {
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 90%;
 }
 
 .notiftimestamp {
