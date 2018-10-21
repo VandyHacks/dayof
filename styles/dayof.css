@@ -2,15 +2,17 @@ body {
   background-color: #F9F1E4;
   display: grid;
   margin: 5% 10% 0px 10%;
+  grid-row-gap: 1em;
 }
 
 #header {
+  color: rgb(0, 136, 156);
   display: grid;
+  grid-template-columns: 80% 20%;
   text-align: left;
 }
 
 #title {
-  color: rgb(0, 136, 156);
   letter-spacing: 8px;
   text-align: left;
   text-transform: uppercase;
@@ -18,6 +20,38 @@ body {
 
 #announcements {
   color: rgb(229, 114, 9);
+}
+
+#guides button {
+  background-color: rgb(98, 185, 192);
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#countdown {
+  display: grid;
+  font-weight: 400;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 10px;
+  justify-items: center;
+  justify-content: center;
+  margin-right: 20%;
+}
+
+#countdown #remaining {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.7em;
+  text-align: right;
+  padding-bottom: 7px;
+}
+
+#countdown .time {
+  font-size: 1.8em;
+  font-weight: 500;
+  text-align: center;
 }
 
 #notif {

@@ -15,9 +15,30 @@
   <body>
     <div id="header">
       <h2 id="title">Vandy&reg;Hacks V</h2>
+      <div id="countdown"> 
+        <div id="remaining">Time<br/>Remaining</div>
+        <div>
+          HOUR
+          <div id="hours" class="time"></div>
+        </div>
+        <div>
+          MIN
+          <div id="minutes" class="time"></div>
+        </div>
+        <div>
+          SEC
+          <div id="seconds" class="time"></div>
+        </div>
+      </div>
     </div>
+    
+    <div id="guides">
+      <button type="button">Hacker Guide</button>
+      <button type="button">Sponsor Guide</button>
+    </div>
+    
     <div id=>
-      <h3 id="announcements"><b>Live Announcements</b></h3>
+      <h4 id="announcements"><b>Live Announcements</b></h4>
       <div id="notif"></div>
     </div>
     <div class="container">
@@ -28,11 +49,28 @@
     <script type="application/javascript" src="client.js"></script>
 
     <script>
+      updateTime();
+      setInterval(updateTime, 1000);
+      
+      function updateTime() {
+        const end = new Date(2018, 10 /* November */, 4, 12);
+        const now = new Date();
+
+        const diff = end - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        document.querySelector('#hours').innerHTML = hours;
+        document.querySelector('#minutes').innerHTML = minutes;
+        document.querySelector('#seconds').innerHTML = seconds;
+      }
+
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("notif");
 
-      ws.onmessage = function (event) {
+      ws.onmessage = event => {
         console.log(event.data);
         if (event.data === 'reload') {
           console.log('Message sent, reload page');
@@ -50,6 +88,7 @@
           })
         }
       }
+
     </script>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
