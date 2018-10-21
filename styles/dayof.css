@@ -1,21 +1,31 @@
 body {
-  background-color: #F9F1E4
-}
-.container {
+  background-color: #F9F1E4;
   display: grid;
+  margin: 5% 10% 0px 10%;
 }
-#title {
+
+#header {
+  display: grid;
   text-align: left;
-  color: #66B9BF
 }
-#subheading {
-  color: #E99456;
+
+#title {
+  color: rgb(0, 136, 156);
+  letter-spacing: 8px;
+  text-align: left;
+  text-transform: uppercase;
 }
+
+#announcements {
+  color: rgb(229, 114, 9);
+}
+
 #notif {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -23,9 +33,7 @@ body {
   margin: 5px;
   padding: 10px;
 }
+
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.container {
-  text-align: left;
 }
