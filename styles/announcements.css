@@ -32,5 +32,7 @@
 }
 
 .notiftimestamp {
+  display: flex;
   color: #07889B;
+  width: 100%;
 }
