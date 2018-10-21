@@ -16,6 +16,7 @@
 .notiftimes {
   display: flex;
   flex-direction: column;
+  text-align: right;
   width: 14.29%;
 }
 
