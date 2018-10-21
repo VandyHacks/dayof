@@ -1,13 +1,13 @@
 .announcements {
   display: flex;
   flex-direction: row;
-  color: #FBF8F2;
+  background-color: #FBF8F2;
 }
 
 .announcements-col {
   display: flex;
   flex-direction: column;
-  color: #FBF8F2;
+  background-color: #FBF8F2;
 }
 
 .notiftimes {
