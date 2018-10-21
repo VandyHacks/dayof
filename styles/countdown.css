@@ -23,10 +23,12 @@
   text-align: right;
   padding-bottom: 11px;
   line-height: 14px;
+  padding-top: 20px;
 }
 
 #countdown #labels {
   font-size: 14pt;
+  padding-top: 20px;
 }
 
 #countdown .time {

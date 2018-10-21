@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: row;
   background-color: transparent;
-  height: 750px;
-  overflow-y: auto;
 }
 .container-header {
   display: grid;
