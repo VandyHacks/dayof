@@ -5,7 +5,7 @@
 }
 .container-header {
   display: grid;
-  grid-template-columns: 32px 155px 30px 155px 30px 155px 30px 155px 30px 155px 30px 155px 30px 155px 19px;
+  grid-template-columns: 32px 155px 30px 155px 30px 155px 30px 155px 30px 155px 30px 155px 30px 155px 5px;
   grid-template-rows: repeat(106, 45px);
   background:
     repeating-linear-gradient(to bottom,
