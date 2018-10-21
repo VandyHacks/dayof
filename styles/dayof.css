@@ -1,12 +1,20 @@
 body {
   background-color: #F2E4CE;
   display: grid;
-  margin: 5% 10% 0px 10%;
+  margin: 5% 5% 0px 5%;
+  grid-row-gap: 1em;
+}
+
+#header {
+  color: #077F91;
+  display: grid;
+  text-align: left;
+  grid-template-columns: 80% 20%;
 }
 
 #title {
-  text-align: left;
-  color: #077F91;
+  letter-spacing: 8px;
+  text-transform: uppercase;
 }
 
 #subheading {
