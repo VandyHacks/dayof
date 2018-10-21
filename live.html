@@ -694,13 +694,9 @@
       const now = new Date();
 
       const diff = end - now;
-      const hours = Math.floor(diff / (1000 * (60 ** 2)));
-      const minutes = Math.floor((diff % (1000 * (60 ** 2))) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      hours = hours < 10 ? `0${hours}` : `${hours}`;
-      minutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-      seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+      const hours = hours < 10 ? `0${Math.floor(diff / (1000 * (60 ** 2)))}` : `${Math.floor(diff / (1000 * (60 ** 2)))}`;
+      const minutes = minutes < 10 ? `0${Math.floor((diff % (1000 * (60 ** 2))) / (1000 * 60))}` : `${Math.floor((diff % (1000 * (60 ** 2))) / (1000 * 60))}`;
+      const seconds = seconds < 10 ? `0${Math.floor((diff % (1000 * 60)) / 1000)}` : `${Math.floor((diff % (1000 * 60)) / 1000)}`;
 
       document.querySelector('#hours').innerHTML = hours;
       document.querySelector('#minutes').innerHTML = minutes;
