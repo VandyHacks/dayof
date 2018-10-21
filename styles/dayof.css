@@ -2,7 +2,7 @@ body {
   background-color: #F2E4CE;
   display: grid;
   margin: 2% 3% 0px 3%;
-  grid-row-gap: 0.5em;
+  grid-row-gap: 8px;
 }
 
 #header {
