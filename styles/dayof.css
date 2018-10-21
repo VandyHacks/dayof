@@ -1,18 +1,23 @@
 body {
   background-color: #F2E4CE;
+  display: grid;
+  margin: 5% 10% 0px 10%;
 }
-.container {
-  display: flex;
-  text-align: left;
-}
+
 #title {
   text-align: left;
   color: #077F91;
 }
+
 #subheading {
   color: #E99456;
   font-weight: bold;
 }
+
+#announcements {
+  color: rgb(229, 144, 9);
+}
+
 #notif {
   display: flex;
   flex-direction: column;
