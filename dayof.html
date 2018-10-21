@@ -1,54 +1,76 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Live Notifications for VandyHacks V">
+    <meta name="description" content="Live Page for VandyHacks V">
     <meta name="author" content="Kevin Zhai under VandyHacks">
     <title>VandyHacks V Live Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/timetablejs.css">
+    <link rel="stylesheet" href="styles/dayof.css">
     <link rel="icon" href="vhfavicon.png" type="image/png">
   </head>
-  <body id = "notifbody">
-    <div class="container">
-      <h2 style="text-align: left">V A N D Y&reg;H A C K S V</h2>
+  
+  <body>
+    <div id="header">
+      <h2 id="title">Vandy&reg;Hacks V</h2>
+      <div id="countdown"> 
+        <div id="remaining">Time<br/>Remaining</div>
+        <div>
+          HOUR
+          <div id="hours" class="time"></div>
+        </div>
+        <div>
+          MIN
+          <div id="minutes" class="time"></div>
+        </div>
+        <div>
+          SEC
+          <div id="seconds" class="time"></div>
+        </div>
+      </div>
     </div>
-    <div id="notif"></div>
-
-    <style>
-      .container {
-        display: grid;
-      }
-      #notif {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        width: 560px;
-        margin: 5px;
-        padding: 10px;
-      }
-      .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-      }
-      .container {
-        text-align: left;
-      }
-    </style>
+    
+    <div id="guides">
+      <button type="button">Hacker Guide</button>
+      <button type="button">Sponsor Guide</button>
+    </div>
+    
+    <div id=>
+      <h4 id="announcements"><b>Live Announcements</b></h4>
+      <div id="notif"></div>
+    </div>
+    <div class="container">
+      <h3 id="subheading"><b>Schedule</b></h2>
+      <div class="timetable"></div>
+    </div>
     
     <script type="application/javascript" src="client.js"></script>
 
     <script>
+      updateTime();
+      setInterval(updateTime, 1000);
+      
+      function updateTime() {
+        const end = new Date(2018, 10 /* November */, 4, 12);
+        const now = new Date();
+
+        const diff = end - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        document.querySelector('#hours').innerHTML = hours;
+        document.querySelector('#minutes').innerHTML = minutes;
+        document.querySelector('#seconds').innerHTML = seconds;
+      }
+
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("notif");
 
-      ws.onmessage = function (event) {
+      ws.onmessage = event => {
         console.log(event.data);
         if (event.data === 'reload') {
           console.log('Message sent, reload page');
@@ -66,10 +88,11 @@
           })
         }
       }
-    </script>
 
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
-</html> -->
+</html>
