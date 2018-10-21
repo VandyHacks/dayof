@@ -20,7 +20,7 @@
     <div class="container">
       <h3 id="subheading">Live Announcements</h3>
     </div>
-    <div class="announcements container">
+    <div class="announcements">
       <div class="announcements">
         <div class="notiftimes" id="notiftimes">
         </div>
@@ -681,9 +681,9 @@
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
-            const d = new Date(element.time).getTime();
+            const d = new Date(element.time).toString();
             const msgstringtimes = `<div class="notiftimestamp">${d}</div>`
-            const msgstringtext = `<div class="notifbody">${eltext}</div>`
+            const msgstringtext = `<div class="notifbody">${element.msg}</div>`
             eltimes.innerHTML =  msgstringtimes + eltimes.innerHTML;
             eltext.innerHTML = msgstringtext + eltext.innerHTML
           })
