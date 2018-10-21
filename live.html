@@ -20,13 +20,7 @@
     <div class="container">
       <h3 id="subheading">Live Announcements</h3>
     </div>
-    <div class="announcements">
-      <div class="announcements">
-        <div class="notiftimes" id="notiftimes">
-        </div>
-        <div class="notiftext" id="notiftext">
-        </div>
-      </div>
+    <div class="announcements-col container" id="announcements-col">
     </div>
     <div class="container">
       <h3 id="subheading">Schedule</h3>
@@ -670,8 +664,7 @@
     <script>
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
-      const eltimes = document.getElementById("notiftimes");
-      const eltext = document.getElementById("notiftext")
+      const el = document.getElementById("announcements-col");
 
       ws.onmessage = function (event) {
         console.log(event.data);
@@ -683,10 +676,15 @@
           arr.forEach((element) => {
             const d = new Date(element.time);
             const ampm = d.getHours() >= 12 ? 'pm' : 'am';
-            const msgstringtimes = `<div class="notiftimestamp">${d.getHours()%12}:${d.getMinutes()}:${d.getSeconds()} ${ampm}</div>`
-            const msgstringtext = `<div class="notifbody">${element.msg}</div>`
-            eltimes.innerHTML =  msgstringtimes + eltimes.innerHTML;
-            eltext.innerHTML = msgstringtext + eltext.innerHTML
+            const msgstring = `<div class="announcements container">
+                                <div class="notiftimes container" id="notiftimes">
+                                  <div class="notiftimestamp">${d.getHours()%12}:${d.getMinutes()}:${d.getSeconds()} ${ampm}</div>
+                                </div>
+                                <div class="notiftext container" id="notiftext">
+                                  <div class="notifbody">${element.msg}</div>
+                                </div>
+                              </div>`
+            element.innerHTML = msgstring + element.innerHTML
           })
         }
       }
