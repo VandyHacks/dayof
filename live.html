@@ -11,11 +11,33 @@
     <link rel="stylesheet" href="styles/dayof.css">
     <link rel="stylesheet" href="styles/schedule.css">
     <link rel="stylesheet" href="styles/announcements.css">
+    <link rel="stylesheet" href="styles/countdown.css">
     <link rel="icon" href="vhfavicon.png" type="image/png">
   </head>
   <body>
     <div id="header">
-      <h2 id="title">Vandy&reg;Hacks V</h2>
+      <h2 id="title">Vandy<sup>&reg;</sup>Hacks V</h2>
+      <div id="countdown">
+        <div id="remaining">
+          Time<br>Remaining
+        </div>
+        <div>
+          HOUR
+          <div id="hours" class="time"></div>
+        </div>
+        <div>
+          MIN
+          <div id="minutes" class="time"></div>
+        </div>
+        <div>
+          SEC
+          <div id="seconds" class="time"></div>
+        </div>
+      </div>
+    </div>
+    <div id="guides">
+      <button type="button">Hacker Guide</button>
+      <button type="button">Sponsor Guide</button>
     </div>
     <div>
       <h4 id="announcements"><b>Live Announcements</b></h4>
