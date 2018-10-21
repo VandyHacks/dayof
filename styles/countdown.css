@@ -13,16 +13,20 @@
   grid-column-gap: 30px;
   justify-items: center;
   justify-content: center;
-  margin-right: 50%;
+  margin-right: 70%;
 }
 
 #countdown #remaining {
   display: flex;
   flex-direction: column-reverse;
-  font-size: 0.7em;
+  font-size: 0.9em;
   text-align: right;
-  padding-bottom: 8px;
+  padding-bottom: 11px;
   line-height: 14px;
+}
+
+#countdown #labels {
+  font-size: 14pt;
 }
 
 #countdown .time {
