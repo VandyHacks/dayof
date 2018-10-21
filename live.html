@@ -679,11 +679,11 @@
             const minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
             const seconds = d.getSeconds() < 10 ? `0${d.getSeconds()}` : `${d.getSeconds()}`;
             const ampm = d.getHours() >= 12 ? 'pm' : 'am';
-            const msgstring = `<div class="announcements">
-                                <div class="notiftimes" id="notiftimes">
+            const msgstring = `<div class="announcements container">
+                                <div class="notiftimes container" id="notiftimes">
                                   <div class="notiftimestamp">${hours}:${minutes}:${seconds} ${ampm}</div>
                                 </div>
-                                <div class="notiftext" id="notiftext">
+                                <div class="notiftext container" id="notiftext">
                                   <div class="notifbody">${element.msg}</div>
                                 </div>
                               </div>`;
