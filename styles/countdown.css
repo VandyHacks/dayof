@@ -21,7 +21,7 @@
   flex-direction: column-reverse;
   font-size: 0.9em;
   text-align: right;
-  padding-bottom: 11px;
+  padding-bottom: 14px;
   line-height: 14px;
   padding-top: 20px;
 }
@@ -33,6 +33,6 @@
 
 #countdown .time {
   font-size: 1.8em;
-  font-weight: 500;
+  font-weight: 1000;
   font-family: 'Courier New', Courier, monospace;
 }
