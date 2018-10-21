@@ -15,7 +15,8 @@
 
 .container-fluid {
   display: flex !important;
-  width: 100%;
+  width: 90%;
+  margin-left: 0%;
 }
 
 .notiftimes {
