@@ -685,6 +685,25 @@
     <script type="application/javascript" src="client.js"></script>
 
     <script>
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    function updateTime() {
+      const end = new Date(2018, 10, 4, 12);
+      const now = new Date();
+
+      const diff = end - now;
+      const hours = Math.floor(diff / (1000 * (60 ** 2)));
+      const minutes = Math.floor((diff % (1000 * (60 ** 2))) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.querySelector('#hours').innerHTML = hours;
+      document.querySelector('#minutes').innerHTML = minutes;
+      document.querySelector('#seconds').innerHTML = seconds;
+    }
+    </script>
+
+    <script>
       const HOST = location.origin.replace(/^https/, 'wss');
       const ws = new WebSocket(HOST);
       const el = document.getElementById("announcements-col");

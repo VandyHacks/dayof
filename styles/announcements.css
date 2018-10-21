@@ -9,8 +9,10 @@
   flex-direction: column;
   background-color: #FBF8F2;
   overflow: auto;
+  height: 200px;
   border-radius: 5px;
-  padding: 15px 0px
+  padding: 10px 0px;
+  margin-right: 20%;
 }
 
 .container-fluid {
