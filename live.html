@@ -681,8 +681,9 @@
         } else {
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
-            const d = new Date(element.time).toString();
-            const msgstringtimes = `<div class="notiftimestamp">${d}</div>`
+            const d = new Date(element.time);
+            const ampm = d.getHours() >= 12 ? 'pm' : 'am';
+            const msgstringtimes = `<div class="notiftimestamp">${d.getHours()%12}:${d.getMinutes()}:${d.getSeconds()} ${ampm}</div>`
             const msgstringtext = `<div class="notifbody">${element.msg}</div>`
             eltimes.innerHTML =  msgstringtimes + eltimes.innerHTML;
             eltext.innerHTML = msgstringtext + eltext.innerHTML
