@@ -13,10 +13,9 @@
   padding: 15px 0px
 }
 
-.container{
+.container-fluid {
   display: flex !important;
-  align-content: left;
-  width: 120% !important;
+  width: 90%;
 }
 
 .notiftimes {
