@@ -14,8 +14,9 @@
 }
 
 .container{
-  margin-left: 0% !important;
-  margin-right: 0% !important;
+  display: flex !important;
+  align-content: left;
+  width: 120% !important;
 }
 
 .notiftimes {
