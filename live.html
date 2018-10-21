@@ -20,7 +20,7 @@
     <div>
       <h4 id="announcements"><b>Live Announcements</b></h4>
     </div>
-    <div class="announcements-col container" id="announcements-col">
+    <div class="announcements-col" id="announcements-col">
     </div>
     <div>
       <h4 id="subheading">Schedule</h4>
@@ -675,12 +675,15 @@
           const arr = JSON.parse(event.data);
           arr.forEach((element) => {
             const d = new Date(element.time);
+            const hours = d.getHours()%12 < 10 ? `0${d.getHours()%12}` : `${d.getHours()%12}`;
+            const minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
+            const seconds = d.getSeconds() < 10 ? `0${d.getSeconds()}` : `${d.getSeconds()}`;
             const ampm = d.getHours() >= 12 ? 'pm' : 'am';
-            const msgstring = `<div class="announcements container">
-                                <div class="notiftimes container" id="notiftimes">
-                                  <div class="notiftimestamp">${d.getHours()%12}:${d.getMinutes()}:${d.getSeconds()} ${ampm}</div>
+            const msgstring = `<div class="announcements">
+                                <div class="notiftimes" id="notiftimes">
+                                  <div class="notiftimestamp">${hours}:${minutes}:${seconds} ${ampm}</div>
                                 </div>
-                                <div class="notiftext container" id="notiftext">
+                                <div class="notiftext" id="notiftext">
                                   <div class="notifbody">${element.msg}</div>
                                 </div>
                               </div>`;

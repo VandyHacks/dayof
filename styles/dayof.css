@@ -5,11 +5,6 @@ body {
   grid-row-gap: 0.5em;
 }
 
-.container {
-  text-align: left;
-  margin-left: 5%;
-}
-
 #header {
   color: #077F91;
   display: grid;
