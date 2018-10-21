@@ -1,0 +1,16 @@
+.announcements {
+  display: flex;
+  flex-direction: row;
+}
+
+.notiftimes {
+  display: flex;
+  flex-direction: column;
+  width: 14.29%;
+}
+
+.notiftext {
+  display: flex;
+  flex-direction: column;
+  width: 85.71%;
+}
