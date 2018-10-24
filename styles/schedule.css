@@ -11,21 +11,20 @@
 }
 .container-header {
   display: grid;
-  position: sticky;
   background-color: transparent;
-  grid-template-columns: 32px 160px 40px 160px 40px 160px 40px 160px 40px 160px 32px;
+  grid-template-columns: 102px 160px 40px 160px 40px 160px 40px 160px 40px 160px 32px;
   grid-template-rows: 45px;
 }
 .container-body {
   display: grid;
   grid-template-columns: 32px 160px 40px 160px 40px 160px 40px 160px 40px 160px 32px;
-  grid-template-rows: 0px repeat(105, 45px);
+  grid-template-rows: 4px repeat(105, 45px);
   background:
     repeating-linear-gradient(to bottom,
-      black 0px,
-      transparent 1px,
-      transparent 44px,
-      black 45px
+      black 4px,
+      transparent 5px,
+      transparent 48px,
+      black 49px
     );
 }
 .container-time {
@@ -41,9 +40,10 @@
   padding-top: 12px;
 }
 .container-time > .text {
-  padding-top: 34px;
   padding-right: 6px;
-  margin-bottom: auto;
+  padding-top: 0px !important;
+  position: relative;
+  margin-top: -5px;
   justify-self: right;
   font-size: 12px;
 }
@@ -65,7 +65,7 @@
 }
 
 .item {
-  width: 155px;
+  width: 160px;
   border-radius: 8px;
   background-color: #66B9BF;
   padding: 5px;
