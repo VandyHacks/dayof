@@ -9,6 +9,14 @@ body {
   height: 50px;
 }
 
+.send {
+  display: flex;
+  flex-direction: row;
+}
+#send {
+  display: flex;
+}
+
 #header {
   color: #077F91;
   display: grid;
