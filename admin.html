@@ -39,6 +39,7 @@
     <script>
       function checksms() {
         document.getElementById("formdiv").action = document.getElementById("check").checked ? "/" : "";
+        document.getElementById("formdiv").action = document.getElementById("check").method ? "post" : "";
       }
       console.log('Sending push');
       function confirmMsg() {
