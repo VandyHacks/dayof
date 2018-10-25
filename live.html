@@ -569,7 +569,7 @@
           location.reload();
         } else if (el.innerHTML === '') {
           el.innerHTML =  `<div class="announcements container-fluid">
-                              <div class="notiftimes container-fluid" id="notiftimes">
+                              <div class="notiftimes container" id="notiftimes">
                                 <div class="notiftimestamp">00:00:00 am</div>
                               </div>
                               <div class="notiftext container-fluid" id="notiftext">
@@ -584,7 +584,7 @@
             const minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
             const ampm = d.getHours() >= 12 ? 'pm' : 'am';
             const msgstring = `<div class="announcements container-fluid">
-                                <div class="notiftimes container-fluid" id="notiftimes">
+                                <div class="notiftimes container" id="notiftimes">
                                   <div class="notiftimestamp">${hours}:${minutes} ${ampm}</div>
                                 </div>
                                 <div class="notiftext container-fluid" id="notiftext">
