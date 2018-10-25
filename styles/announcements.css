@@ -7,9 +7,10 @@
 .announcements-col {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   background-color: #FBF8F2;
   overflow-y: scroll;
-  height: 180px;
+  height: 200px;
   border-radius: 5px;
   padding: 10px 0px 10px 0px;
   margin-right: 50%;
