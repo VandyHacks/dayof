@@ -27,7 +27,7 @@ app.use(cors());
 
 webpush.setGCMAPIKey(process.env.GCM_KEY);
 webpush.setVapidDetails(
-  'mailto:kzhai190@gmail.com', // change to environment variable
+  'dev@vandyhacks.org',
   publicVapidKey,
   privateVapidKey,
 );
