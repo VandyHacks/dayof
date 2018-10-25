@@ -38,9 +38,7 @@
     <!--confirmation popup after checking if textarea is empty-->
     <script>
       function checksms() {
-        if (document.getElementById("check").checked) {
-          document.getElementById("formdiv").action = "";
-        }
+        document.getElementById("formdiv").action = document.getElementById("check").checked ? "" : "/";
       }
       console.log('Sending push');
       function confirmMsg() {
