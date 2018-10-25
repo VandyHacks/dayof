@@ -23,7 +23,7 @@ ws.onmessage = function (event) {
       const hours = `${d.getHours() % 12}`;
       const minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
       const ampm = d.getHours() >= 12 ? 'pm' : 'am';
-      const msgstring = `<div class="announcements container">
+      const msgstring = `<div class="announcements container-fluid">
                           <div class="notiftimes container" id="notiftimes">
                             <div class="notiftimestamp">${hours}:${minutes} ${ampm}</div>
                           </div>
