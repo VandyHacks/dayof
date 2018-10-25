@@ -28,7 +28,6 @@
   flex-direction: column;
   text-align: right;
   width: 10%;
-  height: 10%;
 }
 
 .notiftext {
@@ -36,7 +35,6 @@
   flex-shrink: 0;
   flex-direction: column;
   width: 90%;
-  height: 10%;
 }
 
 .notiftimestamp {
