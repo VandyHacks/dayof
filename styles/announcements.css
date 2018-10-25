@@ -24,15 +24,19 @@
 
 .notiftimes {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   text-align: right;
   width: 10%;
+  height: 10%;
 }
 
 .notiftext {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   width: 90%;
+  height: 10%;
 }
 
 .notiftimestamp {
