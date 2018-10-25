@@ -17,7 +17,7 @@
     <div class="container center-block" style="width: 50%;">
       <div class="row center-block">
         <div class="col">
-          <form action="/" method="post" class="justify-content-center" id="formdiv">
+          <form action="/" method="post" onclick="checksms();" class="justify-content-center" id="formdiv">
             <div class="form-group">
               <label for="header">Enter notification header: </label>
               <input type="text" class="form-control" id="header" name="header" placeholder="Header here...">
@@ -37,8 +37,10 @@
 
     <!--confirmation popup after checking if textarea is empty-->
     <script>
-      if (document.getElementById("check").checked) {
-        document.getElementById("formdiv").action = "";
+      function checksms() {
+        if (document.getElementById("check").checked) {
+          document.getElementById("formdiv").action = "";
+        }
       }
       console.log('Sending push');
       function confirmMsg() {
