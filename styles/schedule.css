@@ -12,7 +12,7 @@
 .container-header {
   display: grid;
   background-color: transparent;
-  grid-template-columns: 70px 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
+  grid-template-columns: 70px 3.64% 18.22% 4.554% 18.22% 4.554% 18.22% 4.554% 18.22% 3.64%;
   grid-template-rows: 45px;
 }
 .container-body {
