@@ -27,7 +27,7 @@ app.use(cors());
 
 webpush.setGCMAPIKey(process.env.GCM_KEY);
 webpush.setVapidDetails(
-  'mailto:dev@vandyhacks.org', // change to environment variable
+  'dev@vandyhacks.org', // change to environment variable
   publicVapidKey,
   privateVapidKey,
 );
@@ -70,8 +70,8 @@ function wait() {
 
 dbquery(wait);
 
-const server = app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/dayof.html`);
+const server = app.get('/dayof', (req, res) => {
+  res.sendFile(`${__dirname}/live.html`);
   console.log('Live notifications page loaded');
 })
   .listen(PORT);
@@ -110,7 +110,7 @@ app.get('/login', (req, res) => {
   console.log('Login page loaded');
 });
 
-app.get('/admin', (req, res) => {
+app.get('/', (req, res) => {
   if (!loggedin) {
     res.redirect('/login');
   } else {
@@ -122,7 +122,7 @@ app.get('/admin', (req, res) => {
 app.post('/login', (req, res) => {
   if (req.body.password === process.env.PASSWORD) {
     loggedin = true;
-    res.redirect('/admin');
+    res.redirect('/');
     console.log('Logged in');
   } else {
     res.redirect('/login');
@@ -135,7 +135,7 @@ setTimeout(() => {
   }
 }, 300000);
 
-app.post('/admin', (req, res) => {
+app.post('/', (req, res) => {
   const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     phoneArr.map(number => twilio.messages.create({
       to: number,
