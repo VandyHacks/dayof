@@ -12,11 +12,12 @@
 .container-header {
   display: grid;
   background-color: transparent;
-  grid-template-columns: 11.41% 17.9% 4.47% 17.9% 4.47% 17.9% 4.47% 17.9% 3.58%;
+  grid-template-columns: 102px 17.9% 4.47% 17.9% 4.47% 17.9% 4.47% 17.9% 3.58%;
   grid-template-rows: 45px;
 }
 .container-body {
   display: grid;
+  width: 95%;
   grid-template-columns: 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
   grid-template-rows: 4px repeat(105, 45px);
   height: 4700px;
