@@ -71,7 +71,7 @@ function wait() {
 dbquery(wait);
 
 const server = app.get('/dayof', (req, res) => {
-  res.sendFile(`${__dirname}/live.html`);
+  res.sendFile(`${__dirname}/dayof.html`);
   console.log('Live notifications page loaded');
 })
   .listen(PORT);
