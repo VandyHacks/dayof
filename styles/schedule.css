@@ -76,7 +76,7 @@
 }
 .item:hover {
   transform: scale(1.05);
-}}
+}
 
 .primaryevents {
   grid-column-start: 2;
