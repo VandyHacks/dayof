@@ -91,21 +91,13 @@
   margin-left: 0%;
 }
 
-.notiftimes {
-  display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
-  text-align: right;
-  width: 10%;
+.message {
+  display: grid;
+  grid-template-columns: 15% 85%;
 }
 
-.notiftext {
-  display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
-  width: 90%;
-}
-
-.notiftimestamp {
+.message span:first-child {
   color: #07889B;
+  padding: 0px 15px 0px 15px;
+  text-align: right;
 }

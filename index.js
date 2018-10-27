@@ -145,16 +145,7 @@ app.post('/admin', (req, res) => {
     }));
     resolve();
   });
-  const slackAnnouncement = new Promise((resolve, reject) => {
-    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: req.body.msg}, {json:true}, function(error, response) {
-        if (!error && response.statusCode == 200) {
-            resolve();
-        } else {
-            reject("Did not manage to post announcement to slack")
-        }
-      });
-})
-  Promise.all([smsMsg, slackAnnouncement])
+  Promise.all([smsMsg])
     .then(
       console.log('Message sent'),
       res.redirect('back'),
@@ -212,7 +203,7 @@ app.post('/sendpush', (req, res) => {
     TTL: ttl,
   };
   console.log(payload);
-  const promise = new Promise((resolve, reject) => {
+  const chromePush = new Promise((resolve, reject) => {
     PushSub.find({}, (err, data) => {
       if (err) reject(err);
       data.forEach((element) => {
@@ -222,7 +213,16 @@ app.post('/sendpush', (req, res) => {
     });
     resolve();
   });
-  Promise.all([promise])
+  const slackAnnouncement = new Promise((resolve, reject) => {
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: `${req.body.header}: ${req.body.value}`}, {json:true}, function(error, response) {
+        if (!error && response.statusCode == 200) {
+            resolve();
+        } else {
+            reject("Did not manage to post announcement to slack")
+        }
+      });
+})
+  Promise.all([chromePush,slackAnnouncement])
     .then(
       console.log('Push notification sent'),
       wss.clients.forEach((client) => {
