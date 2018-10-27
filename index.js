@@ -223,7 +223,7 @@ app.post('/sendpush', (req, res) => {
     resolve();
   });
   const slackAnnouncement = new Promise((resolve, reject) => {
-    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: req.body.msg}, {json:true}, function(error, response) {
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: req.body.value}, {json:true}, function(error, response) {
         if (!error && response.statusCode == 200) {
             resolve();
         } else {
