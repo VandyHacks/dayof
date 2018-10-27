@@ -78,8 +78,8 @@
   flex-direction: column;
   flex-shrink: 0;
   background-color: #FBF8F2;
-  overflow-y: scroll;
-  height: 200px;
+  overflow-y: auto;
+  height: 208px;
   border-radius: 5px;
   padding: 10px 0px 10px 0px;
   margin-right: 50%;
