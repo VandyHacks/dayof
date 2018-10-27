@@ -1,3 +1,6 @@
+import React from 'react';
+import Moment from 'react-moment';
+
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
@@ -6,10 +9,9 @@ class Announcements extends React.Component {
   render() {
     const elements = this.props.messages.map(({time, msg}, index) => {
       const date = new Date(time);
-      console.log(date);
       return (
         <li key={index} className="message">
-          <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+          <span><Moment fromNow>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}M/</Moment></span>
           <span>{msg}</span>
         </li>
       );
