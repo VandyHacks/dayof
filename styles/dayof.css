@@ -69,6 +69,7 @@ body {
   display: grid;
   text-align: left;
   grid-template-columns: 80% 20%;
+  height: 110px;
 }
 
 #title {
