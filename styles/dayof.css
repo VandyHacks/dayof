@@ -50,7 +50,6 @@ body {
   justify-content: center;
   padding: 5px;
   background-color: white;
-  margin: 0px 0px 0px 10px;
   border-radius: 5px;
   width: 64px;
   height: 64px;
@@ -61,23 +60,9 @@ body {
 }
 
 
-#links-container {
-  display: flex;
-  flex-direction: row;
-}
-
-#social-media-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-}
-
-#social-media-sell {
-  background-color: #62B9C0;
-  width: 380px;
-  padding: 8px;
-  border-radius: 5px;
-  font-weight: 450;
+.icon-container:hover {
+  transform: scale(1.04);
+  transition: all 0.3s ease;
 }
 
 #send {
@@ -89,6 +74,7 @@ body {
   display: grid;
   text-align: left;
   grid-template-columns: 80% 20%;
+  height: 110px;
 }
 
 #title {

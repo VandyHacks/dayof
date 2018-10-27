@@ -1,3 +1,72 @@
+.announcements-and-links {
+  display: flex;
+  flex-direction: row;
+}
+.section-announcements {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.section-links {
+  display: flex;
+  flex-direction: column;
+}
+.icons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#links-container {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px 100px;
+  gap: 8px;
+}
+#slack {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+#submit-project {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+#wifi {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+#contact-info {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#social-media-container {
+  display: grid;
+  grid-template-columns: 66px 66px 66px;
+  grid-template-rows: 66px 132px;
+  gap: 8px;
+  margin-left: 10px;
+}
+#fb {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+#ig {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+#tw {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+#social-media-sell {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  background-color: #62B9C0;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: 450;
+}
+
 .announcements {
   display: flex;
   flex-direction: row;
@@ -9,8 +78,8 @@
   flex-direction: column;
   flex-shrink: 0;
   background-color: #FBF8F2;
-  overflow-y: scroll;
-  height: 200px;
+  overflow-y: auto;
+  height: 208px;
   border-radius: 5px;
   padding: 10px 0px 10px 0px;
   margin-right: 50%;

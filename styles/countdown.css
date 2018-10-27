@@ -9,11 +9,12 @@
 #countdown {
   display: grid;
   font-weight: 400;
-  grid-template-columns: auto auto auto 32px;
+  grid-template-columns: auto auto auto auto;
   grid-column-gap: 30px;
   justify-items: center;
   justify-content: center;
   margin-right: 70%;
+  font-size: 1.3em;
 }
 
 #countdown #remaining {
@@ -21,14 +22,16 @@
   flex-direction: column-reverse;
   font-size: 0.9em;
   text-align: right;
-  padding-bottom: 14px;
-  line-height: 14px;
+  padding-bottom: 15px;
   padding-top: 20px;
+  line-height: 20px;
+  margin-top: 15px;
 }
 
 #countdown #labels {
-  font-size: 14pt;
+  font-size: 1.116em;
   padding-top: 20px;
+  margin-top: 20px;
 }
 
 #countdown .time {
