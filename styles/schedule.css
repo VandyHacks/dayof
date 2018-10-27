@@ -31,7 +31,7 @@
   width: 95%;
   grid-template-columns: 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
   grid-template-rows: 4px repeat(105, 45px);
-  height: 4700px;
+  height: 4200px;
   background:
     repeating-linear-gradient(
       black 4px,
