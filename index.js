@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const parser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO_LIVE_AUTH);
+const needle = require('needle');
 const webpush = require('web-push');
 const WebSocket = require('ws');
 const Push = require('./schemas/schemas').pushSchema;
@@ -136,7 +137,7 @@ setTimeout(() => {
 }, 300000);
 
 app.post('/', (req, res) => {
-  const promise = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
+  const smsMsg = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
@@ -144,7 +145,16 @@ app.post('/', (req, res) => {
     }));
     resolve();
   });
-  Promise.all([promise])
+  const slackAnnouncement = new Promise((resolve, reject) => {
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: req.body.msg}, {json:true}, function(error, response) {
+        if (!error && response.statusCode == 200) {
+            resolve();
+        } else {
+            reject("Did not manage to post announcement to slack")
+        }
+      });
+})
+  Promise.all([smsMsg, slackAnnouncement])
     .then(
       console.log('Message sent'),
       res.redirect('back'),
