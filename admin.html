@@ -8,72 +8,36 @@
       <meta name="author" content="Kevin Zhai under VandyHacks">
     <title>VandyHacks Notifications</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/admin.css">
     <link rel="icon" href="vhfavicon.png" type="image/png">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
-  <body id="body-container">
+  <body>
+    <nav class="navbar">          
+      <h1 class="mx-auto navbar-brand">VandyHacks Notifications</h1>
+    </nav>
+    <div class="container center-block">
+      <div class="row center-block">
+        <div class="col">
+          <form action="/admin" method="post" onclick="checksms();" class="justify-content-center" id="formdiv">
+            <div class="form-group">
+              <label for="header">Enter notification header: </label>
+              <input type="text" class="form-control" id="header" name="header" placeholder="Header here...">
+            </div>
+            <div class="form-group">
+              <label for="msg">Enter notification body:</label>
+              <textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>
+            </div>
+            <div class="send">
+              <div id="send"><input type="checkbox" id="check"><p>Send SMS</p></div>
+              <div id="send"><input type="submit" id="pushnotif" onclick="return confirmMsg();" class="btn btn-outline-secondary" value="Send"><br></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!--confirmation popup after checking if textarea is empty-->
     <script>
-      function checkpw() {
-        fetch('/login', {
-          method: 'POST',
-          body: JSON.stringify(document.getElementById("password").value),
-          headers: {
-            'Content-type': 'application/json'
-          }
-        })
-        .then(
-          response => {
-            if (response.text() === 'true') {
-              document.getElementById('body-container').innerHTML =
-                '<nav class="navbar">' +
-                  '<h1 class="mx-auto navbar-brand">VandyHacks Notifications</h1>' +
-                '</nav>' +
-                '<div class="container center-block" id="access">' +
-                  '<div class="row center-block">' +
-                    '<div class="col">' +
-                      '<form action="/admin" method="post" onclick="checksms();" class="justify-content-center" id="formdiv">' +
-                        '<div class="form-group">' +
-                          '<label for="header">Enter notification header: </label>' +
-                          '<input type="text" class="form-control" id="header" name="header" placeholder="Header here...">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                          '<label for="msg">Enter notification body:</label>' +
-                          '<textarea class="form-control" name="msg" id="msg" rows="5" wrap="soft" placeholder="SMS here..." required></textarea>' +
-                        '</div>' +
-                        '<div class="send">' +
-                          '<div id="send"><input type="checkbox" id="check"><p>Send SMS</p></div>' +
-                          '<div id="send"><input type="submit" id="pushnotif" onclick="return confirmMsg();" class="btn btn-outline-secondary" value="Send"><br></div>' +
-                        '</div>' +
-                      '</form>' +
-                    '</div>' +
-                  '</div>' +
-                '</div>';
-              $('#verification').css('display', 'none');
-            }
-          }
-        )
-      }
-      window.onload(
-        document.getElementById('body-container').innerHTML =
-          '<nav class="navbar">' +
-            '<h1 class="mx-auto navbar-brand">VandyHacks Notifications</h1>' +
-          '</nav>' +
-          '<div class="container center-block" id="verification">' +
-            '<div class="row center-block">' +
-              '<form action="/login" onclick="checkpw()" class="justify-content-center" method="post">' +
-                '<div class="form-group">' +
-                  '<label>Password:</label><br>' +
-                  '<input type="password" id="password" name="password">' +
-                  '<input type="submit" value="Submit">' +
-                '</div>' +
-              '</form>' +
-            '</div>' +
-          '</div>'
-      );
       function checksms() {
         document.getElementById("formdiv").action = document.getElementById("check").checked ? "/" : "";
         document.getElementById("formdiv").method = document.getElementById("check").checked ? "post" : "";
