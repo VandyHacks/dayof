@@ -1,37 +1,31 @@
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
-const el = document.getElementById('announcements-col');
+const container = document.getElementById('announcements-col');
 
-ws.onmessage = function (event) {
-  console.log(event.data);
+class Announcements extends React.Component {
+  render() {
+    const elements = this.props.messages.map(({time, msg}, index) => {
+      const date = new Date(time);
+      return (
+        <li key={index} className="message">
+          <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+          <span>{msg}</span>
+        </li>
+      );
+    })
+
+    elements.reverse();
+    return <>{elements}</>;
+  }
+}
+
+ws.onmessage = event => {
+  console.log(`event.data=${event.data}`);
   if (event.data === 'reload') {
     console.log('Message sent, reload page');
     window.location.reload();
-  } else if (el.innerHTML === '') {
-    el.innerHTML = `<div class="announcements container-fluid">
-                      <div class="notiftimes container" id="notiftimes">
-                        <div class="notiftimestamp">00:00:00 am</div>
-                      </div>
-                      <div class="notiftext container-fluid" id="notiftext">
-                        <div class="tmptext">Announcements will be posted here</div>
-                      </div>
-                    </div>`;
   } else {
-    const arr = JSON.parse(event.data);
-    arr.forEach((element) => {
-      const d = new Date(element.time);
-      const hours = `${d.getHours() % 12}`;
-      const minutes = d.getMinutes() < 10 ? `0${d.getMinutes()}` : `${d.getMinutes()}`;
-      const ampm = d.getHours() >= 12 ? 'pm' : 'am';
-      const msgstring = `<div class="announcements container-fluid">
-                          <div class="notiftimes container" id="notiftimes">
-                            <div class="notiftimestamp">${hours}:${minutes} ${ampm}</div>
-                          </div>
-                          <div class="notiftext container" id="notiftext">
-                            <div class="notifbody">${element.msg}</div>
-                          </div>
-                        </div>`;
-      el.innerHTML = msgstring + el.innerHTML;
-    });
+    const messages = JSON.parse(event.data);
+    ReactDOM.render(<Announcements messages={messages}/>, container);
   }
 };
