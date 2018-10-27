@@ -55,6 +55,11 @@ body {
   height: 64px;
 }
 
+.icon-container:hover {
+  transform: scale(1.04);
+  transition: all 0.3s ease;
+}
+
 #send {
   display: flex;
 }
