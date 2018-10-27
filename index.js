@@ -71,7 +71,7 @@ function wait() {
 
 dbquery(wait);
 
-const server = app.get('/dayof', (req, res) => {
+const server = app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/dayof.html`);
   console.log('Live notifications page loaded');
 })
@@ -111,7 +111,7 @@ app.get('/login', (req, res) => {
   console.log('Login page loaded');
 });
 
-app.get('/', (req, res) => {
+app.get('/admin', (req, res) => {
   if (!loggedin) {
     res.redirect('/login');
   } else {
@@ -123,7 +123,7 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   if (req.body.password === process.env.PASSWORD) {
     loggedin = true;
-    res.redirect('/');
+    res.redirect('/admin');
     console.log('Logged in');
   } else {
     res.redirect('/login');
@@ -136,7 +136,7 @@ setTimeout(() => {
   }
 }, 300000);
 
-app.post('/', (req, res) => {
+app.post('/admin', (req, res) => {
   const smsMsg = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
     phoneArr.map(number => twilio.messages.create({
       to: number,
