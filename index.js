@@ -145,16 +145,7 @@ app.post('/', (req, res) => {
     }));
     resolve();
   });
-  const slackAnnouncement = new Promise((resolve, reject) => {
-    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: req.body.msg}, {json:true}, function(error, response) {
-        if (!error && response.statusCode == 200) {
-            resolve();
-        } else {
-            reject("Did not manage to post announcement to slack")
-        }
-      });
-})
-  Promise.all([smsMsg, slackAnnouncement])
+  Promise.all([smsMsg])
     .then(
       console.log('Message sent'),
       res.redirect('back'),
