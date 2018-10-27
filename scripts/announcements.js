@@ -1,6 +1,3 @@
-import React from 'react';
-import Moment from 'react-moment';
-
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
