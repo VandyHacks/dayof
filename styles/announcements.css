@@ -96,7 +96,7 @@
   flex-shrink: 0;
   flex-direction: column;
   text-align: right;
-  width: 10%;
+  width: minmax(10%, 20px);
 }
 
 .notiftext {
