@@ -8,7 +8,7 @@ class Announcements extends React.Component {
       const date = new Date(time);
       return (
         <li key={index} className="message">
-          <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+          <span>{date}</span>
           <span>{msg}</span>
         </li>
       );
