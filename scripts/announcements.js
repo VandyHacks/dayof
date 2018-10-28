@@ -5,6 +5,7 @@ import Timeago from "react-timeago";
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
+console.log('Loading announcements');
 
 class Announcements extends React.Component {
   render() {
@@ -20,7 +21,6 @@ class Announcements extends React.Component {
         </div>
       );
     })
-
     elements.reverse();
     return <>{elements}</>;
   }
