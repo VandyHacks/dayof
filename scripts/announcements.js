@@ -8,6 +8,7 @@ const container = document.getElementById('announcements-col');
 
 class Announcements extends React.Component {
   render() {
+    console.log('Loading announcements');
     const elements = this.props.messages.map(({time, msg}, index) => {
       const date = new Date(time);
       return (
