@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
@@ -11,7 +9,7 @@ class Announcements extends React.Component {
       return (
         <div class="card">
           <li key={index} className="message">
-            <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+            <span><Timeago date={this.props.time} /></span>
             <span>{msg}</span>
           </li>
         </div>
