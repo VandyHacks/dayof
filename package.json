@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@types/underscore": "^1.8.8",
+    "eslint": "^5.8.0",
     "underscore": "^1.9.1"
   }
 }

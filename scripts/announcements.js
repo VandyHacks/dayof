@@ -7,10 +7,12 @@ class Announcements extends React.Component {
     const elements = this.props.messages.map(({time, msg}, index) => {
       const date = new Date(time);
       return (
-        <li key={index} className="message">
-          <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-          <span>{msg}</span>
-        </li>
+        <div class="card">
+          <li key={index} className="message">
+            <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+            <span>{msg}</span>
+          </li>
+        </div>
       );
     })
 
