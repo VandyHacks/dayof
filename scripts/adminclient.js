@@ -1,5 +1,5 @@
 function checksms() {
-  document.getElementById('formdiv').action = document.getElementById('check').checked ? '/action' : '';
+  document.getElementById('formdiv').action = document.getElementById('check').checked ? '/admin' : '';
   document.getElementById('formdiv').method = document.getElementById('check').checked ? 'post' : '';
 }
 console.log('Sending push');
