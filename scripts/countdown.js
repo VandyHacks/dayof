@@ -1,5 +1,5 @@
 function updateTime() {
-  const end = new Date(2018, 10, 4, 12);
+  const end = new Date(2018, 10, 2, 15);
   const now = new Date();
   const diff = end !== now ? end - now : 0;
   let hours = Math.floor(diff / (1000 * (60 ** 2)));
