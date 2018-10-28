@@ -101,3 +101,7 @@
   padding: 0px 15px 0px 15px;
   text-align: right;
 }
+
+.card {
+  height: 20px;
+}
