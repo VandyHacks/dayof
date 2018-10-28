@@ -1,3 +1,5 @@
+import React from 'react';
+
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
