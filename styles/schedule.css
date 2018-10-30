@@ -88,6 +88,8 @@
 }
 .item:hover {
   transform: scale(1.05);
+  border: solid rgb(76, 141, 190);
+  border-width: 0.5px 0px !important;
 }
 
 .primaryevents {
