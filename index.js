@@ -7,6 +7,7 @@ const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO
 const needle = require('needle');
 const webpush = require('web-push');
 const WebSocket = require('ws');
+const fs = require('file-system');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
@@ -240,11 +241,12 @@ app.post('/sendpush', (req, res) => {
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
     });
+  fs.writeFile('pastnotifs.json', JSON.stringify(newMsg));
 });
 
 app.post('/updatemsg', (req, res) => {
   const promise = new Promise((resolve, reject) => {
-    Message.find({}, (err, docs) => {
+    Message.findOne().sort({ created_at: -1 }).exec((err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
         if (client === connect) {
