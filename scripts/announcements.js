@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 console.log("Loaded announcements.js");
 
 const HOST = window.location.origin.replace(/^https/, 'wss');
