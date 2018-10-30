@@ -16,8 +16,6 @@ function readTextFile(f) {
   rawFile.send(null);
 }
 
-readTextFile(`${__dirname}/pastnotifs.json`);
-
 class Announcements extends React.Component {
   render() {
     const elements = this.props.messages.map(({time, msg}, index) => {
