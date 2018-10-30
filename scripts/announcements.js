@@ -40,7 +40,6 @@ ws.onmessage = event => {
     window.location.reload();
   } else {
     const messages = JSON.parse(event.data);
-    const prevmessages = JSON.parse()
     ReactDOM.render(<Announcements messages={messages}/>, container);
   }
 };
