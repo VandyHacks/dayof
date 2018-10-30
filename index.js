@@ -252,6 +252,7 @@ app.post('/updatemsg', (req, res) => {
         if (client === connect) {
           client.send(JSON.stringify(docs));
           console.log('Data sent to client');
+          console.log(docs);
         }
       });
     });
