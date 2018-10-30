@@ -45,6 +45,9 @@ db.once('open', () => {
 });
 
 const phoneArr = [];
+let jsontable = {
+  msgs: [],
+};
 
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
@@ -241,7 +244,20 @@ app.post('/sendpush', (req, res) => {
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
     });
-  fs.writeFile('pastnotifs.json', JSON.stringify(newMsg));
+  fs.readFile('pastnotifs.json', 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      jsontable = JSON.parse(data);
+      jsontable.msgs.push({
+        heading: req.body.header,
+        text: req.body.value,
+        time: d,
+      });
+      const json = JSON.stringify(jsontable);
+      fs.writeFile('pastnotifs.json', json, 'utf8');
+    }
+  });
 });
 
 app.post('/updatemsg', (req, res) => {
@@ -252,7 +268,6 @@ app.post('/updatemsg', (req, res) => {
         if (client === connect) {
           client.send(JSON.stringify(docs.slice(-1)));
           console.log('Data sent to client');
-          console.log(docs);
         }
       });
     });

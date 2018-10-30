@@ -2,6 +2,22 @@ const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
 
+function readTextFile(f) {
+  let rawFile = new XMLHttpRequest();
+  rawFile.open('GET', f, false);
+  rawFile.onreadystatechange = () => {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status === 0) {
+        let text = rawFile.responseText;
+        alert(text);
+      }
+    }
+  }
+  rawFile.send(null);
+}
+
+readTextFile(`${__dirname}/pastnotifs.json`);
+
 class Announcements extends React.Component {
   render() {
     const elements = this.props.messages.map(({time, msg}, index) => {
@@ -26,6 +42,7 @@ ws.onmessage = event => {
     window.location.reload();
   } else {
     const messages = JSON.parse(event.data);
+    const prevmessages = JSON.parse()
     ReactDOM.render(<Announcements messages={messages}/>, container);
   }
 };
