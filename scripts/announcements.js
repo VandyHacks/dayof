@@ -1,3 +1,7 @@
+import * as React from 'react';
+import * as ReactDOM from 'react';
+import Timeago from 'react-timeago';
+
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
