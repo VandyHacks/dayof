@@ -255,6 +255,7 @@ app.post('/updatemsg', (req, res) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
         if (client === connect) {
+          console.log('Sending data to client');
           client.send(JSON.stringify(docs));
           console.log('Data sent to client');
         }
