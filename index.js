@@ -261,12 +261,11 @@ app.post('/sendpush', (req, res) => {
 });
 
 app.post('/updatemsg', (req, res) => {
-  console.log('Updating msg');
   const promise = new Promise((resolve, reject) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
+      console.log('Connecting to client');
       wss.clients.forEach((client) => {
-        console.log('Connecting to client');
         if (client === connect) {
           client.send(JSON.stringify(docs.slice(-1)));
           console.log('Data sent to client');
