@@ -1,7 +1,3 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import Timeago from 'react-timeago';
-
 console.log("Loaded announcements.js");
 
 const HOST = window.location.origin.replace(/^https/, 'wss');
