@@ -4,7 +4,7 @@
   "description": "SMS Notifications",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "parcel dayof.html",
     "build": "parcel build dayof.html",
     "lint": "eslint index.js"
   },
@@ -45,6 +45,8 @@
     "ws": "6.0.0"
   },
   "devDependencies": {
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
     "@types/underscore": "^1.8.8",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
