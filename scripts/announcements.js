@@ -15,7 +15,8 @@ class Announcements extends React.Component {
       return (
         <div class="card">
           <li key={index} className="message">
-            <span><Timeago date={this.props.time} /></span>
+            {/*<span><Timeago date={this.props.time} /></span>*/}
+            <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
             <span>{msg}</span>
           </li>
         </div>
