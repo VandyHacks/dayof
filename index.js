@@ -7,7 +7,6 @@ const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO
 const needle = require('needle');
 const webpush = require('web-push');
 const WebSocket = require('ws');
-const fs = require('file-system');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
@@ -216,12 +215,12 @@ app.post('/sendpush', (req, res) => {
   });
   const slackAnnouncement = new Promise((resolve, reject) => {
     needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: `${req.body.header}: ${req.body.value}`}, {json:true}, function(error, response) {
-    if (!error && response.statusCode == 200) {
-        resolve();
-    } else {
-        reject("Did not manage to post announcement to slack")
-    }
-  });
+        if (!error && response.statusCode == 200) {
+            resolve();
+        } else {
+            reject("Did not manage to post announcement to slack")
+        }
+      });
 })
   Promise.all([chromePush,slackAnnouncement])
     .then(
@@ -236,26 +235,19 @@ app.post('/sendpush', (req, res) => {
     });
 
   const d = new Date();
-  Message.find().lean().exec((err, elements) => {
-    fs.writeFile('pastnotifs.json', res.end(JSON.stringify(elements)));
-  });
   const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
   newMsg.save()
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
     });
-  fs.writeFile('pastnotifs.json', JSON.stringify(newMsg)); // Check
 });
 
 app.post('/updatemsg', (req, res) => {
   const promise = new Promise((resolve, reject) => {
-    // add most recent notification to json
-    // Message.findOne().sort({ created_at: -1 }).exec((err, docs) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
         if (client === connect) {
-          console.log('Sending data to client');
           client.send(JSON.stringify(docs));
           console.log('Data sent to client');
         }

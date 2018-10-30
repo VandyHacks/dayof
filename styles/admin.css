@@ -1,3 +1,7 @@
-.container {
+#verification {
+  display: block;
+}
+
+#access {
   width: 50%;
 }

@@ -1,27 +1,19 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import Timeago from "react-timeago";
-
 const HOST = window.location.origin.replace(/^https/, 'wss');
 const ws = new WebSocket(HOST);
 const container = document.getElementById('announcements-col');
-console.log('Loading announcements');
 
 class Announcements extends React.Component {
   render() {
-    console.log('Loading announcements');
     const elements = this.props.messages.map(({time, msg}, index) => {
       const date = new Date(time);
       return (
-        <div class="card">
-          <li key={index} className="message">
-            {/*<span><Timeago date={this.props.time} /></span>*/}
-            <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-            <span>{msg}</span>
-          </li>
-        </div>
+        <li key={index} className="message">
+          <span>{date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+          <span>{msg}</span>
+        </li>
       );
     })
+
     elements.reverse();
     return <>{elements}</>;
   }

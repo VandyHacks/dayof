@@ -9,7 +9,7 @@ function confirmMsg() {
       alert('Messages sent!');
       const msgbody = {
         header: document.getElementById('header').value,
-        value: document.getElementById('msg').value,
+        value: document.getElementById('msg').value, 
       };
       fetch('/sendpush', {
         method: 'POST',
