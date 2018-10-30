@@ -89,6 +89,7 @@ let connect;
 let loggedin = false;
 
 const wss = new WebSocket.Server({ server });
+console.log('Websocket created');
 wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
