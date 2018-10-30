@@ -250,7 +250,8 @@ app.post('/sendpush', (req, res) => {
 app.post('/updatemsg', (req, res) => {
   const promise = new Promise((resolve, reject) => {
     // add most recent notification to json
-    Message.findOne().sort({ created_at: -1 }).exec((err, docs) => {
+    // Message.findOne().sort({ created_at: -1 }).exec((err, docs) => {
+    Message.find({}, (err, docs) => {
       if (err) reject(err);
       wss.clients.forEach((client) => {
         if (client === connect) {
