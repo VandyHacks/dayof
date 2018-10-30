@@ -89,7 +89,6 @@ let connect;
 let loggedin = false;
 
 const wss = new WebSocket.Server({ server });
-console.log('Websocket created');
 wss.on('connection', (ws) => {
   console.log('Client connected');
   const wscopy = ws;
@@ -263,12 +262,14 @@ app.post('/sendpush', (req, res) => {
 
 app.post('/updatemsg', (req, res) => {
   const promise = new Promise((resolve, reject) => {
-    Message.find({}, (err, docs) => {
+    Message.findOne().sort({ field: 'asc', _id: -1 }).exec((err, docs) => {
+      const mostrecent = [];
+      mostrecent.push(docs);
       if (err) reject(err);
       console.log('Connecting to client');
       wss.clients.forEach((client) => {
         if (client === connect) {
-          client.send(JSON.stringify(docs.slice(-1)));
+          client.send(JSON.stringify(mostrecent));
           console.log('Data sent to client');
         }
       });
