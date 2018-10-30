@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react';
+import * as ReactDOM from 'react-dom';
 import Timeago from 'react-timeago';
 
 const HOST = window.location.origin.replace(/^https/, 'wss');
