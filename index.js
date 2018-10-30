@@ -261,6 +261,7 @@ app.post('/sendpush', (req, res) => {
 });
 
 app.post('/updatemsg', (req, res) => {
+  console.log('Updating msg');
   const promise = new Promise((resolve, reject) => {
     Message.find({}, (err, docs) => {
       if (err) reject(err);
