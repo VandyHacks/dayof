@@ -1,12 +1,6 @@
 {
-  "extends": "airbnb-base",
-  "rules": {
-      "func-names": ["error", "never"],
-      "linebreak-style": ["error", "windows"]
-  },
-  "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-  }
+  "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+  ]
 }

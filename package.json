@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "./node_modules/.bin/parcel dayof.html",
     "build": "./node_modules/.bin/parcel build index.js",
     "lint": "eslint index.js"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/k-zhai/vh-notifications#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "babel-standalone": "^6.26.0",
     "body-parser": "^1.18.3",
     "bufferutil": "4.0.0",
@@ -31,6 +33,7 @@
     "express-validator": "^5.2.0",
     "file-system": "^2.2.2",
     "helmet": "^3.12.1",
+    "immutable": "^3.8.2",
     "moment": "^2.22.2",
     "mongoose": "^5.2.2",
     "needle": "^2.2.4",
@@ -52,6 +55,8 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
     "underscore": "^1.9.1"
   }
 }
