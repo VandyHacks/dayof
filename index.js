@@ -213,7 +213,6 @@ app.post('/getmsgs', (req, res) => {
       return;
     }
     console.log(docs);
-    res.sendStatus(200);
     res.send(docs);
   });
 });
