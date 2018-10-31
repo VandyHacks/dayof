@@ -32,7 +32,7 @@ class Announcements extends React.Component {
       }
 
       this.setState(curState => {
-        announcements: List(msg, ...curState.announcements)
+        announcements: curState.announcements.unshift(msg)
       });
 
       this.ws.onclose = this.connectToWebSocket;
