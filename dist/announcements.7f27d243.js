@@ -28520,31 +28520,12 @@ function (_React$Component) {
     };
     _this.ws;
 
-    _this.readTextFile.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-
     _this.connectToWebSocket.bind(_assertThisInitialized(_assertThisInitialized(_this)));
 
     return _this;
   }
 
   _createClass(Announcements, [{
-    key: "readTextFile",
-    value: function readTextFile() {
-      var rawFile = new XMLHttpRequest();
-      rawFile.open('GET', f, false);
-
-      rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4) {
-          if (rawFile.status === 200 || rawFile.status === 0) {
-            var text = rawFile.responseText;
-            alert(text);
-          }
-        }
-      };
-
-      rawFile.send(null);
-    }
-  }, {
     key: "connectToWebSocket",
     value: function connectToWebSocket() {
       var _this2 = this;
@@ -28628,7 +28609,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54929" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62981" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -212,7 +212,7 @@ app.post('/getmsgs', (req, res) => {
       res.sendStatus(500);
       return;
     }
-
+    console.log(docs);
     res.sendStatus(200);
     res.send(docs);
   });
