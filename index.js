@@ -87,6 +87,7 @@ let loggedin = false;
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  console.log(ws);
   ws.ping('ping');
   ws.on('ping', () => {
     ws.pong('pong');
@@ -212,7 +213,6 @@ app.post('/getmsgs', (req, res) => {
       res.sendStatus(500);
       return;
     }
-    console.log(docs);
     res.send(docs);
   });
 });
