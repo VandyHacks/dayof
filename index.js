@@ -7,7 +7,6 @@ const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO
 const needle = require('needle');
 const webpush = require('web-push');
 const WebSocket = require('ws');
-const fs = require('file-system');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
@@ -39,15 +38,12 @@ mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'db connection error:'));
 db.once('open', () => {
   console.log('Database open');
 });
 
 const phoneArr = [];
-let jsontable = {
-  msgs: [],
-};
 
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
@@ -55,7 +51,12 @@ const Message = db.model('Message', Msg);
 
 function dbquery(callback) {
   Hacker.find({}, (err, data) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      callback();
+      return;
+    }
+
     data.forEach((element) => {
       let num = element.phone;
       num = num.replace(/-/g, '');
@@ -64,6 +65,7 @@ function dbquery(callback) {
       }
     });
   });
+
   callback();
 }
 
@@ -78,36 +80,25 @@ dbquery(wait);
 const server = app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/dist/dayof.html`);
   console.log('Live notifications page loaded');
-})
-  .listen(PORT);
+}).listen(PORT);
 
-function heartbeat() {
-  this.isAlive = true;
-}
-
-let connect;
 let loggedin = false;
 
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  const wscopy = ws;
-  connect = ws;
-  wscopy.isAlive = true;
-  wscopy.ping('pingdata');
-  wscopy.on('pong', heartbeat);
+  ws.ping('ping');
+  ws.on('ping', () => {
+    ws.pong('pong');
+  });
   const keepAlive = setInterval(() => {
-    if (wscopy.readyState !== 1 || !wscopy.isAlive) {
+    if (ws.readyState !== 1) {
       clearInterval(keepAlive);
-      wscopy.terminate();
+      ws.terminate();
     } else {
-      wscopy.ping('pingdata');
+      ws.ping('pingdata');
     }
   }, 5000);
-  ws.on('close', () => {
-    wscopy.isAlive = false;
-    console.log('Client disconnected');
-  });
 });
 
 app.get('/login', (req, res) => {
@@ -116,48 +107,18 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  if (!loggedin) {
-    res.redirect('/login');
-  } else {
-    res.sendFile(`${__dirname}/admin.html`);
-    console.log('Admin page loaded');
-  }
+  res.sendFile(`${__dirname}/admin.html`);
+  console.log('Admin page loaded');
 });
-
-app.post('/login', (req, res) => {
-  if (req.body.password === process.env.PASSWORD) {
-    loggedin = true;
-    res.redirect('/admin');
-    console.log('Logged in');
-  } else {
-    res.redirect('/login');
-  }
-});
-
-setTimeout(() => {
-  if (loggedin) {
-    loggedin = false;
-  }
-}, 300000);
 
 app.post('/admin', (req, res) => {
-  const smsMsg = new Promise((resolve, reject) => { // eslint-disable-line no-unused-vars
-    phoneArr.map(number => twilio.messages.create({
-      to: number,
-      from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${req.body.msg}`,
-    }));
-    resolve();
-  });
-  Promise.all([smsMsg])
-    .then(
-      console.log('Message sent'),
-      res.redirect('back'),
-    )
-    .catch((err) => {
-      console.log(err);
-      res.redirect('back');
-    });
+  phoneArr.map(number => twilio.messages.create({
+    to: number,
+    from: process.env.TWILIO_MASS_SMS_SID,
+    body: `VandyHacks: ${req.body.msg}`,
+  }));
+  res.sendStatus(200);
+  res.redirect('back');
 });
 
 function isValidSaveRequest(req, res) {
@@ -200,9 +161,15 @@ app.post('/savesub', (req, res) => {
 
 // Dayof route
 app.post('/sendpush', (req, res) => {
+  const d = new Date();
+  const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
+  newMsg.save()
+    .catch((err) => {
+      console.log('Unable to save message to database: ', err);
+    });
   // Resource created successfully
   console.log(req.body); // added
-  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value });
+  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value, time: d });
   const options = {
     TTL: ttl,
   };
@@ -218,70 +185,37 @@ app.post('/sendpush', (req, res) => {
     resolve();
   });
   const slackAnnouncement = new Promise((resolve, reject) => {
-    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', {msg: `${req.body.header}: ${req.body.value}`}, {json:true}, function(error, response) {
-        if (!error && response.statusCode == 200) {
-            resolve();
-        } else {
-            reject("Did not manage to post announcement to slack")
-        }
-      });
-})
-  Promise.all([chromePush,slackAnnouncement])
-    .then(
-      console.log('Push notification sent'),
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, function (error, response) {
+      if (!error && response.statusCode == 200) {
+        resolve();
+      } else {
+        reject("Did not manage to post announcement to slack")
+      }
+    });
+  })
+  Promise.all([chromePush, slackAnnouncement])
+    .then(() => {
       wss.clients.forEach((client) => {
-        client.send('reload');
-      }),
-      res.sendStatus(201),
-    )
+        client.send(payload);
+      });
+      res.sendStatus(201);
+    })
     .catch((error) => {
       console.log(error.stack);
     });
-
-  const d = new Date();
-  const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
-  newMsg.save()
-    .catch((err) => {
-      console.log('Unable to save message to database: ', err);
-    });
-  fs.readFile('pastnotifs.json', 'utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      jsontable = JSON.parse(data);
-      jsontable.msgs.push({
-        heading: req.body.header,
-        text: req.body.value,
-        time: d,
-      });
-      const json = JSON.stringify(jsontable);
-      fs.writeFile('pastnotifs.json', json, 'utf8');
-    }
-  });
 });
 
-app.post('/updatemsg', (req, res) => {
-  const promise = new Promise((resolve, reject) => {
-    Message.findOne().sort({ field: 'asc', _id: -1 }).exec((err, docs) => {
-      const mostrecent = [];
-      mostrecent.push(docs);
-      if (err) reject(err);
-      console.log('Connecting to client');
-      wss.clients.forEach((client) => {
-        if (client === connect) {
-          client.send(JSON.stringify(mostrecent));
-          console.log('Data sent to client');
-        }
-      });
-    });
-    resolve();
-  });
+app.post('/getmsgs', (req, res) => {
+  Message.find({}).sort({ field: 'asc', _id: -1 }).exec((err, docs) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
+    }
 
-  Promise.all([promise])
-    .then(res.sendStatus(201))
-    .catch((error) => {
-      console.log(error);
-    });
+    res.sendStatus(200);
+    res.send(docs);
+  });
 });
 
 module.exports = app;

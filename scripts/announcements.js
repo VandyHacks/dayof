@@ -18,20 +18,6 @@ class Announcements extends React.Component {
     this.connectToWebSocket.bind(this);
   }
 
-  readTextFile() {
-    let rawFile = new XMLHttpRequest();
-    rawFile.open('GET', f, false);
-    rawFile.onreadystatechange = () => {
-      if (rawFile.readyState === 4) {
-        if (rawFile.status === 200 || rawFile.status === 0) {
-          let text = rawFile.responseText;
-          alert(text);
-        }
-      }
-    }
-    rawFile.send(null);
-  }
-
   connectToWebSocket() {
     const HOST = 'wss://vandyhacksnotifications.herokuapp.com/';
     this.ws = new WebSocket(HOST);

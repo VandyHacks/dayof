@@ -6496,7 +6496,7 @@ function _run() {
             return sendSubtoExpress(subscription);
 
           case 15:
-            fetch('/updatemsg', {
+            fetch('/getmsgs', {
               method: 'POST',
               body: JSON.stringify(subscription),
               headers: {

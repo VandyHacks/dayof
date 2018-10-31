@@ -82,7 +82,7 @@ async function run() {
   // Send PushSubscription to backend
   await sendSubtoExpress(subscription);
 
-  fetch('/updatemsg', {
+  fetch('/getmsgs', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
