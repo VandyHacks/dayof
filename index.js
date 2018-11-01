@@ -198,8 +198,13 @@ app.post('/sendpush', (req, res) => {
   })
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
+      const wsMsg = JSON.stringify({
+        header: req.body.header,
+        msg: req.body.value,
+        time: d
+      });
       wss.clients.forEach((client) => {
-        client.send(payload, (err) => {
+        client.send(wsMsg, (err) => {
           console.log('ws send err:', err);
           client.terminate();
         });
