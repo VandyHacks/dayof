@@ -203,7 +203,7 @@ app.post('/sendpush', (req, res) => {
       res.sendStatus(201);
     })
     .catch((error) => {
-      console.log(error.stack);
+      console.log(`Error: ${error.stack}`);
     });
 });
 
