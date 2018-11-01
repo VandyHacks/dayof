@@ -86,8 +86,8 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.ping('ping');
-  ws.on('ping', () => {
-    ws.pong('pong');
+  ws.on('pong', () => {
+    setTimeout(ws.pong('ping'), 5000);
   });
   const keepAlive = setInterval(() => {
     if (ws.readyState !== 1) {
