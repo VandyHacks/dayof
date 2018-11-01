@@ -204,6 +204,7 @@ app.post('/sendpush', (req, res) => {
     })
     .catch((error) => {
       console.log(`Error: ${error.stack}`);
+      res.sendStatus(500);
     });
 });
 
