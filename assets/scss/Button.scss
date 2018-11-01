@@ -1,0 +1,16 @@
+@import "./Variables.scss";
+
+.btn {
+  padding: 10px 20px;
+  background: $main-clr;
+  border-radius: 8px;
+  color: $bg-clr;
+  text-decoration: none;
+  font-family: SofiaPro;
+  transition: ease 0.4s all;
+  font-size: 1.2rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

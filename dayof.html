@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Live Page for VandyHacks V">
+  <meta name="author" content="Matt Leon and Kevin Zhai">
+  <title>VandyHacks V Live Page</title>
+  <link rel="icon" href="vhfavicon.png" type="image/png">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127850763-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-127850763-1');
+  </script>
+</head>
+
+<body>
+  <div id='App'></div>
+  <script src="./src/DayOf.jsx"></script>
+  <!-- </body>
+  <div id="guides">
+    <button type="button" class="btn">Hacker Guide</button>
+  </div>
+  <br>
+
+  <div class="announcements-and-links">
+    <div class="section-announcements">
+      <h4 class="subheader">Live Announcements</h4>
+      <div id="announcements"></div>
+    </div>
+    <div class="section-links">
+      <h4 class="subheader">Important Links</h4>
+      <div class="icons-container">
+        <div id="links-container">
+          <div class="link">
+            <img class="link-icon" id="slack" src="assets/slack.svg" width="40px" height="40px">
+            <span class="link-title">slack</span>
+          </div>
+          <div class="link">
+            <img class="link-icon" id="submit-project" src="assets/devpost.svg" width="75px" height="40px">
+            <span class="link-title">submit</span>
+          </div>
+          <div class="link">
+            <img class="link-icon" id="wifi" src="assets/wifi.svg" width="40px" height="40px">
+            <span class="link-title">wifi info</span>
+          </div>
+          <div class="link">
+            <img class="link-icon" id="contact-info" src="assets/contact.svg" width="40px" height="40px">
+            <span class="link-title">contact info</span>
+          </div>
+        </div>
+        <div id="social-media-container">
+          <div id="social-media-sell">Follow us on social media to see pictures and videos posted throughout and after
+            the event!</div>
+          <div class="icon-container" id="fb">
+            <a href="https://www.facebook.com/vandyhacks/">
+              <img src="assets/facebook.svg" width="40px" height="40px">
+            </a>
+          </div>
+          <div class="icon-container" id="ig">
+            <a href="https://instagram.com/vandyhacks/">
+              <img src="assets/instagram.svg" width="40px" height="40px">
+            </a>
+          </div>
+          <div class="icon-container" id="tw">
+            <a href="https://twitter.com/vandyhacks/">
+              <img src="assets/twitter.svg" width="40px" height="40px">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="section">
+    <h4 class="subheader">Schedule</h4>
+  </div>
+  <div class="larger-container">
+    <div class="container-header-row">
+      <div class="header-padding-left"></div>
+      <div class="container-header">
+        <div class="text" id="gap"></div>
+        <div class="text">
+          MAIN EVENTS
+        </div>
+        <div class="text" id="gap"></div>
+        <div class="text">
+          FOOD
+        </div>
+        <div class="text" id="gap"></div>
+        <div class="text">
+          HACKER EXP
+        </div>
+        <div class="text" id="gap"></div>
+        <div class="text">
+          SPONSOR TALKS
+        </div>
+        <div class="text" id="gap"></div>
+      </div>
+      <div class="header-padding-right"></div>
+    </div>
+    <div class="container-main">
+      <div class="container-time">
+        <div class="text">
+          FRI 6PM
+        </div>
+        <div class="text">
+          7PM
+        </div>
+        <div class="text">
+          8PM
+        </div>
+        <div class="text">
+          9PM
+        </div>
+        <div class="text">
+          10PM
+        </div>
+        <div class="text">
+          11PM
+        </div>
+        <div class="text">
+          SAT 12AM
+        </div>
+        <div class="text">
+          1AM
+        </div>
+        <div class="text">
+          2AM
+        </div>
+        <div class="text">
+          3AM
+        </div>
+        <div class="text">
+          4AM
+        </div>
+        <div class="text">
+          5AM
+        </div>
+        <div class="text">
+          6AM
+        </div>
+        <div class="text">
+          7AM
+        </div>
+        <div class="text">
+          8AM
+        </div>
+        <div class="text">
+          9AM
+        </div>
+        <div class="text">
+          10AM
+        </div>
+        <div class="text">
+          11AM
+        </div>
+        <div class="text">
+          12PM
+        </div>
+        <div class="text">
+          1PM
+        </div>
+        <div class="text">
+          2PM
+        </div>
+        <div class="text">
+          3PM
+        </div>
+        <div class="text">
+          4PM
+        </div>
+        <div class="text">
+          5PM
+        </div>
+        <div class="text">
+          6PM
+        </div>
+        <div class="text">
+          7PM
+        </div>
+        <div class="text">
+          8PM
+        </div>
+        <div class="text">
+          9PM
+        </div>
+        <div class="text">
+          10PM
+        </div>
+        <div class="text">
+          11PM
+        </div>
+        <div class="text">
+          SUN 12AM
+        </div>
+        <div class="text">
+          1AM
+        </div>
+        <div class="text">
+          2AM
+        </div>
+        <div class="text">
+          3AM
+        </div>
+        <div class="text">
+          4AM
+        </div>
+        <div class="text">
+          5AM
+        </div>
+        <div class="text">
+          6AM
+        </div>
+        <div class="text">
+          7AM
+        </div>
+        <div class="text">
+          8AM
+        </div>
+        <div class="text">
+          9AM
+        </div>
+        <div class="text">
+          10AM
+        </div>
+        <div class="text">
+          11AM
+        </div>
+        <div class="text">
+          12PM
+        </div>
+        <div class="text">
+          1PM
+        </div>
+        <div class="text">
+          2PM
+        </div>
+        <div class="text">
+          3PM
+        </div>
+        <div class="text">
+          4PM
+        </div>
+      </div>
+      <div class="container-body">
+        <div class="primaryevents item" id="item-c">
+          <p class="heading">
+            Check-In
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="primaryevents item" id="item-d">
+          <p class="heading">
+            Opening Ceremony
+          </p>
+          <p class="description">
+            Langford Auditorium
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="primaryevents item" id="item-e">
+          <p class="heading">
+            Setup Expo
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="primaryevents item" id="item-f">
+          <p class="heading">
+            Expo
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="primaryevents item" id="item-g">
+          <p class="heading">
+            Closing Ceremony
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="primaryevents item" id="item-l">
+          <p class="heading">
+            All Buses Depart
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-m">
+          <p class="heading">
+            Dinner
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-n">
+          <p class="heading">
+            Midnight Snack
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-o">
+          <p class="heading">
+            Breakfast
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-p">
+          <p class="heading">
+            Lunch
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-q">
+          <p class="heading">
+            Dinner
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-r">
+          <p class="heading">
+            Midnight Snack
+          </p>
+          <p class="description"></p>
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-s">
+          <p class="heading">
+            Breakfast
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-t">
+          <p class="heading">
+            Lunch (setup)
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="food item" id="item-u">
+          <p class="heading">
+            Lunch
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="hackerexp item" id="item-v">
+          <p class="heading">
+            Workshops for beginners
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="hackerexp item" id="item-w">
+          <p class="heading">
+            Recess (not happening)
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="hackerexp item" id="item-x">
+          <p class="heading">
+            Wellness Night
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="hackerexp item" id="item-y">
+          <p class="heading">
+            How to Demo
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-aa">
+          <p class="heading">
+            BOS Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ab">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ac">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ad">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ae">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-af">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ag">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+        <div class="sponsortalks item" id="item-ah">
+          <p class="heading">
+            Sponsor Workshop
+          </p>
+          <p class="description">
+          </p>
+          <p class="details">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer container-fluid"></div>
+
+  <script type="application/javascript" src="client.js"></script>
+  <script type="application/javascript" src="scripts/countdown.js"></script>
+  <script src="scripts/announcements.jsx"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body> -->
+
+</html>

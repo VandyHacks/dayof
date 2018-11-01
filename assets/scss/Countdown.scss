@@ -1,0 +1,50 @@
+@import "./Variables.scss";
+
+.countdown {
+  height: 75%;
+  justify-self: flex-end;
+  align-self: flex-start;
+  display: grid;
+  font-weight: 400;
+  grid-template-areas: ". hour min sec" "rem hourTime minTime secTime";
+  grid-column-gap: 1em;
+  align-items: center;
+  justify-content: center;
+  color: $accent-clr;
+  line-height: 1em;
+  text-align: center;
+  font-size: 1.4em;
+
+  #hour {
+    grid-area: hour;
+    // Make the hour time look right compared to min/sec
+    padding: 0 0.5em;
+  }
+  #min {
+    grid-area: min;
+  }
+  #sec {
+    grid-area: sec;
+  }
+
+  .remaining {
+    font-size: 1em;
+    text-align: right;
+    grid-area: rem;
+    font-family: SofiaProSemiBold;
+    white-space: pre-wrap;
+  }
+
+  .labels {
+    font-family: SofiaPro;
+    font-size: 1.15em;
+    grid-row: 1;
+  }
+
+  .time {
+    grid-row: 2;
+    font-size: 1.8em;
+    font-family: SofiaProSemiBold;
+    min-width: 1.8em;
+  }
+}

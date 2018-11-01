@@ -1,0 +1,104 @@
+.announcements-and-links {
+  display: flex;
+  flex-direction: row;
+}
+.section-announcements {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.section-links {
+  display: flex;
+  flex-direction: column;
+}
+.icons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#links-container {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px 100px;
+  gap: 8px;
+}
+#slack {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+#submit-project {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+#wifi {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+#contact-info {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#social-media-container {
+  display: grid;
+  grid-template-columns: 66px 66px 66px;
+  grid-template-rows: 66px 132px;
+  gap: 9px;
+  margin-left: 10px;
+}
+#fb {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+#ig {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+#tw {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+#social-media-sell {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  background-color: #62b9c0;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: 450;
+}
+
+.announcements {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: rgba(#fbf8f2, 0.7);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.announcements-col {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background-color: #fbf8f2;
+  overflow-y: auto;
+  height: 208px;
+  border-radius: 5px;
+  padding: 10px 0px 10px 0px;
+}
+
+.container-fluid {
+  display: flex !important;
+  width: 95%;
+  margin-left: 0%;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.message span:first-child {
+  color: #07889b;
+  padding: 0px 15px 0px 15px;
+  text-align: right;
+}

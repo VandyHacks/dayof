@@ -1,0 +1,44 @@
+@import "./Variables.scss";
+
+.links {
+  display: flex;
+  flex-flow: row nowrap;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: $main-clr;
+  }
+}
+
+.links-left {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 0 0 50%;
+}
+
+.links-right {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+
+.small-links {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 0 0 40%;
+}
+
+.big-link {
+  width: calc(50% - 40px);
+  height: calc(50% - 40px);
+  margin: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 8px;
+
+  img {
+    width: 60%;
+  }
+}

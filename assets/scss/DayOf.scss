@@ -1,0 +1,96 @@
+@import "./Variables.scss";
+@font-face {
+  font-family: SofiaProSemiBold;
+  src: url("~/assets/fonts/SofiaProSemiBold.woff");
+}
+@font-face {
+  font-family: SofiaPro;
+  src: url("~/assets/fonts/SofiaProRegular.woff");
+}
+
+body {
+  background-color: $bg-clr;
+  margin: 0px;
+  padding: 0px;
+  font-family: SofiaPro;
+
+  // -moz-user-select: none;
+  // -webkit-user-select: none;
+  // user-select: none;
+}
+
+.Main {
+  padding: 40px;
+  display: grid;
+  grid:
+    [row1-start] "header header" auto [row1-end]
+    [row3-start] "announce-hdr links-hdr" auto [row3-end]
+    [row4-start] "announcements links" auto [row4-end]
+    [row5-start] "schedule-hdr schedule-hdr" auto [row5-end]
+    [row6-start] "schedule schedule" auto [row6-end]
+    [row7-start] "footer footer" 50px [row7-end]
+    / 3fr 2fr;
+  grid-gap: 20px;
+
+  @media (orientation: portrait) {
+    grid:
+      [row1-start] "header" auto [row1-end]
+      [row3-start] "links-hdr" auto [row3-auto]
+      [row4-start] "links" auto [row4-auto]
+      [row5-start] "announce-hdr" auto [row5-end]
+      [row6-start] "announcements" auto [row6-end]
+      [row7-start] "schedule-hdr" auto [row7-end]
+      [row8-start] "schedule" auto [row8-end]
+      [row9-start] "footer" 50px [row9-end]
+      / 1fr;
+  }
+}
+
+#guide-btn {
+  grid-area: hackerguide-btn;
+}
+.header {
+  grid-area: header;
+}
+.announcements-hdr {
+  grid-area: announce-hdr;
+}
+.announcements {
+  grid-area: announcements;
+}
+.links-hdr {
+  grid-area: links-hdr;
+}
+.links {
+  grid-area: links;
+}
+.schedule-hdr {
+  grid-area: schedule-hdr;
+}
+.schedule {
+  grid-area: schedule;
+}
+
+h4 {
+  color: $accent-clr;
+  font-family: SofiaProSemiBold;
+  font-size: 1.6em;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.header {
+  color: $main-clr;
+  display: grid;
+  text-align: left;
+  height: 110px;
+  align-items: center;
+
+  @media (orientation: portrait) {
+    grid-template-rows: repeat(2, 125px);
+  }
+  @media (orientation: landscape) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

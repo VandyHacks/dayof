@@ -1,0 +1,29 @@
+{
+  "name": "react-dayof",
+  "version": "1.0.0",
+  "description": "DayOf page for VandyHacks V, Nov. 2-4",
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Matt Leon",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.7.7",
+    "immutable": "^3.8.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-timeago": "^4.1.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "sass": "^1.14.3",
+    "svg-loader": "0.0.2",
+    "typescript": "^3.1.5"
+  }
+}
