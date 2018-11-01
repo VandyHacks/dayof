@@ -201,7 +201,9 @@ app.post('/sendpush', (req, res) => {
       const announcement = [];
       announcement.push(payload);
       wss.clients.forEach((client) => {
+        client.send()
         client.send(announcement);
+        console.log('sent to client', client);
       });
       console.log(`Announcement sent through ws: ${announcement}`);
       res.sendStatus(201);

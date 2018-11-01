@@ -13,11 +13,20 @@ class Announcements extends React.Component {
       announcements: List(),
     }
     this.ws;
-
-    this.connectToWebSocket.bind(this);
   }
 
-  connectToWebSocket() {
+  getMsgsFromDB = async () => {
+    const res = await fetch(URL, {
+      method: 'post',
+    });
+    const msgs = await res.json();
+
+    this.setState({
+      announcements: List(msgs)
+    });
+  }
+
+  connectToWebSocket = () => {
     const HOST = 'wss://vandyhacksnotifications.herokuapp.com/';
     this.ws = new WebSocket(HOST);
 
@@ -25,7 +34,6 @@ class Announcements extends React.Component {
       console.log(`event.data=${event.data}`);
       let msg;
       if (event.data === 'reload') {
-        console.log('Message sent, reload page');
         window.location.reload();
       } else {
         msg = JSON.parse(event.data);
@@ -39,14 +47,15 @@ class Announcements extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.getMsgsFromDB();
     this.connectToWebSocket();
   }
 
   render() {
     return <ul className="announcements-col container-fluid" id="announcements-col">
       {this.state.announcements.map((msg, index) => {
-        <li key={ index } className='message'>
+        <li key={index} className='message'>
           <Timeago className='announcement-when' date={msg.time} />
           <span className='announcement-what'>{msg.msg}</span>
         </li>
