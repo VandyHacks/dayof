@@ -82,8 +82,6 @@ const server = app.get('/', (req, res) => {
   console.log('Live notifications page loaded');
 }).listen(PORT);
 
-let loggedin = false;
-
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
@@ -96,6 +94,7 @@ wss.on('connection', (ws) => {
       clearInterval(keepAlive);
       ws.terminate();
     } else {
+      console.log('alive');
       ws.ping('pingdata');
     }
   }, 5000);
@@ -195,8 +194,11 @@ app.post('/sendpush', (req, res) => {
   })
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
+      const announcement = [payload];
+      console.log(announcement);
       wss.clients.forEach((client) => {
-        client.send(payload);
+        client.send(announcement);
+        console.log(`Announcement sent through ws: ${announcement}`);
       });
       res.sendStatus(201);
     })
