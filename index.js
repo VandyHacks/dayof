@@ -94,8 +94,6 @@ wss.on('connection', (ws) => {
     if (ws.readyState !== 1 || !isAlive) {
       clearInterval(keepAlive);
       ws.terminate();
-    } else {
-      ws.ping('pingdata');
     }
   }, 5000);
   ws.on('close', () => {
