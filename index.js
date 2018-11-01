@@ -199,15 +199,16 @@ app.post('/sendpush', (req, res) => {
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
       wss.clients.forEach((client) => {
-        client.send()
-        client.send(payload);
-        console.log('sent to client', client);
+        client.send(payload, (err) => {
+          console.log('ws send err:', err);
+          client.terminate();
+        });
       });
       console.log(`Announcement sent through ws: ${announcement}`);
       res.sendStatus(201);
     })
     .catch((error) => {
-      console.log(`Error: ${error.stack}`);
+      console.log(`WEBSOCKET SEND ERROR: ${error}`);
       res.sendStatus(500);
     });
 });
