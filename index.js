@@ -199,8 +199,8 @@ app.post('/sendpush', (req, res) => {
       const announcement = [payload];
       wss.clients.forEach((client) => {
         client.send(announcement);
-        console.log(`Announcement sent through ws: ${announcement}`);
       });
+      console.log(`Announcement sent through ws: ${announcement}`);
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -212,7 +212,7 @@ app.post('/sendpush', (req, res) => {
 app.post('/getmsgs', (req, res) => {
   Message.find({}).sort({ field: 'asc', _id: -1 }).exec((err, docs) => {
     if (err) {
-      console.log(err);
+      console.log('Error',err);
       res.sendStatus(500);
       return;
     }
