@@ -2,7 +2,6 @@ function checksms() {
   document.getElementById('formdiv').action = document.getElementById('check').checked ? '/admin' : '';
   document.getElementById('formdiv').method = document.getElementById('check').checked ? 'post' : '';
 }
-console.log('Sending push');
 function confirmMsg() {
   if (document.getElementById('msg').value !== '') {
     if (window.confirm('Send message?')) {
@@ -20,6 +19,7 @@ function confirmMsg() {
       })
         .catch((err) => {
           console.log(err);
+          return;
         });
     } else {
       return false;

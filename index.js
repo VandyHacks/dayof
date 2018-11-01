@@ -201,7 +201,7 @@ app.post('/sendpush', (req, res) => {
         client.send(announcement);
       });
       console.log(`Announcement sent through ws: ${announcement}`);
-      res.sendStatus(200);
+      res.sendStatus(201);
     })
     .catch((error) => {
       console.log(`Error: ${error.stack}`);
@@ -210,6 +210,7 @@ app.post('/sendpush', (req, res) => {
 });
 
 app.post('/getmsgs', (req, res) => {
+  console.log('Getting previous announcements');
   Message.find({}).sort({ field: 'asc', _id: -1 }).exec((err, docs) => {
     if (err) {
       console.log('Error', err);
