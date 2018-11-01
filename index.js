@@ -98,7 +98,7 @@ wss.on('connection', (ws) => {
     }
   }, 5000);
   ws.on('close', () => {
-    ws.terminate();
+    console.log('Breaking connection');
   })
 });
 
@@ -197,7 +197,6 @@ app.post('/sendpush', (req, res) => {
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
       const announcement = [payload];
-      console.log(announcement);
       wss.clients.forEach((client) => {
         client.send(announcement);
         console.log(`Announcement sent through ws: ${announcement}`);
