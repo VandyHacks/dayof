@@ -85,12 +85,13 @@ const server = app.get('/', (req, res) => {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  let isAlive = true;
   ws.ping('ping');
   ws.on('pong', () => {
     setTimeout(ws.pong('ping'), 5000);
   });
   const keepAlive = setInterval(() => {
-    if (ws.readyState !== 1) {
+    if (ws.readyState !== 1 || !isAlive) {
       clearInterval(keepAlive);
       ws.terminate();
     } else {
@@ -98,6 +99,7 @@ wss.on('connection', (ws) => {
     }
   }, 5000);
   ws.on('close', () => {
+    isAlive = false;
     console.log('Breaking connection');
   })
 });
