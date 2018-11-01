@@ -99,7 +99,6 @@ wss.on('connection', (ws) => {
   }, 5000);
   ws.on('close', () => {
     console.log('Breaking connection');
-    ws.terminate();
   })
 });
 
