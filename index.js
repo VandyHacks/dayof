@@ -196,7 +196,8 @@ app.post('/sendpush', (req, res) => {
   })
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
-      const announcement = [payload];
+      const announcement = [];
+      announcement.push(payload);
       wss.clients.forEach((client) => {
         client.send(announcement);
       });
