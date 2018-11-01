@@ -88,9 +88,7 @@ wss.on('connection', (ws) => {
   let isAlive = true;
   ws.ping('ping');
   ws.on('pong', () => {
-    setTimeout(() => {
-      ws.pong('ping');
-    }, 5000);  
+    ws.ping('ping');
   });
   const keepAlive = setInterval(() => {
     if (ws.readyState !== 1 || !isAlive) {
