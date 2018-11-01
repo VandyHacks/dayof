@@ -94,10 +94,12 @@ wss.on('connection', (ws) => {
       clearInterval(keepAlive);
       ws.terminate();
     } else {
-      console.log('alive');
       ws.ping('pingdata');
     }
   }, 5000);
+  ws.on('close', () => {
+    ws.terminate();
+  })
 });
 
 app.get('/login', (req, res) => {
