@@ -16,10 +16,14 @@ const Header = (props) => {
       <div className="container-header">
         {/* initial gap */}
         <div className="text" id="gap"></div>
-        {types.map(type => <>
-          <div className="text">{type}</div>
-          <div className="text" id="gap"></div>
-        </>)}
+        {types.map((type, key) => {
+          return (
+            <div key={key}>
+              <div className="text">{type}</div>
+              <div className="text" id="gap"></div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="header-padding-right"></div>
@@ -27,39 +31,35 @@ const Header = (props) => {
   );
 }
 
-const Schedule = (props) => {
-  return <>
-    <h4 className="schedule-hdr">Schedule</h4>
-    <div className="schedule larger-container">
-      <Header />
-      
-      <div className="container-main">
-        <div className="container-time">{times.map(time => <div className="text">{time}</div>)}</div>
-        <div className="container-body">
+const Schedule = (props) => <>
+  <h4 className="schedule-hdr">Schedule</h4>
+  <div className="schedule larger-container">
+    <Header />
+    
+    <div className="container-main">
+      <div className="container-time">{times.map((time, key) => <div className="text" key={key}>{time}</div>)}</div>
+      <div className="container-body">
 
-        {events.map(event => {
-          const start = new Date(event.start.dateTime);
-          const end = new Date(event.end.dateTime);
-          const chunks = Math.floor((end - start) / thirtyMinutesMilliseconds);
+      {events.map((event, key) => {
+        const start = new Date(event.start.dateTime);
+        const end = new Date(event.end.dateTime);
+        const chunks = Math.floor((end - start) / thirtyMinutesMilliseconds);
 
-          const rowStart = Math.floor((start - absoluteStart) / thirtyMinutesMilliseconds);
-          const rowEnd = rowStart + chunks;
-          if (rowStart !== rowEnd) {
-            return (
-              <div className={`${event.type} item`} style={{
-                gridRow: `${rowStart} / ${rowEnd}`,
-              }}>
-                <p className="heading">{event.summary}</p>
-                <span className="description">{event.location}</span>
-                <p className="details"></p>
-              </div>
-            );
-          }
-        })}
-        </div>
+        const rowStart = Math.floor((start - absoluteStart) / thirtyMinutesMilliseconds);
+        const rowEnd = rowStart + chunks;
+        if (rowStart !== rowEnd) {
+          return (
+            <div className={`${event.type} item`} key={key} style={{gridRow: `${rowStart} / ${rowEnd}`}}>
+              <p className="heading">{event.summary}</p>
+              <span className="description">{event.location}</span>
+              <p className="details"></p>
+            </div>
+          );
+        }
+      })}
       </div>
     </div>
-  </>
-}
+  </div>
+</>;
 
 export default Schedule;
