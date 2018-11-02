@@ -202,7 +202,7 @@ app.post('/sendpush', (req, res) => {
       }
     });
   });
-  Promise.all([chromePush, slackAnnouncement])
+  Promise.all([slackAnnouncement,chromePush])
     .then(() => {
       const wsMsg = JSON.stringify({
         header: req.body.header,
