@@ -30,8 +30,8 @@
 
 .message {
   display: grid;
-  grid-template-columns: minmax(100px, auto) minmax(200px, 100%);
-  padding: 3px 0px 0px 5%;
+  grid-template-columns: minmax(140px, auto) minmax(200px, 100%);
+  padding: 8px 0px 8px 5%;
   min-height: 30px;
 
   .hdr {
@@ -43,7 +43,6 @@
   color: $main-clr;
   padding: 0px 15px 0px 15px;
   text-align: right;
-  min-width: 150px;
 }
 
 .card {
