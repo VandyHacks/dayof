@@ -4,6 +4,7 @@
   "description": "DayOf page for VandyHacks V, Nov. 2-4",
   "main": "src/DayOf.tsx",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node index.js",
     "dev": "parcel dayof.html auth.html admin.html",
     "build": "parcel build --public-url './' dayof.html auth.html admin.html"
@@ -33,7 +34,8 @@
     "twilio": "^3.17.5",
     "utf-8-validate": "5.0.1",
     "web-push": "^3.3.2",
-    "ws": "6.0.0"
+    "ws": "6.0.0",
+    "parcel-bundler": "^1.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -42,7 +44,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "cssnano": "^4.1.7",
-    "parcel-bundler": "^1.10.3",
     "sass": "^1.14.3",
     "svg-loader": "0.0.2",
     "typescript": "^3.1.5"
