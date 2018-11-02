@@ -30,13 +30,13 @@ const Links = (props) => {
                         <span className="big-link-title">Map</span>
                     </div>
                 </a>
-                <a href="https://slack.vandyhacks.org">
+                <a href="https://help.vandyhacks.org">
                     <div className="big-link">
                         <img className="big-link-icon" id="slack" src={require("../../assets/img/help.svg")} width="40px" height="40px" />
                         <span className="big-link-title">HELPq</span>
                     </div>
                 </a>
-                <a href="https://slack.vandyhacks.org">
+                <a href="https://music.vandyhacks.org">
                     <div className="big-link">
                         <img className="big-link-icon" id="slack" src={require("../../assets/img/music.svg")} width="40px" height="40px" />
                         <span className="big-link-title">Music</span>
