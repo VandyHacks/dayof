@@ -37,7 +37,7 @@ class AdminForm extends React.Component {
           'Content-type': 'application/json',
         },
       }).catch((err) => {
-        alert(err);
+        window.alert(err);
         return;
       });
     }
@@ -53,7 +53,7 @@ class AdminForm extends React.Component {
         'Content-type': 'application/json',
       },
     }).catch((err) => {
-      alert(err);
+      window.alert(err);
       return;
     });
   }
