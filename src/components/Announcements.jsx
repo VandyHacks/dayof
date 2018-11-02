@@ -75,7 +75,7 @@ const Announcement = (props) => {
   return <div className="card">
     <li className='message'>
       <Timeago className='when' date={props.time} />
-      <span className='what'>{props.msg}</span>
+      <span className='what'>{props.header}: {props.msg}</span>
     </li>
   </div>
 }
