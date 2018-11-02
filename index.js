@@ -110,9 +110,20 @@ app.get('/admin', (req, res) => {
   res.sendFile(`${__dirname}/dist/admin.html`);
 });
 
-app.get('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
-  console.log(req.body);
-})
+app.post('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
+  const token = req.body.jwt;
+  const x = jwt.verify(token, 'orange-puddle', (err, decoded) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    if (x != true) {
+      res.json({ auth: false });
+    } else {
+      res.json({ auth: true });
+    }
+  });
+});
 
 app.post('/admin', (req, res) => {
   if (req.body.password !== process.env.PASSWORD) {
