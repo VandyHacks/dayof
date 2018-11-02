@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import '../../assets/scss/Schedule.scss';
 
 const absoluteStart = new Date('November 2, 2018 17:00:00');
@@ -18,10 +18,10 @@ const Header = (props) => {
         <div className="text" id="gap"></div>
         {types.map((type, key) => {
           return (
-            <div key={key}>
+            <Fragment key={key}>
               <div className="text">{type}</div>
               <div className="text" id="gap"></div>
-            </div>
+            </Fragment>
           );
         })}
       </div>
