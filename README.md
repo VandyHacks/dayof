@@ -13,8 +13,3 @@ Spec
 - Server: 
     - Reads in list of phone numbers from Mongo DB (mlab.com) - does this when the server is started once only. Each time it gets a POST, it sends SMS to all the phone numbers via Twilio API.
     - Adds PushSubscription object to Mongo DB (checking for existence) upon visiting live notifications page. Push notifications are sent based on PushSubscription endpoints and keys. 
-
-- TODO:
-    - Browser compatibility (Edge, Firefox, Chrome)
-    - Persist live page changes after reloads
-    - Display same live page across browsers

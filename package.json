@@ -4,9 +4,10 @@
   "description": "DayOf page for VandyHacks V, Nov. 2-4",
   "main": "src/DayOf.tsx",
   "scripts": {
+    "postinstall": "npm i parcel",
     "start": "node index.js",
     "dev": "parcel dayof.html auth.html admin.html",
-    "build": "parcel build dayof.html auth.html admin.html"
+    "build": "parcel build --public-url '.' dayof.html auth.html admin.html"
   },
   "author": "Kevin Zhai/Matt Leon",
   "license": "MIT",
