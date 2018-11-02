@@ -7,7 +7,7 @@
     "postinstall": "npm i -g parcel-bundler",
     "start": "node index.js",
     "dev": "parcel dayof.html auth.html admin.html",
-    "build": "parcel build --public-url '.' dayof.html auth.html admin.html"
+    "build": "parcel build --public-url './' dayof.html auth.html admin.html"
   },
   "engines": {
     "node": "8.6.0"
