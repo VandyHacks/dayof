@@ -111,7 +111,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.get('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
-  console.log(req);
+  console.log(req.body);
 })
 
 app.post('/admin', (req, res) => {
