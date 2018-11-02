@@ -44,16 +44,17 @@ const Schedule = (props) => {
 
           const rowStart = Math.floor((start - absoluteStart) / thirtyMinutesMilliseconds);
           const rowEnd = rowStart + chunks;
-          return (
-            <div className={`${event.type} item`} style={{
-              gridRowStart: rowStart,
-              gridRowEnd: rowEnd,
-            }}>
-              <p className="heading">{event.summary}</p>
-              <p className="description">{event.location}</p>
-              <p className="details"></p>
-            </div>
-          );
+          if (rowStart !== rowEnd) {
+            return (
+              <div className={`${event.type} item`} style={{
+                gridRow: `${rowStart} / ${rowEnd}`,
+              }}>
+                <p className="heading">{event.summary}</p>
+                <span className="description">{event.location}</span>
+                <p className="details"></p>
+              </div>
+            );
+          }
         })}
         </div>
       </div>
