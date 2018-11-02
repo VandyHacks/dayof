@@ -30,7 +30,7 @@ body {
     [row5-start] "schedule-hdr schedule-hdr" auto [row5-end]
     [row6-start] "schedule schedule" auto [row6-end]
     [row7-start] "footer footer" 50px [row7-end]
-    / 3fr 2fr;
+    / 2fr 1fr;
   grid-gap: 20px;
 
   @media (orientation: portrait) {

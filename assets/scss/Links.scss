@@ -77,9 +77,9 @@
 
 .links-left {
   display: grid;
-  grid-template-columns: 110px 110px;
-  grid-template-rows: 110px 110px;
-  gap: 8px;
+  grid-template-columns: 70px 70px;
+  grid-template-rows: 70px 70px;
+  gap: 9px;
 }
 
 .links-right {
@@ -108,8 +108,8 @@
 
 .big-link {
   background-color: rgba(white, 0.6);
-  width: 110px;
-  height: 110px;
+  width: 70px;
+  height: 70px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
