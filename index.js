@@ -7,6 +7,7 @@ const twilio = require('twilio')(process.env.TWILIO_LIVE_SID, process.env.TWILIO
 const needle = require('needle');
 const webpush = require('web-push');
 const WebSocket = require('ws');
+const jwt = require('jsonwebtoken');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
@@ -100,6 +101,10 @@ wss.on('connection', (ws) => {
     console.log('Breaking connection');
   })
 });
+
+app.get('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
+  console.log(res);
+})
 
 app.get('/login', (req, res) => {
   res.sendFile(`${__dirname}/dist/auth.html`);
