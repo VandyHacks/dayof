@@ -52,7 +52,7 @@
         },
         "location": "044/048",
         "summary": "Workshop for Beginners",
-        "type": "hxp"
+        "type": "main"
     },
     {
         "start": {
@@ -260,7 +260,7 @@
         },
         "location": "Atrium",
         "summary": "Cup Stacking (Sponsored by MLH)",
-        "type": "hxp"
+        "type": "main"
     },
     {
         "start": {
