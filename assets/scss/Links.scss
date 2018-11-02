@@ -80,6 +80,11 @@
   grid-template-columns: 70px 70px;
   grid-template-rows: 70px 70px;
   gap: 9px;
+
+  @media (orientation: portrait) {
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
 
 .links-right {
@@ -88,6 +93,10 @@
   grid-template-rows: 73px 146px;
   gap: 9px;
   margin-left: 10px;
+
+  @media (orientation: portrait) {
+    display: none;
+  }
 }
 
 .small-link {
@@ -120,6 +129,10 @@
 
   img {
     width: 60%;
+  }
+
+  @media (orientation: portrait) {
+    margin-bottom: 9px;
   }
 }
 

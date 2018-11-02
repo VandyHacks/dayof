@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 const VHLogo = props => (
-    <svg xmlns="http://www.w3.org/2000/svg" width='100%' viewBox="0 0 1340.1 179.37" {...props}>
+    <svg className="logo" xmlns="http://www.w3.org/2000/svg" width='100%' viewBox="0 0 1340.1 179.37" {...props}>
         <title>{`VH Logo`}</title>
         <g fill="#077f91">
             <g transform="matrix(1.21 0 0 1.21 -1072.93 -471.13)">

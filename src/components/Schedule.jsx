@@ -5,7 +5,9 @@ const absoluteStart = new Date('November 2, 2018 17:00:00');
 const thirtyMinutesMilliseconds = 1000 * 60 * 30;
 
 const events = require('./events.json');
-const types = ['MAIN EVENTS', 'FOOD', 'HACKER EXP', 'SPONSOR TALKS'];
+const types = window.matchMedia('(orientation: portrait)').matches != null 
+  ? ['MAIN', 'FOOD', 'HXP', 'SPONSOR']
+  : ['MAIN EVENTS', 'FOOD', 'HACKER EXP', 'SPONSOR TALKS'];
 const times = ['FRI 6PM', '7PM', '8PM', '9PM', '10PM', '11PM', 'SAT 12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM', 'SUN 12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM'];
 
 const Header = (props) => {
