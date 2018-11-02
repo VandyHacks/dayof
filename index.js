@@ -101,6 +101,14 @@ wss.on('connection', (ws) => {
   })
 });
 
+app.get('/login', (req, res) => {
+  res.sendFile(`${__dirname}/dist/auth.html`);
+});
+
+app.get('/admin', (req, res) => {
+  res.sendFile(`${__dirname}/dist/admin.html`);
+});
+
 app.post('/admin', (req, res) => {
   phoneArr.map(number => twilio.messages.create({
     to: number,
