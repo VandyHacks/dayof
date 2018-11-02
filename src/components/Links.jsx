@@ -6,40 +6,44 @@ const Links = (props) => {
         <h4 className="links-hdr">Important Links</h4>
         <div className="links">
             <div className='links-left'>
-                <div>
-                    <a href="https://slack.vandyhacks.org" className="big-link">
-                        <img className="big-link-icon" id="Slack" src={require("../../assets/img/slack.svg")} />
+                <div className="big-link">
+                    <a href="https://slack.vandyhacks.org">
+                        <img className="big-link-icon" id="slack" src={require("../../assets/img/slack.svg")} width="60px" height="60px" />
                         <span className="big-link-title">Slack</span>
                     </a>
                 </div>
-                <div>
-                    <a href="https://vandyhacksv.devpost.com" className="big-link">
-                        <img className="big-link-icon" id="Submit" src={require("../../assets/img/devpost.svg")} />
+                <div className="big-link">
+                    <a href="https://vandyhacksv.devpost.com">
+                        <img className="big-link-icon" id="submit" src={require("../../assets/img/devpost.svg")} width="60px" height="60px" />
                         <span className="big-link-title">Submit</span>
                     </a>
                 </div>
-                <div>
-                    <a href="https://hackerguide.vandyhacks.org/#wifi-electronics-&-hardware" className="big-link">
-                        <img className="big-link-icon" id="guide" src={require("../../assets/img/book.svg")} />
+                <div className="big-link">
+                    <a href="https://hackerguide.vandyhacks.org/#wifi-electronics-&-hardware">
+                        <img className="big-link-icon" id="guide" src={require("../../assets/img/book.svg")} width="50px" height="50px" />
                         <span className="big-link-title">Hacker Guide</span>
                     </a>
                 </div>
-                <div>
-                    <a href="https://hackerguide.vandyhacks.org/#emergencies" className="big-link">
-                        <img className="big-link-icon" id="Contact" src={require("../../assets/img/contact.svg")} />
+                <div className="big-link">
+                    <a href="https://hackerguide.vandyhacks.org/#emergencies">
+                        <img className="big-link-icon" id="contact" src={require("../../assets/img/contact.svg")} width="60px" height="60px" />
                         <span className="big-link-title">Contact</span>
                     </a>
                 </div>
             </div>
             <div className='links-right'>
-                <div className='small-links'>
-                    <a className="small-link" id="fb" href="https://www.facebook.com/vandyhacks/">
+                <div className="small-link">
+                    <a id="fb" href="https://www.facebook.com/vandyhacks/">
                         <img src={require("../../assets/img/facebook.svg")} width="40px" height="40px" />
                     </a>
-                    <a className="small-link" id="ig" href="https://instagram.com/vandyhacks/">
+                </div>
+                <div className="small-link">
+                    <a id="ig" href="https://instagram.com/vandyhacks/">
                         <img src={require("../../assets/img/instagram.svg")} width="40px" height="40px" />
                     </a>
-                    <a className="small-link" id="tw" href="https://twitter.com/vandyhacks">
+                </div>
+                <div className="small-link">
+                    <a id="tw" href="https://twitter.com/vandyhacks">
                         <img src={require("../../assets/img/twitter.svg")} width="40px" height="40px" />
                     </a>
                 </div>
