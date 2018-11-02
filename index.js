@@ -101,7 +101,7 @@ wss.on('connection', (ws) => {
   ws.on('close', () => {
     isAlive = false;
     console.log('Breaking connection');
-  })
+  });
 });
 
 app.get('/login', (req, res) => {
@@ -188,20 +188,22 @@ app.post('/sendpush', (req, res) => {
     resolve();
   });
   const slackAnnouncement = new Promise((resolve, reject) => {
-    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, function (error, response) {
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, (error, response) => {
       if (!error && response.statusCode == 200) {
+        console.log('works');
         resolve();
       } else {
-        reject("Did not manage to post announcement to slack")
+        console.log('does not work');
+        reject('Did not manage to post announcement to slack');
       }
     });
-  })
+  });
   Promise.all([chromePush, slackAnnouncement])
     .then(() => {
       const wsMsg = JSON.stringify({
         header: req.body.header,
         msg: req.body.value,
-        time: d
+        time: d,
       });
       wss.clients.forEach((client) => {
         client.send(wsMsg, (err) => {
@@ -209,7 +211,7 @@ app.post('/sendpush', (req, res) => {
           client.terminate();
         });
       });
-      console.log(`Announcement sent through ws: ${announcement}`);
+      console.log(`Announcement sent through ws: ${wsMsg}`);
       res.sendStatus(201);
     })
     .catch((error) => {
