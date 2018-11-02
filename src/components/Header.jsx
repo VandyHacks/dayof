@@ -5,8 +5,9 @@ import VHLogo from './svg/VHLogo';
 
 export const Header = (props) => {
     return <div className="header">
-        <VHLogo />
+        <VHLogo className="logo"/>
         <CountdownTimer
+            className="timer"
             firstEnd={props.firstEnd}
             firstText={props.firstText}
             secondEnd={props.secondEnd}

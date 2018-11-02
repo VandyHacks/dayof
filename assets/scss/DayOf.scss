@@ -20,7 +20,7 @@ body {
 }
 
 .Main {
-  padding: 40px;
+  padding: 5%;
   display: grid;
   grid:
     [row1-start] "header header" auto [row1-end]
@@ -35,7 +35,7 @@ body {
   @media (orientation: portrait) {
     grid:
       [row1-start] "header" auto [row1-end]
-      [row3-start] "links-hdr" auto [row3-auto]
+      [row2-start] "links-hdr" auto [row2-auto]
       [row4-start] "links" auto [row4-auto]
       [row5-start] "announce-hdr" auto [row5-end]
       [row6-start] "announcements" auto [row6-end]
@@ -51,6 +51,20 @@ body {
 }
 .header {
   grid-area: header;
+  @media (orientation: portrait) {
+    margin-bottom: 7em;
+  }
+}
+.countdown {
+  @media (orientation: portrait) {
+    display: none;
+  }
+}
+#logo {
+  grid-area: logo;
+}
+.timer {
+  grid-area: timer;
 }
 .announcements-hdr {
   grid-area: announce-hdr;

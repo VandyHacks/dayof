@@ -8,6 +8,9 @@
     text-decoration: none;
     color: $main-clr;
   }
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
 }
 
 .links-left {
@@ -23,6 +26,10 @@
   grid-template-rows: 73px 146px;
   gap: 9px;
   margin-left: 10px;
+  @media (orientation: portrait) {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
 }
 
 .small-link {
