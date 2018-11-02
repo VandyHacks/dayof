@@ -110,6 +110,11 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/admin', (req, res) => {
+  if (req.body.password !== process.env.PASSWORD) {
+    res.sendStatus(403);
+    return;
+  }
+
   phoneArr.map(number => twilio.messages.create({
     to: number,
     from: process.env.TWILIO_MASS_SMS_SID,
@@ -158,6 +163,11 @@ app.post('/savesub', (req, res) => {
 
 // Dayof route
 app.post('/sendpush', (req, res) => {
+  if (req.body.password !== process.env.PASSWORD) {
+    res.sendStatus(403);
+    return;
+  }
+
   const d = new Date();
   const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
   newMsg.save()
