@@ -229,4 +229,13 @@ app.post('/getmsgs', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  console.log(req);
+  if (req === process.env.PASSWORD) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
+})
+
 module.exports = app;
