@@ -118,7 +118,6 @@ app.post('/admin', (req, res) => {
     from: process.env.TWILIO_MASS_SMS_SID,
     body: `VandyHacks: ${req.body.msg}`,
   }));
-  res.sendStatus(200);
   res.redirect('back');
 });
 
