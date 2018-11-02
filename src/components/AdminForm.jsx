@@ -36,6 +36,12 @@ class AdminForm extends React.Component {
         headers: {
           'Content-type': 'application/json',
         },
+      }).then((res) => {
+        if (res.status === 403) {
+          window.alert('Wrong Password!');
+          this.props.updatePasswordReady();
+          return;
+        }
       }).catch((err) => {
         window.alert(err);
         return;
@@ -52,6 +58,12 @@ class AdminForm extends React.Component {
       headers: {
         'Content-type': 'application/json',
       },
+    }).then((res) => {
+      if (res.status === 403) {
+        window.alert('Wrong Password!');
+        this.props.updatePasswordReady();
+        return;
+      }
     }).catch((err) => {
       window.alert(err);
       return;
