@@ -30,15 +30,9 @@
 
 .message {
   display: grid;
-<<<<<<< HEAD
   grid-template-columns: minmax(140px, auto) minmax(200px, 100%);
   padding: 8px 0px 8px 5%;
   min-height: 30px;
-=======
-  grid-template-columns: minmax(100px, auto) minmax(200px, 100%);
-  padding: 8px 0px 8px 5%;
-  min-height: 40px;
->>>>>>> 0acc61f40887d42a9edc0bf31ad6bd06e0b24f74
 
   .hdr {
     font-family: SofiaProSemiBold;
