@@ -79,7 +79,6 @@ dbquery(wait);
 
 const server = app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/dist/dayof.html`);
-  console.log('Live notifications page loaded');
 }).listen(PORT);
 
 const wss = new WebSocket.Server({ server });
@@ -100,16 +99,6 @@ wss.on('connection', (ws) => {
     isAlive = false;
     console.log('Breaking connection');
   })
-});
-
-app.get('/login', (req, res) => {
-  res.sendFile(`${__dirname}/auth.html`);
-  console.log('Login page loaded');
-});
-
-app.get('/admin', (req, res) => {
-  res.sendFile(`${__dirname}/admin.html`);
-  console.log('Admin page loaded');
 });
 
 app.post('/admin', (req, res) => {
