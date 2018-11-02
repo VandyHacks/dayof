@@ -5,9 +5,10 @@
   "main": "src/DayOf.tsx",
   "scripts": {
     "start": "node index.js",
+    "dev": "parcel dayof.html auth.html admin.html",
     "build": "parcel build dayof.html auth.html admin.html"
   },
-  "author": "Matt Leon",
+  "author": "Kevin Zhai/Matt Leon",
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.7.7",

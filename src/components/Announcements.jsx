@@ -58,7 +58,7 @@ class Announcements extends React.Component {
     return <>
       <h4 className="announcements-hdr">Live Announcements</h4>
       <div className="announcements" >
-        <ul className='announcements-col'>
+        <ul className="announcements-col">
           {this.state.announcements.map((m, i) => {
             return <Announcement
               key={i}
