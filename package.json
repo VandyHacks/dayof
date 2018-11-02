@@ -9,7 +9,8 @@
     "build": "parcel build --public-url './' dayof.html auth.html admin.html"
   },
   "engines": {
-    "node": "8.6.0"
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "author": "Kevin Zhai/Matt Leon",
   "license": "MIT",
