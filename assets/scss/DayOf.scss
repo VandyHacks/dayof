@@ -9,7 +9,8 @@
 }
 
 body {
-  background-color: $bg-clr;
+  background: url("../img/bg-top.svg") $bg-clr;
+  background-size: cover;
   margin: 0px;
   padding: 0px;
   font-family: SofiaPro;

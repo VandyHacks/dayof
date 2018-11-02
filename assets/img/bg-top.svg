@@ -1,111 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg width="1920" height="1203" version="1.1" viewBox="0 0 1920 1203" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title>website sections light colors</dc:title></cc:Work></rdf:RDF></metadata>
-<title>website sections light colors</title>
-<g id="backgrounds" transform="translate(-2316,-2893.7)">
-	<rect class="st0" x="2316" y="3947.9" width="1920" height="1106.8" fill="#f9f1e4"/>
-	<rect class="st1" x="2316" y="2893.7" width="1920" height="1080" fill="#e89087"/>
-	<rect class="st0" x="2316" y="2893.7" width="1920" height="1203" fill="#f9f1e4" stroke-width=".92897"/>
-</g>
-<g id="strobey_things" transform="translate(-2316,-2893.7)">
-	<polygon class="st2" points="822.4 2901.4 3970 4851.7 3093.8 2828.7" enable-background="new" fill="#efe3ce" opacity=".6"/>
-	<polygon class="st3" points="2108 5197.7 3958 4872 2076.1 4441.3" enable-background="new" fill="#f2e9d7" opacity=".37"/>
-	<polygon class="st4" points="881.3 2794.2 3973.7 4864.1 2222.7 2831.6" fill="#f2e4ce"/>
-	<polygon class="st5" points="3548.2 2734.5 3975.4 4898.6 4412.3 2831.2" enable-background="new" fill="#f7e6c6" opacity=".58"/>
-	<circle class="st6" cx="2583.5" cy="3161.2" r="158.5" enable-background="new" fill="#f9f1e4" opacity=".85"/>
-	<g class="st7" fill="#fff" opacity=".25">
-		<path class="st8" d="m3791.5 3863.5c0 0.1-0.1 0.2-0.1 0.2h0.3z"/>
-		<path class="st8" d="m4275 3857.7c0-23.2-24.1-42.4-55.3-45.2-4.6-28.9-34.8-51.3-71.3-51.3-25.5 0-47.9 10.9-60.6 27.3-5.5-1.7-11.2-2.5-17-2.5-15.2-0.1-29.7 5.8-40.5 16.5-17.8-7.3-41-11.8-66.5-11.8-27.8 0-53 5.3-71.3 13.9 0.2-1.8 0.3-3.7 0.3-5.5 0-37.2-35.1-67.3-78.4-67.3-38.9 0-71.1 24.3-77.3 56.1-3.3-0.3-6.7-0.5-10.1-0.5-39.7 0-71.9 23.7-71.9 52.9 0 4.1 0.7 8.3 1.9 12.2-2.5-0.1-5-0.2-7.6-0.2-23.9 0-43.3 4.7-43.3 10.4 0 0.3 0.1 0.7 0.2 1h185.1c0.1-0.1 0.1-0.1 0.1-0.2l0.1 0.2h482.8c0.3-2 0.6-4 0.6-6z"/>
-	</g>
-	<g class="st7" fill="#fff" opacity=".25">
-		<path class="st8" d="m2665.5 3521.5c0 0.1 0.1 0.2 0.1 0.2h-0.3l0.2-0.2z"/>
-		<path class="st8" d="m2182 3515.7c0-23.2 24.1-42.4 55.3-45.2 4.6-28.9 34.8-51.3 71.3-51.3 25.5 0 47.9 10.9 60.6 27.3 5.5-1.7 11.2-2.5 17-2.5 15.2-0.1 29.7 5.8 40.5 16.5 17.8-7.3 41.1-11.8 66.5-11.8 27.8 0 53 5.3 71.3 13.9-0.2-1.8-0.3-3.7-0.3-5.5 0-37.2 35.1-67.3 78.4-67.3 38.9 0 71.1 24.3 77.3 56.1 3.3-0.3 6.7-0.5 10.1-0.5 39.7 0 71.9 23.7 71.9 52.9 0 4.1-0.7 8.3-1.9 12.2 2.5-0.1 5-0.2 7.6-0.2 23.9 0 43.3 4.7 43.3 10.4 0 0.3-0.1 0.7-0.2 1h-185.2c-0.1-0.1-0.1-0.1-0.1-0.2h-0.1c0 0.1-0.1 0.1-0.1 0.2h-482.8c-0.2-2-0.4-4-0.4-6z"/>
-	</g>
-	<g class="st7" opacity=".25">
-		<path class="st8" d="m4263.6 3513.6c0-11.8-12.6-21.7-29.2-23.6-5-19.6-26.5-34.3-52.2-34.3-15.2 0-28.9 5.1-38.6 13.4-10.8-19-28.7-31.3-48.9-31.3s-38 12.3-48.9 31.3c-18.9 2.8-34.6 13.7-42.5 28.4h-1.8c-20.8 0-37.6 7.5-37.6 16.7 0 1.3 0.3 2.5 0.9 3.6h298.2c0.4-1.4 0.6-2.8 0.6-4.2z" fill="#fff"/>
-	</g>
-</g>
-<g class="st9" transform="translate(0 4.8828e-5)" opacity=".43">
-	<path class="st10" d="m578.5 653.8c0-24.4-26-44.7-60.3-48.7-10.4-40.4-54.7-70.8-107.7-70.8-31.3 0-59.6 10.6-79.7 27.6-22.4-39.1-59.2-64.6-100.8-64.6s-78.4 25.5-100.8 64.5c-38.9 5.8-71.4 28.2-87.6 58.5h-3.6c-42.8 0-77.5 15.4-77.5 34.5 0 2.6 0.7 5.1 1.9 7.5h615c0.7-2.8 1.1-5.6 1.1-8.5z" fill="#66b9bf"/>
-</g>
-<g transform="translate(0 4.8828e-5)">
-	
-		
-			<rect class="st11" transform="matrix(.9962 .086634 -.086634 .9962 168.63 -140.94)" x="1606.2" y="1709.5" width="203.8" height="325.7" fill="#07889b"/>
-		
-			<circle class="st12" transform="matrix(.08661 -.9962 .9962 .08661 -370.39 3462)" cx="1702.8" cy="1933" r="66.3" fill="#27334f"/><g fill="#74bbce">
-		
-			<circle class="st13" transform="matrix(.08661 -.9962 .9962 .08661 -372.68 3463.8)" cx="1702.6" cy="1935.1" r="24.2"/>
-		<path class="st13" d="m1708.1 1872.7c-33.3-2.9-62.7 21.8-65.6 55.1s21.8 62.7 55.1 65.6 62.7-21.8 65.6-55.1c2.9-33.4-21.8-62.7-55.1-65.6zm-9.6 110c-27.4-2.4-47.8-26.6-45.4-54s26.6-47.8 54-45.4 47.8 26.6 45.4 54c-2.4 27.5-26.5 47.8-54 45.4z"/>
-		
-			<circle class="st13" transform="matrix(.08661 -.9962 .9962 .08661 -218.37 3197.6)" cx="1634.6" cy="1717.9" r="7.5"/>
-		
-			</g><circle class="st14" transform="matrix(.08661 -.9962 .9962 .08661 -534.46 3440.6)" cx="1609.1" cy="2011.8" r="7.5" fill="#3175cd"/>
-		
-			<circle class="st13" transform="matrix(.08661 -.9962 .9962 .08661 -75.762 3383.1)" cx="1807.1" cy="1732.9" r="7.5" fill="#74bbce"/>
-		
-			<circle class="st14" transform="matrix(.08661 -.9962 .9962 .08661 -391.86 3626.1)" cx="1781.6" cy="2026.7" r="7.5" fill="#3175cd"/>
-		
-			<circle class="st12" transform="matrix(.08661 -.9962 .9962 .08661 -214.55 3341.6)" cx="1715.1" cy="1787.8" r="43.8" fill="#27334f"/>
-		
-			<circle class="st13" transform="matrix(.08661 -.9962 .9962 .08661 -216.06 3342.8)" cx="1715" cy="1789.2" r="16" fill="#74bbce"/>
-		<path class="st13" d="m1718.6 1747.9c-22-1.9-41.5 14.4-43.4 36.4s14.4 41.5 36.4 43.4 41.5-14.4 43.4-36.4-14.4-41.5-36.4-43.4zm-6.4 72.8c-18.1-1.6-31.6-17.6-30-35.7s17.6-31.6 35.7-30 31.6 17.6 30 35.7c-1.5 18.1-17.5 31.6-35.7 30z" fill="#74bbce"/>
-	
-	<polyline class="st15" points="1851.5 1995.8 1795 2043.3 1823.2 1718.9 1880.7 1670.6" fill="#06666d"/>
-	<polygon class="st16" points="1879.8 1670.6 1822.8 1718.4 1620.7 1701.3 1678.2 1653" fill="#09abb7"/>
-</g>
-<g transform="translate(0 4.8828e-5)">
-	
-		<rect class="st11" transform="matrix(.9818 .1898 -.1898 .9818 397.78 -252.62)" x="1323.8" y="1848.5" width="388.4" height="204.8" fill="#07889b"/>
-	
-		
-			<circle class="st17" transform="matrix(.1898 -.9818 .9818 .1898 -767.29 2960.2)" cx="1409.9" cy="1945" r="70.3" fill="#33608c"/>
-		
-			<circle class="st13" transform="matrix(.1898 -.9818 .9818 .1898 -765.91 2962.7)" cx="1412.1" cy="1945.4" r="25.7" fill="#74bbce"/>
-		<path class="st13" d="m1346.8 1932.8c-6.7 34.8 16 68.5 50.9 75.3s68.5-16 75.3-50.9c6.7-34.8-16-68.5-50.9-75.3-34.9-6.7-68.5 16.1-75.3 50.9zm115 22.2c-5.5 28.7-33.3 47.4-62 41.9s-47.4-33.3-41.9-62 33.3-47.4 62-41.9c28.7 5.6 47.5 33.3 41.9 62z" fill="#74bbce"/>
-	
-	
-		
-			<circle class="st17" transform="matrix(.1898 -.9818 .9818 .1898 -635.62 3201.7)" cx="1622.1" cy="1986" r="70.3" fill="#33608c"/>
-		
-			<circle class="st13" transform="matrix(.1898 -.9818 .9818 .1898 -634.24 3204.3)" cx="1624.3" cy="1986.4" r="25.7" fill="#74bbce"/>
-		<path class="st13" d="m1559 1973.8c-6.7 34.8 16 68.5 50.9 75.3 34.8 6.7 68.5-16 75.3-50.9 6.7-34.8-16-68.5-50.9-75.3-34.9-6.7-68.5 16.1-75.3 50.9zm115 22.2c-5.5 28.7-33.3 47.4-62 41.9s-47.4-33.3-41.9-62 33.3-47.4 62-41.9c28.7 5.6 47.5 33.3 41.9 62z" fill="#74bbce"/>
-	
-	
-		<rect class="st18" transform="matrix(.9818 .1898 -.1898 .9818 385.64 -256.2)" x="1336.4" y="1883.7" width="388.5" height="4" fill="#6c9fc1"/><g fill="#33608c">
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 380.19 -250.74)" x="1494.9" y="1849.3" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 383.18 -260.91)" x="1549.5" y="1859.9" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 382.43 -258.37)" x="1535.9" y="1857.3" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 381.68 -255.83)" x="1522.2" y="1854.6" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 380.93 -253.29)" x="1508.6" y="1852" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 383.93 -263.46)" x="1563.2" y="1862.5" width="9.1" height="21.2"/>
-	
-		<rect class="st17" transform="matrix(.9818 .1898 -.1898 .9818 394.8 -253.72)" x="1494.7" y="1917.8" width="55.2" height="34"/>
-	
-		</g><circle class="st13" transform="matrix(.1898 -.9818 .9818 .1898 -675.11 3046.9)" cx="1508.5" cy="1932.5" r="6.8" fill="#74bbce"/>
-	
-		<circle class="st13" transform="matrix(.1898 -.9818 .9818 .1898 -659.92 3074.8)" cx="1533" cy="1937.2" r="6.8" fill="#74bbce"/>
-	
-		<g fill="#74bbce">
-			<polygon class="st13" points="1493.1 1984.1 1487.6 1983.1 1498.3 2023.9 1495.2 2027.9 1484.3 1982.4 1479 1981.4 1491.4 2033.2 1496.3 2034.2 1527.6 1990.8 1522.3 1989.8 1501.6 2018.6"/>
-			<polygon class="st13" points="1514 2037.6 1545 1994.2 1540.1 1993.2 1508.7 2036.6"/>
-			<polygon class="st13" points="1531.3 1991.5 1516.1 2013.3 1521.2 2014.3 1536.6 1992.6"/>
-			<polygon class="st13" points="1505.3 2035.9 1519.1 2016.5 1512.8 2015.3 1499.6 2034.8"/>
-		</g>
-	
-	<polygon class="st19" points="1384.1 1788.6 1347.1 1813.5 1729.3 1887.4 1766.2 1862.4" fill="#0bb1b5"/>
-	<polygon class="st20" points="1765.2 1862.2 1727.9 1887.4 1689.3 2088.3 1726.3 2063.3" fill="#06727a"/>
-	<polygon class="st21" points="1654.5 1829 1451.4 1789.7 1446.2 1816.9 1430.4 1813.9 1438.7 1770.8 1673.3 1816.2 1665 1859.2 1649.2 1856.2" fill="#6e9fc4"/>
-	<polygon class="st22" points="1680.8 1811.1 1673.3 1816.2 1439.2 1770.9 1446.7 1765.8" fill="#78add6"/>
-	<polygon class="st23" points="1673.3 1816.2 1680.8 1811.1 1672.5 1854.1 1665 1859.2" fill="#5c83a7"/>
-</g>
-<g class="st24" transform="translate(0 4.8828e-5)" opacity=".45">
-	<path class="st10" d="m1856.3 584.2c0-11.8-12.6-21.7-29.2-23.6-5-19.6-26.5-34.3-52.2-34.3-15.2 0-28.9 5.1-38.6 13.4-10.8-19-28.7-31.3-48.9-31.3s-38 12.3-48.9 31.3c-18.9 2.8-34.6 13.7-42.5 28.4h-1.8c-20.8 0-37.6 7.5-37.6 16.7 0 1.2 0.3 2.5 0.9 3.6h298.2c0.4-1.4 0.6-2.8 0.6-4.2z" fill="#66b9bf"/>
-</g>
+<!--Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" enable-background="new 0 0 1920 2161" version="1.1" viewBox="0 0 1920 2161" xml:space="preserve">
+    <metadata>
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>
+                    image/svg+xml
+                </dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>
+                    website sections light colors
+                </dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <style type="text/css">
+        #large-red-cloud-r { will-change: transform; animation: rl-r-1 45s linear infinite; } #large-red-cloud-l { will-change: transform; animation: lr-1 41s linear infinite; } #small-teal-cloud-l { will-change: transform; animation: rl-r-1 130s linear infinite; } #small-red-cloud-l { will-change: transform; animation: rl-r-1 93s linear infinite; } #cloud-1 { will-change: transform; animation: lr-1 50s linear infinite; } @keyframes rl-r-1 { from { transform: translateX(650px); } to { transform: translateX(-3000px); } } .st10 { fill: rgba(102, 185, 191, 0.35); } .st8, .st7 { fill: rgba(231, 0, 115, 0.2); stroke: rgba(231, 0, 115, 0.4); stroke-width: 3; } @keyframes lr-1 { from { transform: translateX(-600px); } to { transform: translateX(3000px); } } .st0{fill:#F9F1E4;} .st1{fill:#E89087;} .st2{opacity:0.6;fill:#EFE3CE;enable-background:new ;} .st3{opacity:0.37;fill:#F2E9D7;enable-background:new ;} .st4{fill:#F2E4CE;} .st5{opacity:0.58;fill:#F7E6C6;enable-background:new ;} .st6{opacity:0.85;fill:#F9F1E4;enable-background:new ;} .st7{opacity:0.25;} .st9{opacity:0.43;} .st10{fill:#66B9BF;} .st11{fill:#07889B;} .st12{fill:#27334F;} .st13{fill:#74BBCE;} .st14{fill:#3175CD;} .st15{fill:#06666D;} .st16{fill:#09ABB7;} .st17{fill:#33608C;} .st18{fill:#6C9FC1;} .st19{fill:#0BB1B5;} .st20{fill:#06727A;} .st21{fill:#6E9FC4;} .st22{fill:#78ADD6;} .st23{fill:#5C83A7;} .st24{opacity:0.45;}
+    </style>
+    <title>
+        website sections light colors
+    </title>
+    <g id="backgrounds" transform="translate(-2316,-2893.7)">
+        <rect width="1920" height="1106.8" x="2316" y="3947.9" class="st0"/>
+        <rect width="1920" height="1080" x="2316" y="2893.7" class="st1"/>
+        <rect width="1920" height="1394" x="2316" y="2893.7" class="st0"/>
+    </g>
+    <g id="strobey_things" transform="translate(-2316,-2893.7)">
+        <polygon fill="#efe3ce" points="822.4 2901.4 3970 4851.7 3093.8 2828.7" class="st2" enable-background="new" opacity=".6"/>
+        <polygon fill="#f2e9d7" points="2108 5197.7 3958 4872 2076.1 4441.3" class="st3" enable-background="new" opacity=".37"/>
+        <polygon fill="#f2e4ce" points="881.3 2794.2 3973.7 4864.1 2222.7 2831.6" class="st4"/>
+        <polygon fill="#f7e6c6" points="3548.2 2734.5 3975.4 4898.6 4412.3 2831.2" class="st5" enable-background="new" opacity=".58"/>
+        <circle cx="2583.5" cy="3161.2" r="158.5" fill="#f9f1e4" class="st6" enable-background="new" opacity=".85"/>
+        <g id="large-red-cloud-r" fill="#fff" class="st7" opacity=".25">
+            <path d="m3791.5 3863.5c0 0.1-0.1 0.2-0.1 0.2h0.3z" class="st8"/>
+            <path d="m4275 3857.7c0-23.2-24.1-42.4-55.3-45.2-4.6-28.9-34.8-51.3-71.3-51.3-25.5 0-47.9 10.9-60.6 27.3-5.5-1.7-11.2-2.5-17-2.5-15.2-0.1-29.7 5.8-40.5 16.5-17.8-7.3-41-11.8-66.5-11.8-27.8 0-53 5.3-71.3 13.9 0.2-1.8 0.3-3.7 0.3-5.5 0-37.2-35.1-67.3-78.4-67.3-38.9 0-71.1 24.3-77.3 56.1-3.3-0.3-6.7-0.5-10.1-0.5-39.7 0-71.9 23.7-71.9 52.9 0 4.1 0.7 8.3 1.9 12.2-2.5-0.1-5-0.2-7.6-0.2-23.9 0-43.3 4.7-43.3 10.4 0 0.3 0.1 0.7 0.2 1h185.1c0.1-0.1 0.1-0.1 0.1-0.2l0.1 0.2h482.8c0.3-2 0.6-4 0.6-6z" class="st8"/>
+        </g>
+        <g id="large-red-cloud-l" fill="#fff" class="st7" opacity=".25">
+            <path d="m2665.5 3521.5c0 0.1 0.1 0.2 0.1 0.2h-0.3l0.2-0.2z" class="st8"/>
+            <path d="m2182 3515.7c0-23.2 24.1-42.4 55.3-45.2 4.6-28.9 34.8-51.3 71.3-51.3 25.5 0 47.9 10.9 60.6 27.3 5.5-1.7 11.2-2.5 17-2.5 15.2-0.1 29.7 5.8 40.5 16.5 17.8-7.3 41.1-11.8 66.5-11.8 27.8 0 53 5.3 71.3 13.9-0.2-1.8-0.3-3.7-0.3-5.5 0-37.2 35.1-67.3 78.4-67.3 38.9 0 71.1 24.3 77.3 56.1 3.3-0.3 6.7-0.5 10.1-0.5 39.7 0 71.9 23.7 71.9 52.9 0 4.1-0.7 8.3-1.9 12.2 2.5-0.1 5-0.2 7.6-0.2 23.9 0 43.3 4.7 43.3 10.4 0 0.3-0.1 0.7-0.2 1h-185.2c-0.1-0.1-0.1-0.1-0.1-0.2h-0.1c0 0.1-0.1 0.1-0.1 0.2h-482.8c-0.2-2-0.4-4-0.4-6z" class="st8"/>
+        </g>
+        <g id="small-red-cloud-l" class="st7" opacity=".25">
+            <path fill="#fff" d="m4263.6 3513.6c0-11.8-12.6-21.7-29.2-23.6-5-19.6-26.5-34.3-52.2-34.3-15.2 0-28.9 5.1-38.6 13.4-10.8-19-28.7-31.3-48.9-31.3s-38 12.3-48.9 31.3c-18.9 2.8-34.6 13.7-42.5 28.4h-1.8c-20.8 0-37.6 7.5-37.6 16.7 0 1.3 0.3 2.5 0.9 3.6h298.2c0.4-1.4 0.6-2.8 0.6-4.2z" class="st8"/>
+        </g>
+    </g>
+    <g id="cloud-1" class="st9" opacity=".43">
+        <path fill="#66b9bf" d="m578.5 653.8c0-24.4-26-44.7-60.3-48.7-10.4-40.4-54.7-70.8-107.7-70.8-31.3 0-59.6 10.6-79.7 27.6-22.4-39.1-59.2-64.6-100.8-64.6s-78.4 25.5-100.8 64.5c-38.9 5.8-71.4 28.2-87.6 58.5h-3.6c-42.8 0-77.5 15.4-77.5 34.5 0 2.6 0.7 5.1 1.9 7.5h615c0.7-2.8 1.1-5.6 1.1-8.5z" class="st10"/>
+    </g>
+    <rect width="203.8" height="325.7" x="1606.2" y="1709.5" class="st11" transform="matrix(.9962 .086634 -.086634 .9962 168.63 -140.94)"/>
+    <ellipse cx="1702.8" cy="1933" class="st12" rx="66.3" ry="66.3" transform="matrix(.08661 -.9962 .9962 .08661 -370.39 3462)"/>
+    <ellipse cx="1702.6" cy="1935.1" class="st13" rx="24.2" ry="24.2" transform="matrix(.08661 -.9962 .9962 .08661 -372.68 3463.8)"/>
+    <path d="m1708.1 1872.7c-33.3-2.9-62.7 21.8-65.6 55.1s21.8 62.7 55.1 65.6 62.7-21.8 65.6-55.1c2.9-33.4-21.8-62.7-55.1-65.6zm-9.6 110c-27.4-2.4-47.8-26.6-45.4-54s26.6-47.8 54-45.4 47.8 26.6 45.4 54c-2.4 27.5-26.5 47.8-54 45.4z" class="st13"/>
+    <ellipse cx="1634.6" cy="1717.9" class="st13" rx="7.5" ry="7.5" transform="matrix(.08661 -.9962 .9962 .08661 -218.37 3197.6)"/>
+    <ellipse cx="1609.1" cy="2011.8" class="st14" rx="7.5" ry="7.5" transform="matrix(.08661 -.9962 .9962 .08661 -534.46 3440.6)"/>
+    <ellipse cx="1807.1" cy="1732.9" class="st13" rx="7.5" ry="7.5" transform="matrix(.08661 -.9962 .9962 .08661 -75.762 3383.1)"/>
+    <ellipse cx="1781.6" cy="2026.7" class="st14" rx="7.5" ry="7.5" transform="matrix(.08661 -.9962 .9962 .08661 -391.86 3626.1)"/>
+    <ellipse cx="1715.1" cy="1787.8" class="st12" rx="43.8" ry="43.8" transform="matrix(.08661 -.9962 .9962 .08661 -214.55 3341.6)"/>
+    <ellipse cx="1715" cy="1789.2" class="st13" rx="16" ry="16" transform="matrix(.08661 -.9962 .9962 .08661 -216.06 3342.8)"/>
+    <path d="m1718.6 1747.9c-22-1.9-41.5 14.4-43.4 36.4s14.4 41.5 36.4 43.4 41.5-14.4 43.4-36.4-14.4-41.5-36.4-43.4zm-6.4 72.8c-18.1-1.6-31.6-17.6-30-35.7s17.6-31.6 35.7-30 31.6 17.6 30 35.7c-1.5 18.1-17.5 31.6-35.7 30z" class="st13"/>
+    <polyline points="1851.5 1995.8 1795 2043.3 1823.2 1718.9 1880.7 1670.6" class="st15"/>
+    <polygon points="1620.7 1701.3 1678.2 1653 1879.8 1670.6 1822.8 1718.4" class="st16"/>
+    <rect width="388.4" height="204.8" x="1323.8" y="1848.5" class="st11" transform="matrix(.9818 .1898 -.1898 .9818 397.78 -252.62)"/>
+    <ellipse cx="1409.9" cy="1945" class="st17" rx="70.3" ry="70.3" transform="matrix(.1898 -.9818 .9818 .1898 -767.29 2960.2)"/>
+    <ellipse cx="1412.1" cy="1945.4" class="st13" rx="25.7" ry="25.7" transform="matrix(.1898 -.9818 .9818 .1898 -765.91 2962.7)"/>
+    <path d="m1346.8 1932.8c-6.7 34.8 16 68.5 50.9 75.3s68.5-16 75.3-50.9c6.7-34.8-16-68.5-50.9-75.3-34.9-6.7-68.5 16.1-75.3 50.9zm115 22.2c-5.5 28.7-33.3 47.4-62 41.9s-47.4-33.3-41.9-62 33.3-47.4 62-41.9c28.7 5.6 47.5 33.3 41.9 62z" class="st13"/>
+    <ellipse cx="1622.1" cy="1986" class="st17" rx="70.3" ry="70.3" transform="matrix(.1898 -.9818 .9818 .1898 -635.62 3201.7)"/>
+    <ellipse cx="1624.3" cy="1986.4" class="st13" rx="25.7" ry="25.7" transform="matrix(.1898 -.9818 .9818 .1898 -634.24 3204.3)"/>
+    <path d="m1559 1973.8c-6.7 34.8 16 68.5 50.9 75.3 34.8 6.7 68.5-16 75.3-50.9 6.7-34.8-16-68.5-50.9-75.3-34.9-6.7-68.5 16.1-75.3 50.9zm115 22.2c-5.5 28.7-33.3 47.4-62 41.9s-47.4-33.3-41.9-62 33.3-47.4 62-41.9c28.7 5.6 47.5 33.3 41.9 62z" class="st13"/>
+    <rect width="388.5" height="4" x="1336.4" y="1883.7" class="st18" transform="matrix(.9818 .1898 -.1898 .9818 385.64 -256.2)"/>
+    <rect width="9.1" height="21.2" x="1494.9" y="1849.3" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 380.19 -250.74)"/>
+    <rect width="9.1" height="21.2" x="1549.5" y="1859.9" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 383.18 -260.91)"/>
+    <rect width="9.1" height="21.2" x="1535.9" y="1857.3" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 382.43 -258.37)"/>
+    <rect width="9.1" height="21.2" x="1522.2" y="1854.6" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 381.68 -255.83)"/>
+    <rect width="9.1" height="21.2" x="1508.6" y="1852" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 380.93 -253.29)"/>
+    <rect width="9.1" height="21.2" x="1563.2" y="1862.5" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 383.93 -263.46)"/>
+    <rect width="55.2" height="34" x="1494.7" y="1917.8" class="st17" transform="matrix(.9818 .1898 -.1898 .9818 394.8 -253.72)"/>
+    <ellipse cx="1508.5" cy="1932.5" class="st13" rx="6.8" ry="6.8" transform="matrix(.1898 -.9818 .9818 .1898 -675.11 3046.9)"/>
+    <ellipse cx="1533" cy="1937.2" class="st13" rx="6.8" ry="6.8" transform="matrix(.1898 -.9818 .9818 .1898 -659.92 3074.8)"/>
+    <polygon points="1522.3 1989.8 1501.6 2018.6 1493.1 1984.1 1487.6 1983.1 1498.3 2023.9 1495.2 2027.9 1484.3 1982.4 1479 1981.4 1491.4 2033.2 1496.3 2034.2 1527.6 1990.8" class="st13"/>
+    <polygon points="1540.1 1993.2 1508.7 2036.6 1514 2037.6 1545 1994.2" class="st13"/>
+    <polygon points="1521.2 2014.3 1536.6 1992.6 1531.3 1991.5 1516.1 2013.3" class="st13"/>
+    <polygon points="1512.8 2015.3 1499.6 2034.8 1505.3 2035.9 1519.1 2016.5" class="st13"/>
+    <polygon points="1729.3 1887.4 1766.2 1862.4 1384.1 1788.6 1347.1 1813.5" class="st19"/>
+    <polygon points="1689.3 2088.3 1726.3 2063.3 1765.2 1862.2 1727.9 1887.4" class="st20"/>
+    <polygon points="1665 1859.2 1649.2 1856.2 1654.5 1829 1451.4 1789.7 1446.2 1816.9 1430.4 1813.9 1438.7 1770.8 1673.3 1816.2" class="st21"/>
+    <polygon points="1439.2 1770.9 1446.7 1765.8 1680.8 1811.1 1673.3 1816.2" class="st22"/>
+    <polygon points="1672.5 1854.1 1665 1859.2 1673.3 1816.2 1680.8 1811.1" class="st23"/>
+    <g id="small-teal-cloud-l" class="st24" opacity=".45">
+        <path fill="#66b9bf" d="m1856.3 584.2c0-11.8-12.6-21.7-29.2-23.6-5-19.6-26.5-34.3-52.2-34.3-15.2 0-28.9 5.1-38.6 13.4-10.8-19-28.7-31.3-48.9-31.3s-38 12.3-48.9 31.3c-18.9 2.8-34.6 13.7-42.5 28.4h-1.8c-20.8 0-37.6 7.5-37.6 16.7 0 1.2 0.3 2.5 0.9 3.6h298.2c0.4-1.4 0.6-2.8 0.6-4.2z" class="st10"/>
+    </g>
 </svg>
