@@ -57,18 +57,16 @@ class Announcements extends React.Component {
   render() {
     return <>
       <h4 className="announcements-hdr">Live Announcements</h4>
-      <div className="announcements" >
-        <ul className="announcements-col">
-          {this.state.announcements.map((m, i) => {
-            return <Announcement
-              key={i}
-              time={m.time}
-              header={m.header}
-              body={m.body}
-              class={i === 0 ? 'main-msg' : 'side-msg'} />
-          })}
-        </ul>
-      </div>
+      <ul className="announcements-col">
+        {this.state.announcements.map((m, i) => {
+          return <Announcement
+            key={i}
+            time={m.time}
+            header={m.header}
+            msg={m.msg}
+            class={i === 0 ? 'main-msg' : 'side-msg'} />
+        })}
+      </ul>
     </>
   }
 }
@@ -76,8 +74,7 @@ class Announcements extends React.Component {
 const Announcement = (props) => {
   return <li className='message'>
     <Timeago className='when' date={props.time} />
-    <span className='announcement-title'>{props.header}</span>
-    <span className='what'>{props.body}</span>
+    <span className='what'>{props.msg}</span>
   </li>
 }
 

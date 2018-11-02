@@ -11,9 +11,10 @@
 }
 
 .links-left {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 0 50%;
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px 100px;
+  gap: 8px;
 }
 
 .links-right {

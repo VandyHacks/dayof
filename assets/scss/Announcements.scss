@@ -67,14 +67,6 @@
   font-weight: 450;
 }
 
-.announcements {
-  display: flex;
-  flex-flow: column nowrap;
-  background-color: rgba(#fbf8f2, 0.7);
-  border-radius: 8px;
-  overflow-y: auto;
-}
-
 .announcements-col {
   display: flex;
   flex-direction: column;
@@ -94,7 +86,7 @@
 
 .message {
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 20% 80%;
 }
 
 .message span:first-child {
