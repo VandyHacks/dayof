@@ -1,0 +1,283 @@
+.container-main {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  height: 650px;
+  overflow-y: scroll;
+}
+.larger-container {
+  display: flex;
+  flex-direction: column;
+}
+.header-padding-left {
+  width: 70px;
+}
+.header-padding-right {
+  width: 18px;
+}
+.container-header-row {
+  display: flex;
+  flex-direction: row;
+}
+.container-header {
+  display: grid;
+  width: 95%;
+  background-color: transparent;
+  grid-template-columns: 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
+  grid-template-rows: 45px;
+}
+.container-body {
+  display: grid;
+  width: 95%;
+  grid-template-columns: 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
+  grid-template-rows: 4px repeat(105, 45px);
+  height: 4200px;
+  background:
+    repeating-linear-gradient(
+      black 4px,
+      transparent 5px,
+      transparent 93px,
+      black 94px
+    );
+}
+.container-time {
+  display: grid;
+  grid-template-columns: 70px;
+  grid-template-rows: repeat(53, 48px);
+  grid-row-gap: 42px;
+}
+.text {
+  display: flex;
+  justify-self: center;
+  font-weight: bold;
+  padding-top: 12px;
+}
+.container-time > .text {
+  padding-right: 6px;
+  padding-top: 0px !important;
+  position: relative;
+  margin-top: -5px;
+  justify-self: right;
+  font-size: 12px;
+}
+
+.heading {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.description {
+  color: black;
+  font-size: 11px;
+}
+.details {
+  color: black;
+  font-size: 9px;
+}
+
+.item {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #66B9BF;
+  padding: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  transition: all 0.3s ease-out;
+}
+.item:hover {
+  transform: scale(1.05);
+  border: solid rgb(76, 141, 190);
+  border-width: 0.5px 0px !important;
+}
+
+.primaryevents {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#item-a {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#item-b {
+  grid-row-start: 7;
+  grid-row-end: 13;
+}
+
+#item-c {
+  grid-row-start: 2;
+  grid-row-end: 6;
+}
+
+#item-d {
+  grid-row-start: 6;
+  grid-row-end: 8;
+}
+
+#item-e {
+  grid-row-start: 80;
+  grid-row-end: 82;
+}
+
+#item-f {
+  grid-row-start: 82;
+  grid-row-end: 86;
+}
+
+#item-g {
+  grid-row-start: 89;
+  grid-row-end: 92;
+}
+
+.buses {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#item-h {
+  grid-row-start: 13;
+  grid-row-end: 14;
+}
+
+#item-i {
+  grid-row-start: 14;
+  grid-row-end: 15;
+}
+
+#item-j {
+  grid-row-start: 15;
+  grid-row-end: 16;
+}
+
+#item-k {
+  grid-row-start: 16;
+  grid-row-end: 17;
+}
+
+#item-l {
+  grid-row-start: 92; 
+  grid-row-end: 94;
+}
+
+.food {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#item-m {
+  grid-row-start: 2;
+  grid-row-end: 8;
+}
+
+#item-n {
+  grid-row-start: 14;
+  grid-row-end: 16;
+}
+
+#item-o {
+  grid-row-start: 30;
+  grid-row-end: 33;
+}
+
+#item-p {
+  grid-row-start: 38;
+  grid-row-end: 41;
+}
+
+#item-q {
+  grid-row-start: 49;
+  grid-row-end: 52;
+}
+
+#item-r {
+  grid-row-start: 62;
+  grid-row-end: 64;
+}
+
+#item-s {
+  grid-row-start: 78;
+  grid-row-end: 80;
+}
+
+#item-t {
+  grid-row-start: 85;
+  grid-row-end: 86;
+}
+
+#item-u {
+  grid-row-start: 86;
+  grid-row-end: 88;
+}
+
+.hackerexp {
+  grid-column-start: 6;
+  grid-column-end: 7;
+}
+
+#item-v {
+  grid-row-start: 8;
+  grid-row-end: 14;
+}
+
+#item-w {
+  grid-row-start: 46;
+  grid-row-end: 49;
+}
+
+#item-x {
+  grid-row-start: 53;
+  grid-row-end: 57;
+}
+
+#item-y {
+  grid-row-start: 80;
+  grid-row-end: 82;
+}
+
+.sponsortalks {
+  grid-column-start: 8;
+  grid-column-end: 9;
+}
+
+#item-aa {
+  grid-row-end: 33;
+  grid-row-start: 35;
+}
+
+#item-ab {
+  grid-row-end: 35;
+  grid-row-start: 37;
+}
+
+#item-ac {
+  grid-row-end: 37;
+  grid-row-start: 39;
+}
+
+#item-ad {
+  grid-row-start: 39;
+  grid-row-end: 41;
+}
+
+#item-ae {
+  grid-row-start: 41;
+  grid-row-end: 43;
+}
+
+#item-af {
+  grid-row-start: 43;
+  grid-row-end: 45;
+}
+
+#item-ag {
+  grid-row-start: 45;
+  grid-row-end: 47;
+}
+
+#item-ah {
+  grid-row-start: 47;
+  grid-row-end: 49;
+}

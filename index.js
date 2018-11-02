@@ -22,7 +22,11 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
 app.use(helmet());
+<<<<<<< HEAD
 app.use(express.static('dist'));
+=======
+app.use(express.static(__dirname));
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
 
 app.use(cors());
 
@@ -94,14 +98,21 @@ wss.on('connection', (ws) => {
     if (ws.readyState !== 1 || !isAlive) {
       clearInterval(keepAlive);
       ws.terminate();
+<<<<<<< HEAD
     } else {
       ws.ping('pingdata');
+=======
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
     }
   }, 5000);
   ws.on('close', () => {
     isAlive = false;
     console.log('Breaking connection');
+<<<<<<< HEAD
   });
+=======
+  })
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
 });
 
 app.get('/login', (req, res) => {
@@ -188,6 +199,7 @@ app.post('/sendpush', (req, res) => {
     resolve();
   });
   const slackAnnouncement = new Promise((resolve, reject) => {
+<<<<<<< HEAD
     needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, (error, response) => {
       if (!error && response.statusCode == 200) {
         console.log('works');
@@ -216,6 +228,29 @@ app.post('/sendpush', (req, res) => {
     })
     .catch((error) => {
       console.log(`WEBSOCKET SEND ERROR: ${error}`);
+=======
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, function (error, response) {
+      if (!error && response.statusCode == 200) {
+        resolve();
+      } else {
+        reject("Did not manage to post announcement to slack")
+      }
+    });
+  })
+  Promise.all([chromePush, slackAnnouncement])
+    .then(() => {
+      const announcement = [];
+      announcement.push(payload);
+      wss.clients.forEach((client) => {
+        console.log('Client: ', client);
+        client.send(announcement);
+      });
+      console.log(`Announcement sent through ws: ${announcement}`);
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`Error: ${error.stack}`);
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
       res.sendStatus(500);
     });
 });

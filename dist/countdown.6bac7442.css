@@ -1,0 +1,41 @@
+#guides button {
+  background-color: rgb(98, 185, 192);
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#countdown {
+  display: grid;
+  font-weight: 400;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 30px;
+  justify-items: center;
+  justify-content: center;
+  margin-right: 70%;
+  font-size: 1.3em;
+}
+
+#countdown #remaining {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.9em;
+  text-align: right;
+  padding-bottom: 15px;
+  padding-top: 20px;
+  line-height: 20px;
+  margin-top: 15px;
+}
+
+#countdown #labels {
+  font-size: 1.116em;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+#countdown .time {
+  font-size: 1.8em;
+  font-weight: 1000;
+  font-family: 'Courier New', Courier, monospace;
+}

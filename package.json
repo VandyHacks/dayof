@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "react-dayof",
   "version": "1.0.0",
   "description": "DayOf page for VandyHacks V, Nov. 2-4",
@@ -16,22 +17,61 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-timeago": "^4.1.9",
+=======
+  "name": "vandyhacksnotifications",
+  "version": "1.0.0",
+  "description": "SMS Notifications",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "./node_modules/.bin/parcel dayof.html",
+    "build": "./node_modules/.bin/parcel build dayof.html",
+    "lint": "eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-zhai/vh-notifications.git"
+  },
+  "keywords": [
+    "VandyHacks",
+    "notifications"
+  ],
+  "author": "k-zhai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-zhai/vh-notifications/issues"
+  },
+  "homepage": "https://github.com/k-zhai/vh-notifications#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
     "body-parser": "^1.18.3",
     "bufferutil": "4.0.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
     "helmet": "^3.12.1",
+<<<<<<< HEAD
+=======
+    "immutable": "^3.8.2",
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
     "mongoose": "^5.2.2",
     "needle": "^2.2.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+<<<<<<< HEAD
+=======
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-timeago": "^4.1.9",
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
     "twilio": "^3.17.5",
     "utf-8-validate": "5.0.1",
     "web-push": "^3.3.2",
     "ws": "6.0.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
@@ -42,5 +82,15 @@
     "sass": "^1.14.3",
     "svg-loader": "0.0.2",
     "typescript": "^3.1.5"
+=======
+    "@types/underscore": "^1.8.8",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
+    "underscore": "^1.9.1",
+    "parcel-bundler": "^1.10.3"
+>>>>>>> 982e0bbe23d0883ab2d8f2f23f648577bfa03be4
   }
 }
