@@ -57,6 +57,7 @@ class Announcements extends React.Component {
   render() {
     return <>
       <h4 className="announcements-hdr">Live Announcements</h4>
+      <div className="section-announcements" >
         <ul className="announcements-col">
           {this.state.announcements.map((m, i) => {
             return <Announcement
@@ -67,6 +68,7 @@ class Announcements extends React.Component {
               class={i === 0 ? 'main-msg' : 'side-msg'} />
           })}
         </ul>
+      </div>
     </>
   }
 }
@@ -75,7 +77,7 @@ const Announcement = (props) => {
   return <div className="card">
     <li className='message'>
       <Timeago className='when' date={props.time} />
-      <span className='what'>{props.header}: {props.msg}</span>
+      <span className='what'><span className='hdr'>{props.header}:</span> {props.msg}</span>
     </li>
   </div>
 }

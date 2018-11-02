@@ -1,83 +1,25 @@
+@import "./Variables.scss";
+
 .announcements-and-links {
   display: flex;
   flex-direction: row;
 }
 .section-announcements {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-}
-.section-links {
-  display: flex;
-  flex-direction: column;
-}
-.icons-container {
-  display: flex;
-  flex-direction: row;
-}
-
-#links-container {
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: 100px 100px;
-  gap: 8px;
-}
-#slack {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-#submit-project {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-#wifi {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
-#contact-info {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-
-#social-media-container {
-  display: grid;
-  grid-template-columns: 66px 66px 66px;
-  grid-template-rows: 66px 132px;
-  gap: 9px;
-  margin-left: 10px;
-}
-#fb {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-#ig {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-#tw {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-}
-#social-media-sell {
-  grid-column: 1 / 4;
-  grid-row: 2 / 3;
-  background-color: #62b9c0;
-  padding: 8px;
-  border-radius: 5px;
-  font-weight: 450;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .announcements-col {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
-  background-color: #fbf8f2;
-  overflow-y: auto;
-  height: 229px;
-  border-radius: 5px;
-  margin-top: 0px;
-  padding: 0px 0px 0px 0px;
-  min-width: 400px;
+  background-color: rgba(white, 0.6);
+  overflow-y: scroll;
+  border-radius: 8px;
+  padding: 0;
+  margin: 0;
+  height: 230px;
 }
 
 .container-fluid {
@@ -88,19 +30,23 @@
 
 .message {
   display: grid;
-  grid-template-columns: minmax(100px, 15%) minmax(200px, 85%);
+  grid-template-columns: minmax(100px, auto) minmax(200px, 100%);
   padding: 3px 0px 0px 5%;
   height: 30px;
+
+  .hdr {
+    font-family: SofiaProSemiBold;
+  }
 }
 
-.message span:first-child {
-  color: #07889b;
+.message .when {
+  color: $main-clr;
   padding: 0px 15px 0px 15px;
   text-align: right;
 }
 
 .card {
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 100%;
 }
