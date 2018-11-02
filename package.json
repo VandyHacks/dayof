@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm i parcel",
     "start": "node index.js",
-    "build": "parcel build dayof.html auth.html admin.html"
+    "build": "parcel build --public-url '.' dayof.html auth.html admin.html"
   },
   "author": "Matt Leon",
   "license": "MIT",
