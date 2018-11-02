@@ -102,10 +102,6 @@ wss.on('connection', (ws) => {
   })
 });
 
-app.get('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
-  console.log(res);
-})
-
 app.get('/login', (req, res) => {
   res.sendFile(`${__dirname}/dist/auth.html`);
 });
@@ -113,6 +109,10 @@ app.get('/login', (req, res) => {
 app.get('/admin', (req, res) => {
   res.sendFile(`${__dirname}/dist/admin.html`);
 });
+
+app.get('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
+  console.log(req);
+})
 
 app.post('/admin', (req, res) => {
   if (req.body.password !== process.env.PASSWORD) {
