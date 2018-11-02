@@ -57,25 +57,27 @@ class Announcements extends React.Component {
   render() {
     return <>
       <h4 className="announcements-hdr">Live Announcements</h4>
-      <ul className="announcements-col">
-        {this.state.announcements.map((m, i) => {
-          return <Announcement
-            key={i}
-            time={m.time}
-            header={m.header}
-            msg={m.msg}
-            class={i === 0 ? 'main-msg' : 'side-msg'} />
-        })}
-      </ul>
+        <ul className="announcements-col">
+          {this.state.announcements.map((m, i) => {
+            return <Announcement
+              key={i}
+              time={m.time}
+              header={m.header}
+              msg={m.msg}
+              class={i === 0 ? 'main-msg' : 'side-msg'} />
+          })}
+        </ul>
     </>
   }
 }
 
 const Announcement = (props) => {
-  return <li className='message'>
-    <Timeago className='when' date={props.time} />
-    <span className='what'>{props.msg}</span>
-  </li>
+  return <div className="card">
+    <li className='message'>
+      <Timeago className='when' date={props.time} />
+      <span className='what'>{props.msg}</span>
+    </li>
+  </div>
 }
 
 export default Announcements;

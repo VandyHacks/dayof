@@ -73,9 +73,10 @@
   flex-shrink: 0;
   background-color: #fbf8f2;
   overflow-y: auto;
-  height: 208px;
+  height: 229px;
   border-radius: 5px;
-  padding: 10px 0px 10px 0px;
+  margin-top: 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 .container-fluid {
@@ -86,11 +87,19 @@
 
 .message {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 15% 85%;
+  padding: 3px 0px 0px 5%;
+  height: 30px;
 }
 
 .message span:first-child {
   color: #07889b;
   padding: 0px 15px 0px 15px;
   text-align: right;
+}
+
+.card {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
 }
