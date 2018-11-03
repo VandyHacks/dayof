@@ -153,6 +153,9 @@ async function fetchUserData() {
     console.log('JSON: ', json);
     console.log('Users: ', users);
     users.forEach((user) => {
+      if (!user.attendee.confirmation) {
+        return;
+      }
       let num = user.attendee.confirmation.phoneNumber;
       num = num.replace(/-/g, '');
       if (!phoneArr.includes(num)) {
