@@ -37,7 +37,7 @@
             "dateTime": "2018-11-02T21:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-02T21:00:00-05:00"
+            "dateTime": "2018-11-02T21:30:00-05:00"
         },
         "location": "VandyHacks",
         "summary": "Hacking Begins!",
@@ -345,7 +345,7 @@
             "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T09:00:00-06:00"
+            "dateTime": "2018-11-04T09:30:00-06:00"
         },
         "location": "ESB",
         "summary": "Hacking Ends",
@@ -353,7 +353,7 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T09:05:00-06:00"
+            "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "end": {
             "dateTime": "2018-11-04T10:00:00-06:00"
@@ -400,7 +400,7 @@
             "dateTime": "2018-11-04T15:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T15:00:00-06:00"
+            "dateTime": "2018-11-04T15:30:00-06:00"
         },
         "location": "VU Student Life Center, 310 25th Ave S, Nashville, TN 37240, USA",
         "summary": "All Buses Depart",
