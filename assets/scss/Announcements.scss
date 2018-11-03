@@ -20,6 +20,10 @@
   padding: 0;
   margin: 0;
   height: 230px;
+
+  @media (orientation: portrait) {
+    height: 120px;
+  }
 }
 
 .container-fluid {
@@ -36,6 +40,10 @@
 
   .hdr {
     font-family: SofiaProSemiBold;
+  }
+
+  @media (orientation: portrait) {
+    grid-template-columns: minmax(50px, auto) minmax(200px, 100%) !important;
   }
 }
 

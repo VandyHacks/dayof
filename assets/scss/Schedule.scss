@@ -6,6 +6,10 @@
   background-color: transparent;
   height: 650px;
   overflow-y: scroll;
+
+  @media (orientation: portrait) {
+    max-width: 300px;
+  }
 }
 .larger-container {
   display: flex;
@@ -27,6 +31,10 @@
   background-color: transparent;
   grid-template-columns: 3.88% 19.42% 4.854% 19.42% 4.854% 19.42% 4.854% 19.42% 3.88%;
   grid-template-rows: 45px;
+
+  @media (orientation: portrait) {
+    width: 75%;
+  }
 }
 .container-body {
   display: grid;
@@ -40,6 +48,10 @@
     transparent 93px,
     black 94px
   );
+
+  @media (orientation: portrait) {
+    width: 75%;
+  }
 }
 .container-time {
   display: grid;
