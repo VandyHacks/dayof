@@ -149,7 +149,7 @@ async function fetchUserData() {
   const USERS_URL = `${API_URL}/users/phoneNums`;
   try {
     const json = await authorizedJSONFetch(USERS_URL)
-    users = json.users;
+    const users = json.users;
     console.log(`${users.length} users loaded.`);
     users.forEach((user) => {
       let num = user.confirmation.phoneNumber;
