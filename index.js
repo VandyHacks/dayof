@@ -150,7 +150,8 @@ async function fetchUserData() {
   try {
     const json = await authorizedJSONFetch(USERS_URL)
     const users = json.users;
-    console.log('Users:', users);
+    console.log('JSON: ', json);
+    console.log('Users: ', users);
     users.forEach((user) => {
       let num = user.confirmation.phoneNumber;
       num = num.replace(/-/g, '');
