@@ -171,7 +171,6 @@ async function sendSMS(getMsg) {
       .then((data) => {
         console.log('Success: ', data);
       })
-      .done()
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
       })
