@@ -129,6 +129,9 @@ async function setToken(gotmsg) {
         token: token,
       })
     });
+    if (!res.ok) {
+      console.log('Invalid token');
+    }
     await fetchUserData(gotmsg);
   } catch (err) {
     return console.error(err);
