@@ -111,13 +111,13 @@ app.get('/admin', (req, res) => {
 });
 
 async function authorizedJSONFetch(url) {
-  const res = await fetch('https://apply.vandyhacks.org/api/users/phoneNums', {
+  const res = await fetch(url, {
     headers: new Headers({ 'x-event-secret': token }),
   });
   return await res.json();
 }
 
-async function setToken() {
+async function setToken(gotmsg) {
   try {
     const res = await fetch('https://apply.vandyhacks.org/auth/eventcode/',
     {
@@ -129,13 +129,14 @@ async function setToken() {
         token: token,
       })
     });
-    await fetchUserData();
+    await fetchUserData(gotmsg);
   } catch (err) {
     return console.error(err);
   }
 }
 
 const phoneArr = [];
+const API_URL = "https://apply.vandyhacks.org/api";
 
 async function fetchUserData(msg) {
   const USERS_URL = `${API_URL}/users/phoneNums`;
@@ -153,7 +154,7 @@ async function fetchUserData(msg) {
     phoneArr.map(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${req.body.msg}`,
+      body: `VandyHacks: ${msg}`,
     }));
     res.redirect('back');
   }
@@ -167,7 +168,7 @@ app.post('/admin', (req, res) => {
     res.sendStatus(403);
     return;
   }
-  setToken();
+  setToken(req.body.msg);
 });
 
 function isValidSaveRequest(req, res) {
