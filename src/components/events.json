@@ -37,7 +37,7 @@
             "dateTime": "2018-11-02T21:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-02T21:00:00-05:00"
+            "dateTime": "2018-11-02T21:30:00-05:00"
         },
         "location": "VandyHacks",
         "summary": "Hacking Begins!",
@@ -152,6 +152,17 @@
         "location": "Atrium",
         "summary": "Breakfast (Sponsored by L3 ForceX)",
         "type": "food"
+    },
+    {
+        "start": {
+            "dateTime": "2018-11-03T11:00:00-05:00"
+        },
+        "end": {
+            "dateTime": "2018-11-03T13:00:00-05:00"
+        },
+        "location": "044",
+        "summary": "Unity Workshop",
+        "type": "hxp"
     },
     {
         "start": {
@@ -301,7 +312,7 @@
             "dateTime": "2018-11-04T00:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-04T01:00:00-06:00"
+            "dateTime": "2018-11-04T01:00:00-05:00"
         },
         "location": "Atrium",
         "summary": "Midnight Snack (Sponsored by Tractor Supply Co)",
@@ -312,7 +323,7 @@
             "dateTime": "2018-11-04T00:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-04T01:00:00-06:00"
+            "dateTime": "2018-11-04T01:00:00-05:00"
         },
         "location": "001 (Circular room)",
         "summary": "Karaoke",
@@ -334,7 +345,7 @@
             "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T09:00:00-06:00"
+            "dateTime": "2018-11-04T09:30:00-06:00"
         },
         "location": "ESB",
         "summary": "Hacking Ends",
@@ -342,7 +353,7 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T09:05:00-06:00"
+            "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "end": {
             "dateTime": "2018-11-04T10:00:00-06:00"
@@ -375,17 +386,6 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T11:00:00-06:00"
-        },
-        "end": {
-            "dateTime": "2018-11-04T13:00:00-06:00"
-        },
-        "location": "044",
-        "summary": "Unity Workshop",
-        "type": "hxp"
-    },
-    {
-        "start": {
             "dateTime": "2018-11-04T13:30:00-06:00"
         },
         "end": {
@@ -400,7 +400,7 @@
             "dateTime": "2018-11-04T15:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T15:00:00-06:00"
+            "dateTime": "2018-11-04T15:30:00-06:00"
         },
         "location": "VU Student Life Center, 310 25th Ave S, Nashville, TN 37240, USA",
         "summary": "All Buses Depart",
