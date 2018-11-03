@@ -227,7 +227,7 @@ app.post('/sendpush', (req, res) => {
     .catch((err) => {
       console.log('Unable to save message to database: ', err);
     });
-  Resource created successfully
+  // Resource created successfully
   console.log(req.body); // added
   const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value, time: d });
   const options = {
