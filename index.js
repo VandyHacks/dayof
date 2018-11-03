@@ -168,7 +168,7 @@ async function fetchUserData() {
       body: `VandyHacks: ${smsMsg}`,
     })
       .catch ((err) => {
-        console.log(err);
+        console.error(`SMS failed to send to: ${number}`, err);
       })
     );
   }
