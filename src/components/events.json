@@ -122,10 +122,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-03T15:00:00-05:00"
+            "dateTime": "2018-11-03T18:30:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-03T17:30:00-05:00"
+            "dateTime": "2018-11-03T19:30:00-05:00"
         },
         "location": "By check-in",
         "summary": "Travel Reimbursement Info Session",
