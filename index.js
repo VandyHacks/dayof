@@ -110,8 +110,14 @@ app.get('/admin', (req, res) => {
   res.sendFile(`${__dirname}/dist/admin.html`);
 });
 
+function transformURL(url) {
+  const isDev = !location.hostname.endsWith("vandyhacks.org");
+  // bypass CORS issues in client-side API calls during localhost/dev, see https://github.com/Freeboard/thingproxy
+  return isDev ? "https://cors-anywhere.herokuapp.com/" + url : url;
+}
+
 async function authorizedJSONFetch(url) {
-  const res = await fetch(url, {
+  const res = await fetch(transformURL(url), {
     headers: new Headers({ 'x-event-secret': token }),
   });
   return await res.json();
@@ -119,7 +125,7 @@ async function authorizedJSONFetch(url) {
 
 async function setToken() {
   try {
-    const res = await fetch('https://apply.vandyhacks.org/auth/eventcode/',
+    const res = await fetch(transformURL('https://apply.vandyhacks.org/auth/eventcode/'),
     {
       method: 'POST',
       headers: {
