@@ -163,11 +163,14 @@ async function sendSMS(getMsg) {
         phoneArr.push(num);
       }
     });
-    phoneArr.forEach(number => twilio.messages.create({
-      to: number,
+    twilio.messages.create({
+      to: 5013987427,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${getMsg}`,
     })
+      .then((data) => {
+        console.log(data);
+      })
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
       })
