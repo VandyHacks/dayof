@@ -44,7 +44,7 @@ db.once('open', () => {
   console.log('Database open');
 });
 
-const phoneArr = [];
+const token = 'orange-puddle';
 
 const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
@@ -110,33 +110,64 @@ app.get('/admin', (req, res) => {
   res.sendFile(`${__dirname}/dist/admin.html`);
 });
 
-app.post('https://apply.vandyhacks.org/api/users/phoneNums', (req, res) => {
-  const token = req.body.jwt;
-  const x = jwt.verify(token, 'orange-puddle', (err, decoded) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    if (x != true) {
-      res.json({ auth: false });
-    } else {
-      res.json({ auth: true });
-    }
+async function authorizedJSONFetch(url) {
+  const res = await fetch('https://apply.vandyhacks.org/api/users/phoneNums', {
+    headers: new Headers({ 'x-event-secret': token }),
   });
-});
+  return await res.json();
+}
+
+async function setToken() {
+  try {
+    const res = await fetch('https://apply.vandyhacks.org/auth/eventcode/',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: token,
+      })
+    });
+    await fetchUserData();
+  } catch (err) {
+    return console.error(err);
+  }
+}
+
+const phoneArr = [];
+
+async function fetchUserData() {
+  const USERS_URL = `${API_URL}/users/phoneNums`;
+  try {
+    const json = await authorizedJSONFetch(USERS_URL)
+    users = json.users;
+    console.log(`${users.length} users loaded.`);
+    users.forEach((user) => {
+      let num = user.confirmation.phoneNumber;
+      num = num.replace(/-/g, '');
+      if (!phoneArr.includes(num)) {
+        phoneArr.push(num);
+      }
+    });
+    phoneArr.map(number => twilio.messages.create({
+      to: number,
+      from: process.env.TWILIO_MASS_SMS_SID,
+      body: `VandyHacks: ${req.body.msg}`,
+    }));
+    res.redirect('back');
+  }
+  catch (err) {
+    return console.error(err);
+  }
+}
 
 app.post('/admin', (req, res) => {
   if (req.body.password !== process.env.PASSWORD) {
     res.sendStatus(403);
     return;
   }
-
-  phoneArr.map(number => twilio.messages.create({
-    to: number,
-    from: process.env.TWILIO_MASS_SMS_SID,
-    body: `VandyHacks: ${req.body.msg}`,
-  }));
-  res.redirect('back');
+  setToken();
 });
 
 function isValidSaveRequest(req, res) {
@@ -218,7 +249,7 @@ app.post('/sendpush', (req, res) => {
       }
     });
   });
-  Promise.all([slackAnnouncement,chromePush])
+  Promise.all([slackAnnouncement, chromePush])
     .then(() => {
       const wsMsg = JSON.stringify({
         header: req.body.header,
