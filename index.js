@@ -47,37 +47,8 @@ db.once('open', () => {
 
 const token = process.env.TOKEN;
 
-const Hacker = db.model('Hacker', Hack);
 const PushSub = db.model('PushSubscription', Push);
 const Message = db.model('Message', Msg);
-
-function dbquery(callback) {
-  Hacker.find({}, (err, data) => {
-    if (err) {
-      console.error(err);
-      callback();
-      return;
-    }
-
-    data.forEach((element) => {
-      let num = element.phone;
-      num = num.replace(/-/g, '');
-      if (!phoneArr.includes(num)) {
-        phoneArr.push(num);
-      }
-    });
-  });
-
-  callback();
-}
-
-function wait() {
-  setTimeout(() => {
-    dbquery(wait);
-  }, 30000);
-}
-
-dbquery(wait);
 
 const server = app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/dist/dayof.html`);
@@ -164,7 +135,7 @@ async function sendSMS(getMsg) {
         phoneArr.push(num);
       }
     });
-    phoneArray.forEach(number => {
+    phoneArr.forEach(number => {
       twilio.messages.create({
         to: number,
         from: process.env.TWILIO_MASS_SMS_SID,
