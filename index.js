@@ -149,11 +149,11 @@ async function fetchUserData() {
   const USERS_URL = `${API_URL}/users/phoneNums`;
   try {
     const json = await authorizedJSONFetch(USERS_URL)
-    const users = json.users;
+    const users = json.attendees;
     console.log('JSON: ', json);
     console.log('Users: ', users);
     users.forEach((user) => {
-      let num = user.confirmation.phoneNumber;
+      let num = user.attendee.confirmation.phoneNumber;
       num = num.replace(/-/g, '');
       if (!phoneArr.includes(num)) {
         phoneArr.push(num);
