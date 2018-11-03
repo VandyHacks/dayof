@@ -122,6 +122,17 @@
     },
     {
         "start": {
+            "dateTime": "2018-11-03T15:00:00-06:00"
+        },
+        "end": {
+            "dateTime": "2018-11-03T17:30:00-06:00"
+        },
+        "location": "By check-in",
+        "summary": "Travel Reimbursement Info Session",
+        "type": "main"
+    },
+    {
+        "start": {
             "dateTime": "2018-11-03T01:30:00-05:00"
         },
         "end": {
@@ -381,17 +392,6 @@
         },
         "location": "VU Student Life Center, 310 25th Ave S, Nashville, TN 37240, USA",
         "summary": "Closing Ceremony",
-        "type": "main"
-    },
-    {
-        "start": {
-            "dateTime": "2018-11-04T15:00:00-06:00"
-        },
-        "end": {
-            "dateTime": "2018-11-04T17:30:00-06:00"
-        },
-        "location": "By check-in",
-        "summary": "Travel Reimbursement Info",
         "type": "main"
     },
     {

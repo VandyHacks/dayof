@@ -221,60 +221,60 @@ app.post('/sendpush', (req, res) => {
     return;
   }
 
-  // const d = new Date();
-  // const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
-  // newMsg.save()
-  //   .catch((err) => {
-  //     console.log('Unable to save message to database: ', err);
-  //   });
-  // Resource created successfully
-  // console.log(req.body); // added
-  // const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value, time: d });
-  // const options = {
-  //   TTL: ttl,
-  // };
-  // console.log(payload);
-  // const chromePush = new Promise((resolve, reject) => {
-  //   PushSub.find({}, (err, data) => {
-  //     if (err) reject(err);
-  //     data.forEach((element) => {
-  //       console.log('Data: ', element);
-  //       webpush.sendNotification(element, payload, options);
-  //     });
-  //   });
-  //   resolve();
-  // });
-  // const slackAnnouncement = new Promise((resolve, reject) => {
-  //   needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, (error, response) => {
-  //     if (!error && response.statusCode == 200) {
-  //       console.log('works');
-  //       resolve();
-  //     } else {
-  //       console.log('does not work');
-  //       reject('Did not manage to post announcement to slack');
-  //     }
-  //   });
-  // });
-  // Promise.all([slackAnnouncement, chromePush])
-  //   .then(() => {
-  //     const wsMsg = JSON.stringify({
-  //       header: req.body.header,
-  //       msg: req.body.value,
-  //       time: d,
-  //     });
-  //     wss.clients.forEach((client) => {
-  //       client.send(wsMsg, (err) => {
-  //         console.log('ws send err:', err);
-  //         client.terminate();
-  //       });
-  //     });
-  //     console.log(`Announcement sent through ws: ${wsMsg}`);
-  //     res.sendStatus(201);
-  //   })
-  //   .catch((error) => {
-  //     console.log(`WEBSOCKET SEND ERROR: ${error}`);
-  //     res.sendStatus(500);
-  //   });
+  const d = new Date();
+  const newMsg = new Message({ header: req.body.header, msg: req.body.value, time: d });
+  newMsg.save()
+    .catch((err) => {
+      console.log('Unable to save message to database: ', err);
+    });
+  Resource created successfully
+  console.log(req.body); // added
+  const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value, time: d });
+  const options = {
+    TTL: ttl,
+  };
+  console.log(payload);
+  const chromePush = new Promise((resolve, reject) => {
+    PushSub.find({}, (err, data) => {
+      if (err) reject(err);
+      data.forEach((element) => {
+        console.log('Data: ', element);
+        webpush.sendNotification(element, payload, options);
+      });
+    });
+    resolve();
+  });
+  const slackAnnouncement = new Promise((resolve, reject) => {
+    needle.post('https://vandyhacks-slackbot.herokuapp.com/api/announcements/loudspeaker', { msg: `${req.body.header}: ${req.body.value}` }, { json: true }, (error, response) => {
+      if (!error && response.statusCode == 200) {
+        console.log('works');
+        resolve();
+      } else {
+        console.log('does not work');
+        reject('Did not manage to post announcement to slack');
+      }
+    });
+  });
+  Promise.all([slackAnnouncement, chromePush])
+    .then(() => {
+      const wsMsg = JSON.stringify({
+        header: req.body.header,
+        msg: req.body.value,
+        time: d,
+      });
+      wss.clients.forEach((client) => {
+        client.send(wsMsg, (err) => {
+          console.log('ws send err:', err);
+          client.terminate();
+        });
+      });
+      console.log(`Announcement sent through ws: ${wsMsg}`);
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`WEBSOCKET SEND ERROR: ${error}`);
+      res.sendStatus(500);
+    });
 });
 
 app.post('/getmsgs', (req, res) => {
