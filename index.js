@@ -113,7 +113,9 @@ app.get('/admin', (req, res) => {
 
 async function authorizedJSONFetch(url) {
   const res = await fetch(url, {
-    headers: new Headers({ 'x-event-secret': token }),
+    headers: {
+      'x-event-secret': token,
+    },
   });
   return await res.json();
 }
