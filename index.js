@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 const Push = require('./schemas/schemas').pushSchema;
 const Hack = require('./schemas/schemas').hackerSchema;
 const Msg = require('./schemas/schemas').msgSchema;
+const fetch = require('node-fetch');
 
 const uri = process.env.PROD_MONGODB;
 const PORT = process.env.PORT || 5000;
@@ -161,12 +162,11 @@ async function fetchUserData() {
         phoneArr.push(num);
       }
     });
-    phoneArr.map(number => twilio.messages.create({
+    phoneArr.forEach(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${smsMsg}`,
     }));
-    res.redirect('back');
   }
   catch (err) {
     return console.error(err);
