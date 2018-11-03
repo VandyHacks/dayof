@@ -166,7 +166,11 @@ async function fetchUserData() {
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
       body: `VandyHacks: ${smsMsg}`,
-    }));
+    })
+      .catch ((err) => {
+        console.log(err);
+      })
+    );
   }
   catch (err) {
     return console.error(err);
