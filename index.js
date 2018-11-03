@@ -150,7 +150,6 @@ async function fetchUserData() {
   try {
     const json = await authorizedJSONFetch(USERS_URL)
     const users = json.users;
-    console.log('JSON: ', json);
     console.log('Users:', users);
     users.forEach((user) => {
       let num = user.confirmation.phoneNumber;
@@ -231,7 +230,6 @@ app.post('/sendpush', (req, res) => {
       console.log('Unable to save message to database: ', err);
     });
   // Resource created successfully
-  console.log(req.body); // added
   const payload = JSON.stringify({ title: `VandyHacks: ${req.body.header}`, body: req.body.value, time: d });
   const options = {
     TTL: ttl,
