@@ -209,17 +209,6 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-03T14:30:00-05:00"
-        },
-        "end": {
-            "dateTime": "2018-11-03T15:30:00-05:00"
-        },
-        "location": "048",
-        "summary": "Fulcrum Workshop",
-        "type": "sponsor"
-    },
-    {
-        "start": {
             "dateTime": "2018-11-03T14:00:00-05:00"
         },
         "end": {
@@ -253,10 +242,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-03T18:30:00-05:00"
+            "dateTime": "2018-11-03T14:30:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-03T19:30:00-05:00"
+            "dateTime": "2018-11-03T15:30:00-05:00"
         },
         "location": "048",
         "summary": "Fulcrum GT Workshop",
