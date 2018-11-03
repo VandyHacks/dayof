@@ -120,7 +120,7 @@ async function authorizedJSONFetch(url) {
   return await res.json();
 }
 
-async function setToken(getMsg) {
+async function setToken(getMsg, callback) {
   try {
     const res = await fetch('https://apply.vandyhacks.org/auth/eventcode/',
     {
@@ -137,6 +137,7 @@ async function setToken(getMsg) {
     } else {
       console.log(getMsg);
       await sendSMS(getMsg);
+      return callback();
     }
   } catch (err) {
     return console.error(err);
@@ -185,7 +186,12 @@ app.post('/admin', (req, res) => {
     res.sendStatus(403);
     return;
   }
-  setToken(req.body.msg);
+  function callback() {
+    return res.status(200).send({
+      message: 'Success',
+    });
+  }
+  setToken(req.body.msg, callback);
 });
 
 function isValidSaveRequest(req, res) {
