@@ -174,7 +174,6 @@ async function sendSMS(getMsg) {
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
       })
-    );
   }
   catch (err) {
     return console.error(err);
