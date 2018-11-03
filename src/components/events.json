@@ -312,7 +312,7 @@
             "dateTime": "2018-11-04T00:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-04T01:00:00-06:00"
+            "dateTime": "2018-11-04T01:00:00-05:00"
         },
         "location": "Atrium",
         "summary": "Midnight Snack (Sponsored by Tractor Supply Co)",
@@ -323,7 +323,7 @@
             "dateTime": "2018-11-04T00:00:00-05:00"
         },
         "end": {
-            "dateTime": "2018-11-04T01:00:00-06:00"
+            "dateTime": "2018-11-04T01:00:00-05:00"
         },
         "location": "001 (Circular room)",
         "summary": "Karaoke",
