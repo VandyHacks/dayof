@@ -151,8 +151,8 @@ async function sendSMS(getMsg) {
   try {
     const json = await authorizedJSONFetch(USERS_URL)
     const users = json.attendees;
-    console.log('JSON: ', json);
-    console.log('Users: ', users);
+    // console.log('JSON: ', json);
+    // console.log('Users: ', users);
     users.forEach((user) => {
       if (!user.attendee.confirmation) {
         return;
@@ -169,7 +169,7 @@ async function sendSMS(getMsg) {
       body: `VandyHacks: ${getMsg}`,
     })
       .then((data) => {
-        console.log(data);
+        console.log('Success: ', data);
       })
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
