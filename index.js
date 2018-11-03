@@ -120,7 +120,7 @@ async function authorizedJSONFetch(url) {
   return await res.json();
 }
 
-async function setToken() {
+async function setToken(getMsg) {
   try {
     const res = await fetch('https://apply.vandyhacks.org/auth/eventcode/',
     {
@@ -134,8 +134,10 @@ async function setToken() {
     });
     if (!res.ok) {
       console.log('Invalid token');
+    } else {
+      console.log(getMsg);
+      await sendSMS(getMsg);
     }
-    await fetchUserData();
   } catch (err) {
     return console.error(err);
   }
@@ -143,9 +145,8 @@ async function setToken() {
 
 const phoneArr = [];
 const API_URL = "https://apply.vandyhacks.org/api";
-let smsMsg = '';
 
-async function fetchUserData() {
+async function sendSMS(getMsg) {
   const USERS_URL = `${API_URL}/users/phoneNums`;
   try {
     const json = await authorizedJSONFetch(USERS_URL)
@@ -165,7 +166,7 @@ async function fetchUserData() {
     phoneArr.forEach(number => twilio.messages.create({
       to: number,
       from: process.env.TWILIO_MASS_SMS_SID,
-      body: `VandyHacks: ${smsMsg}`,
+      body: `VandyHacks: ${getMsg}`,
     })
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
@@ -182,8 +183,7 @@ app.post('/admin', (req, res) => {
     res.sendStatus(403);
     return;
   }
-  smsMsg = req.body.msg;
-  setToken();
+  setToken(req.body.msg);
 });
 
 function isValidSaveRequest(req, res) {
