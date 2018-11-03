@@ -59,6 +59,17 @@
             "dateTime": "2018-11-02T21:00:00-05:00"
         },
         "end": {
+            "dateTime": "2018-11-02T22:00:00-05:00"
+        },
+        "location": "001 (Circular Room)",
+        "summary": "Pitch Session",
+        "type": "hxp"
+    },
+    {
+        "start": {
+            "dateTime": "2018-11-02T22:00:00-05:00"
+        },
+        "end": {
             "dateTime": "2018-11-02T23:00:00-05:00"
         },
         "location": "001 (Circular Room)",

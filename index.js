@@ -137,7 +137,7 @@ async function setToken() {
 
 const phoneArr = [];
 
-async function fetchUserData() {
+async function fetchUserData(msg) {
   const USERS_URL = `${API_URL}/users/phoneNums`;
   try {
     const json = await authorizedJSONFetch(USERS_URL)
