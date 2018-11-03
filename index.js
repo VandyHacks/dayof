@@ -171,6 +171,7 @@ async function sendSMS(getMsg) {
       .then((data) => {
         console.log('Success: ', data);
       })
+      .done()
       .catch ((err) => {
         console.error(`SMS failed to send to: ${number}`, err);
       })
@@ -228,6 +229,7 @@ app.post('/savesub', (req, res) => {
 
 // Dayof route
 app.post('/sendpush', (req, res) => {
+  res.sendStatus(200);
   // if (req.body.password !== process.env.PASSWORD) {
   //   res.sendStatus(403);
   //   return;
