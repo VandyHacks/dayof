@@ -331,10 +331,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T08:00:00-06:00"
+            "dateTime": "2018-11-04T07:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T09:00:00-06:00"
+            "dateTime": "2018-11-04T08:00:00-06:00"
         },
         "location": "Atrium",
         "summary": "Breakfast (Sponsored by Red Ventures)",
@@ -342,10 +342,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T09:00:00-06:00"
+            "dateTime": "2018-11-04T08:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T09:30:00-06:00"
+            "dateTime": "2018-11-04T08:30:00-06:00"
         },
         "location": "ESB",
         "summary": "Hacking Ends",
@@ -353,6 +353,7 @@
     },
     {
         "start": {
+<<<<<<< Updated upstream
             "dateTime": "2018-11-03T23:00:00-05:00"
         },
         "end": {
@@ -365,9 +366,12 @@
     {
         "start": {
             "dateTime": "2018-11-04T09:00:00-06:00"
+=======
+            "dateTime": "2018-11-04T08:00:00-06:00"
+>>>>>>> Stashed changes
         },
         "end": {
-            "dateTime": "2018-11-04T10:00:00-06:00"
+            "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "location": "Wond'ry 3rd Floor",
         "summary": "How To Demo",
@@ -375,10 +379,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T10:00:00-06:00"
+            "dateTime": "2018-11-04T09:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T12:00:00-06:00"
+            "dateTime": "2018-11-04T11:00:00-06:00"
         },
         "location": "044/048",
         "summary": "Expo",
@@ -386,10 +390,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T12:00:00-06:00"
+            "dateTime": "2018-11-04T11:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T13:00:00-06:00"
+            "dateTime": "2018-11-04T12:00:00-06:00"
         },
         "location": "Atrium",
         "summary": "Lunch (Sponsored by VandyHacks)",
@@ -397,10 +401,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T13:30:00-06:00"
+            "dateTime": "2018-11-04T12:30:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T15:00:00-06:00"
+            "dateTime": "2018-11-04T14:00:00-06:00"
         },
         "location": "VU Student Life Center, 310 25th Ave S, Nashville, TN 37240, USA",
         "summary": "Closing Ceremony",
@@ -408,10 +412,10 @@
     },
     {
         "start": {
-            "dateTime": "2018-11-04T15:00:00-06:00"
+            "dateTime": "2018-11-04T14:00:00-06:00"
         },
         "end": {
-            "dateTime": "2018-11-04T15:30:00-06:00"
+            "dateTime": "2018-11-04T14:30:00-06:00"
         },
         "summary": "All Buses Depart",
         "type": "main"
