@@ -208,12 +208,10 @@ app.post('/savesub', (req, res) => {
 // Dayof route
 app.post('/sendpush', (req, res) => {
   console.log('passwords:', req.body.password, process.env.PASSWORD);
+  console.log(req.body.password !== process.env.PASSWORD)
   if (req.body.password !== process.env.PASSWORD) {
     res.sendStatus(403);
     return;
-  }
-  else {
-      return res.sendStatus(200);
   }
 
   const d = new Date();
